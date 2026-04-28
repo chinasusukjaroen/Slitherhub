@@ -35,7 +35,7 @@ def create_assignments_table():
 def get_assignments():
     conn = None
     try:
-        conn = sqlite3.connect("assignment.db")
+        conn = sqlite3.connect("assignments.db")
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
 
