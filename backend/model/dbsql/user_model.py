@@ -33,6 +33,73 @@ def create_users_table():
     finally:
         if conn:
             conn.close()
+
+
+def update_moodle_user_id(student_id, moodle_user_id):
+    conn = None
+    try:
+        conn = sqlite3.connect("users.db")
+        cursor = conn.cursor()
+        cursor.execute("UPDATE users SET moodle_user_id = ? WHERE student_id = ?",
+                       (moodle_user_id, student_id))
+        conn.commit()
+
+        if cursor.rowcount == 0:
+            return {"success": False, "message": "user not found", "data": None}
+
+        cursor.execute(
+            "SELECT user_id FROM users WHERE student_id = ?",
+            (student_id,)
+        )
+        row = cursor.fetchone()
+
+        return {"success": True, "data": row[0] if row else None}
+    except Exception as e:
+        return {"success": False, "data": None, "total": 0, "error": str(e)}
+
+    finally:
+        if conn: conn.close()
+
+def update_moodle_api(student_id, moodle_api):
+    conn = None
+    try:
+        conn = sqlite3.connect("users.db")
+        cursor = conn.cursor()
+    
+        cursor.execute("UPDATE users SET moodle_API = ? WHERE student_id = ?",
+                       (moodle_api, student_id))
+        conn.commit()
+
+        if cursor.rowcount == 0:
+            return {"success": False, "message": "user not found", "data": None}
+
+        cursor.execute(
+            "SELECT user_id FROM users WHERE student_id = ?",
+            (student_id,)
+        )
+
+        row = cursor.fetchone()
+
+        return {"success": True, "data": row[0] if row else None}
+    except Exception as e:
+        return {"success": False, "data": None, "total": 0, "error": str(e)}
+
+    finally:
+        if conn: conn.close()
+
+def get_moodle_user_id_by_student_id(student_id):
+    try:
+        conn = sqlite3.connect("users.db")
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
+        cursor.execute("SELECT moodle_user_id FROM users WHERE student_id = ?", (student_id,))
+        row = cursor.fetchone()
+        conn.close()
+        return {"success": True, "data": row[0] if row else None}
+    except Exception as e :
+        print("get_moodle_user_id_by_student_id Error!")
+        return {"success": False, "data": None, "total": 0, "error": str(e)}
+
 #ดึงข้อมูลทุกคนออกมา
 def get_users():
     conn = None
@@ -66,8 +133,8 @@ def get_users():
         return {"success": False, "data": [], "total": 0, "error": str(e)}
 
     finally:
-        if conn:
-            conn.close()
+        if conn: conn.close()
+            
 
 #ดึงข้อมูลออกมาตามid
 def get_user_by_student_id(student_id: str):
@@ -85,14 +152,15 @@ def get_user_by_student_id(student_id: str):
 
         row = cursor.fetchone()
 
-        if row is None:
-            return {"success": False, "data": None, "error": "User not found"}
+        # if row is None:
+        #     return {"success": False, "data": None, "error": "User not found"}
 
-        return {"success": True, "data": dict(row)}
+        return {"success": True, "data": dict(row) if row else None}
 
     except Exception as e:
         return {"success": False, "data": None, "error": str(e)}
 
     finally:
-        if conn:
-            conn.close()
+        if conn: conn.close()
+
+

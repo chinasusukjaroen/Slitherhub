@@ -28,8 +28,74 @@ def create_user_tasks_table():
         conn.rollback()
         print("Error:", e)
 
+    finally: conn.close()
+
+def save_user_task(user_id, assignment_id, status="pending"):
+    conn = None
+    try:
+        conn = sqlite3.connect("user_tasks.db")
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
+
+        cursor.execute("""
+            INSERT OR IGNORE INTO user_tasks (user_id, assignment_id, status)
+            VALUES (?, ?, ?)
+        """, (user_id, assignment_id, status))
+        conn.commit()
+        return {"success": True, "data": None}
+    except Exception as e:
+        print(f"[TaskRepo] Error: {e}")
+        return {"success": False, "data": None}
     finally:
         conn.close()
+
+
+
+def update_task_status(user_id, assignment_id, status):
+    conn = None
+    try:
+        conn = sqlite3.connect("user_tasks.db")
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
+
+        cursor.execute("""
+            UPDATE user_tasks
+            SET status = ?, last_sync_at = datetime('now', 'localtime')
+            WHERE user_id = ? AND assignment_id = ?
+        """, (status, user_id, assignment_id))
+
+        conn.commit()
+
+        cursor.execute("""
+            SELECT *
+            FROM user_tasks
+            WHERE user_id = ? AND assignment_id = ?
+        """, (user_id, assignment_id))
+
+        
+
+        row = cursor.fetchone()
+
+        if cursor.rowcount == 0:
+            return {"success": True, "data": None, "updated": False}
+
+        return {
+            "success": True,
+            "updated": True,
+            "data": dict(row) if row else None
+        }
+
+    except Exception as e:
+        return {
+            "success": False,
+            "error": str(e)
+        }
+
+    finally:
+        if conn:
+            conn.close()
+
+
 #เบื้องต้นดึงtaskทั้งหมดของทุกคน
 def get_user_tasks():
     conn = None
@@ -92,5 +158,27 @@ def get_user_tasks_by_user_id(user_id: int):
         return {"success": False, "data": [], "total": 0, "error": str(e)}
 
     finally:
-        if conn:
-            conn.close()
+        if conn: conn.close()
+
+
+def get_user_task_by_user_id_and_assignment_id(user_id, assignment_id):
+    conn = None
+    try:
+        cursor = conn.cursor()
+
+        cursor.execute("""
+            SELECT *
+            FROM user_tasks
+            WHERE user_id = ? AND assignment_id = ?
+        """, (user_id, assignment_id))
+
+        row = cursor.fetchone()
+
+        return {"success": True, "data": dict(row) if row else None}
+
+    
+    except Exception as e:
+        return {"success": False, "data": None, "error": str(e)}
+
+    finally:
+        if conn: conn.close()
