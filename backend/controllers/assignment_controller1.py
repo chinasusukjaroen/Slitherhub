@@ -76,3 +76,5 @@ def create_bulk_assignments():
         "message": f"บันทึกสำเร็จ {results['success']} รายการ ล้มเหลว {results['failed']} รายการ",
         "details": results
     }), 200
+
+
