@@ -1,6 +1,5 @@
 import { CONFIG } from '../config.js';
 
-
 const taskContainer = document.getElementById('userTaskList');
 
 const params = new URLSearchParams(window.location.search);
@@ -8,26 +7,29 @@ const user_id = params.get('id');
 
 async function loadUserTasks() {
     try {
-        let url = `${CONFIG.BACKEND_API_URL}/tasks`;
-
-
-        const response = await fetch(url, {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include"
+        console.log("Starting fetch...");
+        const response = await fetch(`${CONFIG.BACKEND_API_URL}/tasks`, {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include"
         });
 
-        const result = await response.json();
+        console.log("Response received:", response.status);
+        const jsonData = await response.json();
+        console.log("Data parsed:", jsonData);
 
-        if (!result.success) {
-            taskContainer.innerHTML = `<p>Error: ${result.error}</p>`;
+        if (!jsonData.success) {
+            taskContainer.innerHTML = `<p>Error: ${jsonData.error}</p>`;
             return;
         }
 
+        const tasks = jsonData.data;
+
         if (user_id) {
-            renderUserTasks(result.data);
+            const filtered = tasks.filter(task => String(task.user_id) === String(user_id));
+            renderUserTasks(filtered);
         } else {
-            renderUserTasks(result.data);
+            renderUserTasks(tasks);
         }
 
     } catch (err) {
@@ -46,7 +48,6 @@ function renderUserTasks(tasks) {
 
     tasks.forEach(task => {
         const item = document.createElement('div');
-
         item.innerHTML = `
             <div>
                 <p><strong>User ID:</strong> ${task.user_id}</p>
@@ -56,7 +57,6 @@ function renderUserTasks(tasks) {
                 <p><strong>Last Sync:</strong> ${task.last_sync_at}</p>
             </div>
         `;
-
         taskContainer.appendChild(item);
     });
 }

@@ -126,15 +126,17 @@ body {
   margin: 6px;
 }
 
-/* ===== Deadline days ===== */
-.fc .fc-day-has-deadline {
-  background: rgba(220, 38, 38, 0.08) !important;
-}
+/* ===== Deadline day cells — สีพื้นหลังตามความเร่งด่วน ===== */
+.fc .fc-day-has-deadline.urgency-late     { background: rgba(147, 51, 234, 0.08) !important; }
+.fc .fc-day-has-deadline.urgency-critical { background: rgba(239, 68, 68, 0.08)  !important; }
+.fc .fc-day-has-deadline.urgency-warning  { background: rgba(234, 179, 8, 0.08)  !important; }
+.fc .fc-day-has-deadline.urgency-safe     { background: rgba(34, 197, 94, 0.08)  !important; }
 
-.fc .fc-day-has-deadline .fc-daygrid-day-number {
-  color: #dc2626 !important;
-  font-weight: 700 !important;
-}
+/* สีตัวเลขวันตามความเร่งด่วน */
+.fc .fc-day-has-deadline.urgency-late     .fc-daygrid-day-number { color: #6b21a8 !important; font-weight: 700 !important; }
+.fc .fc-day-has-deadline.urgency-critical .fc-daygrid-day-number { color: #dc2626 !important; font-weight: 700 !important; }
+.fc .fc-day-has-deadline.urgency-warning  .fc-daygrid-day-number { color: #854d0e !important; font-weight: 700 !important; }
+.fc .fc-day-has-deadline.urgency-safe     .fc-daygrid-day-number { color: #166534 !important; font-weight: 700 !important; }
 
 /* ซ่อน dot เดิม */
 .fc-day-has-deadline .fc-daygrid-day-number::after {
@@ -269,25 +271,72 @@ body {
   gap: 10px;
 }
 
+/* ===== Popup Task Item — Base ===== */
 .popup-task-item {
   display: flex;
   align-items: center;
   gap: 10px;
   font-size: 14px;
-  color: #374151;
   padding: 8px 12px;
-  background: #f8f9fc;
   border-radius: 8px;
+  border-left: 3px solid transparent;
 }
 
+.popup-task-item a,
+.popup-task-item span {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.popup-task-item a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Popup Task Item — Urgency Levels ===== */
+
+/* 🟣 Late — เลย deadline แล้ว */
+.popup-task-item.urgency-late {
+  background: #faf5ff;
+  border-left-color: #9333ea;
+  color: #6b21a8;
+}
+
+/* 🔴 Critical — ≤ 3 วัน */
+.popup-task-item.urgency-critical {
+  background: #fff5f5;
+  border-left-color: #ef4444;
+  color: #991b1b;
+}
+
+/* 🟡 Warning — ≤ 30 วัน */
+.popup-task-item.urgency-warning {
+  background: #fefce8;
+  border-left-color: #eab308;
+  color: #854d0e;
+}
+
+/* 🟢 Safe — นอกจากนั้น */
+.popup-task-item.urgency-safe {
+  background: #f0fdf4;
+  border-left-color: #22c55e;
+  color: #166534;
+}
+
+/* ===== Popup Dot ===== */
 .popup-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: #dc2626;
   flex-shrink: 0;
 }
 
+.urgency-late     .popup-dot { background-color: #9333ea; }
+.urgency-critical .popup-dot { background-color: #ef4444; }
+.urgency-warning  .popup-dot { background-color: #eab308; }
+.urgency-safe     .popup-dot { background-color: #22c55e; }
+
+/* ===== Popup Empty ===== */
 .popup-empty {
   font-size: 13px;
   color: #9ca3af;
