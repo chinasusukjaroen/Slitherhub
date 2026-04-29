@@ -1,0 +1,296 @@
+/* ===== Base ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #ffffff;
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* ===== Calendar Container ===== */
+#calendar {
+  width: 100%;
+  max-width: 100%;
+  background: #ffffff;
+  padding: 16px 24px;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+  height: calc(100vh - 60px);
+}
+
+.fc {
+  height: 100%;
+}
+
+/* ===== Toolbar ===== */
+.fc .fc-toolbar {
+  background: transparent;
+  padding: 0 0 16px 0;
+  margin-bottom: 0 !important;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.fc .fc-toolbar-title {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #1d1b54;
+  letter-spacing: -0.5px;
+}
+
+.fc .fc-button-group {
+  gap: 4px;
+}
+
+.fc .fc-button {
+  background-color: #f3f4f6 !important;
+  color: #374151 !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 6px 12px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  box-shadow: none !important;
+  transition: all 0.2s !important;
+}
+
+.fc .fc-button:hover {
+  background-color: #1d1b54 !important;
+  color: #ffffff !important;
+}
+
+.fc .fc-button:focus {
+  box-shadow: none !important;
+}
+
+/* ===== Day Header ===== */
+.fc .fc-col-header-cell {
+  background: transparent;
+  border-color: #f3f4f6 !important;
+  padding: 10px 0;
+}
+
+.fc .fc-col-header-cell-cushion {
+  color: #4b5563;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+/* ===== Day Cells ===== */
+.fc .fc-daygrid-day {
+  border-color: #f3f4f6 !important;
+  transition: background 0.15s;
+}
+
+.fc .fc-daygrid-day:hover {
+  background: #f8f9fc;
+}
+
+.fc .fc-daygrid-day-number {
+  position: relative;
+  font-size: 13px;
+  font-weight: 500;
+  color: #111827;
+  text-decoration: none;
+  padding: 8px 12px;
+}
+
+.fc .fc-day-other .fc-daygrid-day-number {
+  color: #d1d5db;
+}
+
+/* ===== Today ===== */
+.fc .fc-day-today {
+  background: #eef2ff !important;
+}
+
+.fc .fc-day-today .fc-daygrid-day-number {
+  background: #1d1b54;
+  color: #ffffff;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 6px;
+}
+
+/* ===== Deadline days ===== */
+.fc .fc-day-has-deadline {
+  background: rgba(220, 38, 38, 0.08) !important;
+}
+
+.fc .fc-day-has-deadline .fc-daygrid-day-number {
+  color: #dc2626 !important;
+  font-weight: 700 !important;
+}
+
+/* ซ่อน dot เดิม */
+.fc-day-has-deadline .fc-daygrid-day-number::after {
+  display: none;
+}
+
+/* ===== Events ===== */
+.fc .fc-event {
+  background-color: #272c76;
+  border: none;
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 500;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: background 0.2s, transform 0.1s;
+}
+
+.fc .fc-event:hover {
+  background-color: #1d1b54;
+  transform: translateY(-1px);
+}
+
+.fc .fc-event-title {
+  color: #ffffff;
+}
+
+.fc-daygrid-event-dot {
+  display: none;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #f8f9fc; }
+::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 10px; }
+
+/* ===== Bottom Navigation ===== */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 12px 20px;
+  border-top: 1px solid #e5e7eb;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+  z-index: 50;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #9ca3af;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 8px 24px;
+  border-radius: 12px;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.nav-item.active {
+  background-color: #eef2ff;
+  color: #1d1b54;
+}
+
+.nav-item.active svg {
+  color: #1d1b54;
+}
+
+.nav-item:hover:not(.active) {
+  color: #4b5563;
+}
+
+.bottom-nav svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ===== Popup ===== */
+#date-popup {
+  position: absolute;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  border: 1px solid #f3f4f6;
+  z-index: 100;
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #f3f4f6;
+  padding-bottom: 12px;
+}
+
+.popup-date {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1d1b54;
+}
+
+.popup-close {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.popup-close:hover {
+  color: #374151;
+}
+
+.popup-tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.popup-task-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #374151;
+  padding: 8px 12px;
+  background: #f8f9fc;
+  border-radius: 8px;
+}
+
+.popup-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #dc2626;
+  flex-shrink: 0;
+}
+
+.popup-empty {
+  font-size: 13px;
+  color: #9ca3af;
+  text-align: center;
+  padding: 12px 0;
+}
