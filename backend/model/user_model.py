@@ -16,7 +16,6 @@ def create_users_table():
                 email                 TEXT UNIQUE,
                 moodle_API            TEXT,
                 moodle_user_id        TEXT,
-                line_user_id          TEXT,
                 is_line_notify_active BOOLEAN DEFAULT 0,
                 last_login            TIMESTAMP,
                 created_at            TIMESTAMP DEFAULT (datetime('now', 'localtime'))
@@ -40,7 +39,7 @@ def get_users():
 
         cursor.execute("""
             SELECT user_id, student_id, username, display_name, email,
-                   moodle_user_id, line_user_id, is_line_notify_active,
+                   moodle_user_id, is_line_notify_active,
                    last_login, created_at
             FROM users ORDER BY created_at DESC
         """)

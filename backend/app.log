@@ -305,3 +305,13 @@
 2026-04-29 14:13:13 [INFO] 🚀 Starting Flask server on port 5000...
 2026-04-29 14:13:13 [WARNING]  * Debugger is active!
 2026-04-29 14:13:13 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 14:21:28 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\model\\user_model.py', reloading
+2026-04-29 14:21:28 [INFO]  * Restarting with stat
+2026-04-29 14:21:28 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 14:21:29 [WARNING]  * Debugger is active!
+2026-04-29 14:21:29 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 14:21:54 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\model\\user_model.py', reloading
+2026-04-29 14:21:54 [INFO]  * Restarting with stat
+2026-04-29 14:21:54 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 14:21:54 [WARNING]  * Debugger is active!
+2026-04-29 14:21:54 [INFO]  * Debugger PIN: 159-428-403
