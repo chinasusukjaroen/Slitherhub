@@ -38,8 +38,9 @@ def update_moodle_user_id(student_id, moodle_user_id):
     conn = None
     try:
         student_id = student_id.strip()
-        print("moodle_user_id:", moodle_user_id)
         conn = get_conn()
+        conn.row_factory = sqlite3.Row
+        print("CONN ID UPDATE:", id(conn))
         cursor = conn.cursor()
         cursor.execute("UPDATE users SET moodle_user_id = ? WHERE student_id = ?",
                        (moodle_user_id, student_id))
@@ -47,14 +48,11 @@ def update_moodle_user_id(student_id, moodle_user_id):
 
         updated = cursor.rowcount > 0
 
-        cursor.execute(
-            "SELECT moodle_user_id FROM users WHERE student_id = ?",
-            (student_id,)
-        )
-        row = cursor.fetchone()
-
-        print("Update Moodle moodle_user_id:", row[0])
-        print("UPDATE student_id:", student_id.encode())
+        # cursor.execute(
+        #     "SELECT moodle_user_id FROM users WHERE student_id = ?",
+        #     (student_id,)
+        # )
+        # row = cursor.fetchone()
 
 
         cursor.execute(
@@ -62,8 +60,10 @@ def update_moodle_user_id(student_id, moodle_user_id):
             (student_id,)
         )
         row = cursor.fetchone()
-        print("Update Moodle user_id:", dict(row))
-        return {"success": True, "data": row[0] if row else None, "updated": updated}
+
+        conn.commit()
+
+        return {"success": True, "data": dict(row) if row else None, "updated": updated}
     except Exception as e:
         print("Error: "+str(e))
         return {"success": False, "data": None, "total": 0, "error": str(e)}
@@ -105,6 +105,7 @@ def get_moodle_user_id_by_student_id(student_id):
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
 
+        student_id = student_id.strip()
         print("SELECT student_id:", student_id.encode())
 
         cursor.execute(
@@ -113,15 +114,9 @@ def get_moodle_user_id_by_student_id(student_id):
         )
 
         row = cursor.fetchone()
-        print(dict(row))
+        print("DIRECT CHECK:", dict(row))
 
-        cursor.execute(
-            "SELECT * FROM users "
-        )
-
-
-        rows = cursor.fetchall()
-        print([dict(row) for row in rows])
+        
         return {"success": True, "data": row[0] if row else None}
     except Exception as e :
         print("get_moodle_user_id_by_student_id Error!", str(e))
@@ -207,7 +202,11 @@ def save_user(student_id, username=None, display_name=None, email=None,
                 display_name = excluded.display_name,
                 email = excluded.email,
                 moodle_API = excluded.moodle_API,
-                moodle_user_id = excluded.moodle_user_id,
+                moodle_user_id = CASE 
+                    WHEN excluded.moodle_user_id IS NOT NULL 
+                    THEN excluded.moodle_user_id 
+                    ELSE users.moodle_user_id 
+                END,
                 last_login = datetime('now', 'localtime')
         """, (student_id, username, display_name, email, moodle_API, moodle_user_id))
         conn.commit()

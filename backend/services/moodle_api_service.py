@@ -3,6 +3,10 @@ from model.user_model import update_moodle_user_id, get_moodle_user_id_by_studen
 from model.assignment_model import get_assignment_by_moodle_id, save_assignment, update_assignment_deadline_and_description, get_assignment_by_assignment_id
 from model.user_task_model import get_user_task_by_user_id_and_assignment_id, save_user_task, update_task_status, get_user_tasks_by_user_id
 from model.TaskStatus import TaskStatus
+from database import get_conn 
+import sqlite3
+
+
 import requests
 
 MOODLE_API_URL_LOGIN = "https://courses.cs.tu.ac.th/login/token.php"
@@ -46,12 +50,17 @@ def login_moodle(username, password):
         if data.get("token"):
             token = data.get("token")
             update_moodle_api(username, token)
-            
 
             moodle_user_id = safe_call_database_func(get_moodle_user_id_by_student_id, username)
-            print("Mood;e user_id return ",moodle_user_id)
-            first_login = False
+            # user = safe_call_database_func(get_user_by_student_id, username)
+            # print("Moodle user return:", user)
 
+            # moodle_user_id = user.get("moodle_user_id")
+            # print("Moodle user_id return:", moodle_user_id)
+
+            print("Moodle_user_id:", moodle_user_id)
+
+            first_login = False
             if moodle_user_id is None:
                 first_login = True
                 fetch_user_info = fetch_user_info_and_save(token, username)
@@ -90,9 +99,13 @@ def fetch_user_info_and_save(token, username):
         res = requests.post(MOODLE_API_URL_GET, data=payload, headers=headers, timeout=10)
         data = res.json()
         if data.get("userid"):
-            status = update_moodle_user_id(username, data.get("userid")).get("success")
+            update_val = update_moodle_user_id(username, data.get("userid"))
+            status = update_val.get("status")
+            updated = update_val.get("updated")
+            print("Updated moodle_user_id:", updated, " | data:", update_val.get("data"))
 
             tMessage = "บันทึกสำเร็จ"
+
             if status == False: tMessage = "บันทึกไม่สำเร็จ"
             
             return {"success": status, "message" : tMessage}

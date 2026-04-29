@@ -855,3 +855,497 @@
 2026-04-29 18:20:57 [INFO] 📡 Calling TU API for user: 6709420019
 2026-04-29 18:20:58 [INFO] 📥 TU API Response: 200
 2026-04-29 18:21:03 [INFO] 127.0.0.1 - - [29/Apr/2026 18:21:03] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 18:26:30 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:26:30 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-29 18:26:30 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-29 18:26:30 [INFO]  * Restarting with stat
+2026-04-29 18:26:30 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:26:30 [WARNING]  * Debugger is active!
+2026-04-29 18:26:30 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 18:26:33 [INFO] 📡 Calling TU API for user: 6709420019
+2026-04-29 18:26:34 [INFO] 📥 TU API Response: 200
+2026-04-29 18:26:39 [INFO] 127.0.0.1 - - [29/Apr/2026 18:26:39] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 18:31:57 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\database.py', reloading
+2026-04-29 18:31:57 [INFO]  * Restarting with stat
+2026-04-29 18:31:57 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:31:57 [WARNING]  * Debugger is active!
+2026-04-29 18:31:57 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 18:32:02 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\database.py', reloading
+2026-04-29 18:32:02 [INFO]  * Restarting with stat
+2026-04-29 18:32:02 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:32:02 [WARNING]  * Debugger is active!
+2026-04-29 18:32:02 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 18:32:04 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\database.py', reloading
+2026-04-29 18:32:04 [INFO]  * Restarting with stat
+2026-04-29 18:32:04 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:32:04 [WARNING]  * Debugger is active!
+2026-04-29 18:32:04 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 18:32:07 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:32:07 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-29 18:32:07 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-29 18:32:07 [INFO]  * Restarting with stat
+2026-04-29 18:32:07 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:32:07 [WARNING]  * Debugger is active!
+2026-04-29 18:32:07 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 18:34:16 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\model\\user_model.py', reloading
+2026-04-29 18:34:16 [INFO]  * Restarting with stat
+2026-04-29 18:34:16 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:34:16 [WARNING]  * Debugger is active!
+2026-04-29 18:34:16 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 18:34:18 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\model\\user_model.py', reloading
+2026-04-29 18:34:18 [INFO]  * Restarting with stat
+2026-04-29 18:34:18 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:34:18 [WARNING]  * Debugger is active!
+2026-04-29 18:34:18 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 18:34:36 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\model\\user_model.py', reloading
+2026-04-29 18:34:36 [INFO]  * Restarting with stat
+2026-04-29 18:34:36 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:34:36 [WARNING]  * Debugger is active!
+2026-04-29 18:34:36 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 18:34:40 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\model\\user_model.py', reloading
+2026-04-29 18:34:40 [INFO]  * Restarting with stat
+2026-04-29 18:34:40 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:34:40 [WARNING]  * Debugger is active!
+2026-04-29 18:34:40 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 18:34:46 [INFO] 📡 Calling TU API for user: 6709420019
+2026-04-29 18:34:46 [INFO] 📥 TU API Response: 200
+2026-04-29 18:34:52 [INFO] 127.0.0.1 - - [29/Apr/2026 18:34:52] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 18:35:06 [INFO] 📡 Calling TU API for user: 6709420019
+2026-04-29 18:35:07 [INFO] 📥 TU API Response: 200
+2026-04-29 18:35:12 [INFO] 127.0.0.1 - - [29/Apr/2026 18:35:12] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 18:44:44 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\database.py', reloading
+2026-04-29 18:44:44 [INFO]  * Restarting with stat
+2026-04-29 18:44:44 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:44:44 [WARNING]  * Debugger is active!
+2026-04-29 18:44:44 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 18:44:47 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\database.py', reloading
+2026-04-29 18:44:47 [INFO]  * Restarting with stat
+2026-04-29 18:44:56 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:44:56 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-29 18:44:56 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-29 18:44:56 [INFO]  * Restarting with stat
+2026-04-29 18:44:56 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:44:56 [WARNING]  * Debugger is active!
+2026-04-29 18:44:56 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 18:45:02 [INFO] 📡 Calling TU API for user: 6709420019
+2026-04-29 18:45:03 [INFO] 📥 TU API Response: 200
+2026-04-29 18:45:09 [INFO] 127.0.0.1 - - [29/Apr/2026 18:45:09] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 18:46:39 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\database.py', reloading
+2026-04-29 18:46:39 [INFO]  * Restarting with stat
+2026-04-29 18:46:39 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:46:39 [WARNING]  * Debugger is active!
+2026-04-29 18:46:39 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 18:47:32 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\services\\moodle_api_service.py', reloading
+2026-04-29 18:47:32 [INFO]  * Restarting with stat
+2026-04-29 18:47:32 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:47:32 [WARNING]  * Debugger is active!
+2026-04-29 18:47:32 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 18:47:37 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\services\\moodle_api_service.py', reloading
+2026-04-29 18:47:37 [INFO]  * Restarting with stat
+2026-04-29 18:47:38 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:47:38 [WARNING]  * Debugger is active!
+2026-04-29 18:47:38 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 18:48:15 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\model\\user_model.py', reloading
+2026-04-29 18:48:15 [INFO]  * Restarting with stat
+2026-04-29 18:48:15 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:48:15 [WARNING]  * Debugger is active!
+2026-04-29 18:48:15 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 18:48:30 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\model\\user_model.py', reloading
+2026-04-29 18:48:30 [INFO]  * Restarting with stat
+2026-04-29 18:48:30 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:48:30 [WARNING]  * Debugger is active!
+2026-04-29 18:48:30 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 18:48:38 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\model\\user_model.py', reloading
+2026-04-29 18:48:38 [INFO]  * Restarting with stat
+2026-04-29 18:48:39 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:48:39 [WARNING]  * Debugger is active!
+2026-04-29 18:48:39 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 18:48:51 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\model\\user_model.py', reloading
+2026-04-29 18:48:51 [INFO]  * Restarting with stat
+2026-04-29 18:48:51 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:48:51 [WARNING]  * Debugger is active!
+2026-04-29 18:48:51 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 18:48:54 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\model\\user_model.py', reloading
+2026-04-29 18:48:54 [INFO]  * Restarting with stat
+2026-04-29 18:48:54 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:48:54 [WARNING]  * Debugger is active!
+2026-04-29 18:48:54 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 18:49:43 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\services\\moodle_api_service.py', reloading
+2026-04-29 18:49:43 [INFO]  * Restarting with stat
+2026-04-29 18:49:44 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:49:44 [WARNING]  * Debugger is active!
+2026-04-29 18:49:44 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 18:49:46 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\services\\moodle_api_service.py', reloading
+2026-04-29 18:49:46 [INFO]  * Restarting with stat
+2026-04-29 18:49:47 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:49:47 [WARNING]  * Debugger is active!
+2026-04-29 18:49:47 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 18:49:52 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\services\\moodle_api_service.py', reloading
+2026-04-29 18:49:52 [INFO]  * Restarting with stat
+2026-04-29 18:50:28 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:50:28 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-29 18:50:28 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-29 18:50:28 [INFO]  * Restarting with stat
+2026-04-29 18:50:29 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:50:29 [WARNING]  * Debugger is active!
+2026-04-29 18:50:29 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 18:50:31 [INFO] 📡 Calling TU API for user: 6709420019
+2026-04-29 18:50:32 [INFO] 📥 TU API Response: 200
+2026-04-29 18:50:37 [INFO] 127.0.0.1 - - [29/Apr/2026 18:50:37] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 18:50:53 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\services\\moodle_api_service.py', reloading
+2026-04-29 18:50:53 [INFO]  * Restarting with stat
+2026-04-29 18:50:54 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:50:54 [WARNING]  * Debugger is active!
+2026-04-29 18:50:54 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 18:51:02 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\services\\moodle_api_service.py', reloading
+2026-04-29 18:51:02 [INFO]  * Restarting with stat
+2026-04-29 18:51:18 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:51:18 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-29 18:51:18 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-29 18:51:18 [INFO]  * Restarting with stat
+2026-04-29 18:51:19 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:51:19 [WARNING]  * Debugger is active!
+2026-04-29 18:51:19 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 18:51:23 [INFO] 📡 Calling TU API for user: 6709420019
+2026-04-29 18:51:23 [INFO] 📥 TU API Response: 200
+2026-04-29 18:51:24 [INFO] 127.0.0.1 - - [29/Apr/2026 18:51:24] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 18:51:47 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\services\\moodle_api_service.py', reloading
+2026-04-29 18:51:47 [INFO]  * Restarting with stat
+2026-04-29 18:51:47 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 18:51:47 [WARNING]  * Debugger is active!
+2026-04-29 18:51:47 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 18:51:50 [INFO] 📡 Calling TU API for user: 6709420019
+2026-04-29 18:51:51 [INFO] 📥 TU API Response: 200
+2026-04-29 18:51:56 [INFO] 127.0.0.1 - - [29/Apr/2026 18:51:56] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 19:07:21 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:07:21 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-29 19:07:21 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-29 19:07:21 [INFO]  * Restarting with stat
+2026-04-29 19:07:21 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:07:21 [WARNING]  * Debugger is active!
+2026-04-29 19:07:21 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:07:29 [INFO] 📡 Calling TU API for user: 6709420019
+2026-04-29 19:07:29 [INFO] 📥 TU API Response: 200
+2026-04-29 19:07:35 [INFO] 127.0.0.1 - - [29/Apr/2026 19:07:35] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 19:07:55 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:07:55 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-29 19:07:55 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-29 19:07:55 [INFO]  * Restarting with stat
+2026-04-29 19:07:56 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:07:56 [WARNING]  * Debugger is active!
+2026-04-29 19:07:56 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:08:03 [INFO] 📡 Calling TU API for user: 6709420019
+2026-04-29 19:08:03 [INFO] 📥 TU API Response: 200
+2026-04-29 19:08:12 [INFO] 127.0.0.1 - - [29/Apr/2026 19:08:12] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 19:08:49 [INFO] 📡 Calling TU API for user: 6709420019
+2026-04-29 19:08:50 [INFO] 📥 TU API Response: 200
+2026-04-29 19:08:56 [INFO] 127.0.0.1 - - [29/Apr/2026 19:08:56] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 19:11:32 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\services\\moodle_api_service.py', reloading
+2026-04-29 19:11:32 [INFO]  * Restarting with stat
+2026-04-29 19:11:32 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:11:32 [WARNING]  * Debugger is active!
+2026-04-29 19:11:32 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:11:38 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\services\\moodle_api_service.py', reloading
+2026-04-29 19:11:38 [INFO]  * Restarting with stat
+2026-04-29 19:11:39 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:11:39 [WARNING]  * Debugger is active!
+2026-04-29 19:11:39 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:11:42 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\services\\moodle_api_service.py', reloading
+2026-04-29 19:11:42 [INFO]  * Restarting with stat
+2026-04-29 19:11:42 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:11:42 [WARNING]  * Debugger is active!
+2026-04-29 19:11:42 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:11:43 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\services\\moodle_api_service.py', reloading
+2026-04-29 19:11:44 [INFO]  * Restarting with stat
+2026-04-29 19:14:07 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:14:07 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-29 19:14:07 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-29 19:14:07 [INFO]  * Restarting with stat
+2026-04-29 19:14:07 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:14:07 [WARNING]  * Debugger is active!
+2026-04-29 19:14:07 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:14:10 [INFO] 📡 Calling TU API for user: 6709420019
+2026-04-29 19:14:11 [INFO] 📥 TU API Response: 200
+2026-04-29 19:14:16 [INFO] 127.0.0.1 - - [29/Apr/2026 19:14:16] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 19:14:27 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\services\\moodle_api_service.py', reloading
+2026-04-29 19:14:27 [INFO]  * Restarting with stat
+2026-04-29 19:14:28 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:14:28 [WARNING]  * Debugger is active!
+2026-04-29 19:14:28 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:14:29 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\services\\moodle_api_service.py', reloading
+2026-04-29 19:14:29 [INFO]  * Restarting with stat
+2026-04-29 19:14:29 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:14:29 [WARNING]  * Debugger is active!
+2026-04-29 19:14:29 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:14:43 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\services\\moodle_api_service.py', reloading
+2026-04-29 19:14:43 [INFO]  * Restarting with stat
+2026-04-29 19:14:50 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:14:50 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-29 19:14:50 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-29 19:14:50 [INFO]  * Restarting with stat
+2026-04-29 19:14:50 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:14:50 [WARNING]  * Debugger is active!
+2026-04-29 19:14:50 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:14:57 [INFO] 📡 Calling TU API for user: 6709420019
+2026-04-29 19:14:58 [INFO] 📥 TU API Response: 200
+2026-04-29 19:15:04 [INFO] 127.0.0.1 - - [29/Apr/2026 19:15:04] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 19:27:10 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\database.py', reloading
+2026-04-29 19:27:10 [INFO]  * Restarting with stat
+2026-04-29 19:27:11 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:27:11 [WARNING]  * Debugger is active!
+2026-04-29 19:27:11 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:27:15 [INFO] 📡 Calling TU API for user: 6709420019
+2026-04-29 19:27:16 [INFO] 📥 TU API Response: 200
+2026-04-29 19:27:21 [INFO] 127.0.0.1 - - [29/Apr/2026 19:27:21] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 19:28:23 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\database.py', reloading
+2026-04-29 19:28:23 [INFO]  * Restarting with stat
+2026-04-29 19:28:23 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:28:23 [WARNING]  * Debugger is active!
+2026-04-29 19:28:23 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:28:31 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\services\\moodle_api_service.py', reloading
+2026-04-29 19:28:31 [INFO]  * Restarting with stat
+2026-04-29 19:28:32 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:28:32 [WARNING]  * Debugger is active!
+2026-04-29 19:28:32 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:29:26 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\services\\moodle_api_service.py', reloading
+2026-04-29 19:29:26 [INFO]  * Restarting with stat
+2026-04-29 19:29:32 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:29:32 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-29 19:29:32 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-29 19:29:32 [INFO]  * Restarting with stat
+2026-04-29 19:29:32 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:29:32 [WARNING]  * Debugger is active!
+2026-04-29 19:29:32 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:29:35 [INFO] 📡 Calling TU API for user: 6709420019
+2026-04-29 19:29:36 [INFO] 📥 TU API Response: 200
+2026-04-29 19:29:41 [INFO] 127.0.0.1 - - [29/Apr/2026 19:29:41] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 19:32:53 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\services\\moodle_api_service.py', reloading
+2026-04-29 19:32:53 [INFO]  * Restarting with stat
+2026-04-29 19:32:54 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:32:54 [WARNING]  * Debugger is active!
+2026-04-29 19:32:54 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:32:58 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\services\\moodle_api_service.py', reloading
+2026-04-29 19:32:58 [INFO]  * Restarting with stat
+2026-04-29 19:32:58 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:32:58 [WARNING]  * Debugger is active!
+2026-04-29 19:32:58 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:33:03 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\model\\user_model.py', reloading
+2026-04-29 19:33:03 [INFO]  * Restarting with stat
+2026-04-29 19:33:03 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:33:03 [WARNING]  * Debugger is active!
+2026-04-29 19:33:03 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:33:06 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\model\\user_model.py', reloading
+2026-04-29 19:33:06 [INFO]  * Restarting with stat
+2026-04-29 19:33:06 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:33:07 [WARNING]  * Debugger is active!
+2026-04-29 19:33:07 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:33:08 [INFO] 📡 Calling TU API for user: 6709420019
+2026-04-29 19:33:09 [INFO] 📥 TU API Response: 200
+2026-04-29 19:33:15 [INFO] 127.0.0.1 - - [29/Apr/2026 19:33:15] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 19:34:08 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\database.py', reloading
+2026-04-29 19:34:08 [INFO]  * Restarting with stat
+2026-04-29 19:34:09 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:34:09 [WARNING]  * Debugger is active!
+2026-04-29 19:34:09 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:34:12 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\database.py', reloading
+2026-04-29 19:34:12 [INFO]  * Restarting with stat
+2026-04-29 19:34:12 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:34:12 [WARNING]  * Debugger is active!
+2026-04-29 19:34:12 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:34:13 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\database.py', reloading
+2026-04-29 19:34:14 [INFO]  * Restarting with stat
+2026-04-29 19:34:14 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:34:14 [WARNING]  * Debugger is active!
+2026-04-29 19:34:14 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:34:15 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\database.py', reloading
+2026-04-29 19:34:15 [INFO]  * Restarting with stat
+2026-04-29 19:34:16 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:36:06 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:36:27 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-29 19:36:27 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-29 19:36:27 [INFO]  * Restarting with stat
+2026-04-29 19:36:27 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:36:27 [WARNING]  * Debugger is active!
+2026-04-29 19:36:27 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:36:34 [INFO] 📡 Calling TU API for user: 6709420019
+2026-04-29 19:36:35 [INFO] 📥 TU API Response: 200
+2026-04-29 19:36:41 [INFO] 127.0.0.1 - - [29/Apr/2026 19:36:41] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 19:37:57 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\database.py', reloading
+2026-04-29 19:37:57 [INFO]  * Restarting with stat
+2026-04-29 19:37:58 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:37:58 [WARNING]  * Debugger is active!
+2026-04-29 19:37:58 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:38:04 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:38:04 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-29 19:38:04 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-29 19:38:04 [INFO]  * Restarting with stat
+2026-04-29 19:38:04 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:38:04 [WARNING]  * Debugger is active!
+2026-04-29 19:38:04 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:38:46 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\database.py', reloading
+2026-04-29 19:38:46 [INFO]  * Restarting with stat
+2026-04-29 19:38:51 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:39:10 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:39:10 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-29 19:39:10 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-29 19:39:10 [INFO]  * Restarting with stat
+2026-04-29 19:39:11 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:39:11 [WARNING]  * Debugger is active!
+2026-04-29 19:39:11 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:48:29 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\services\\moodle_api_service.py', reloading
+2026-04-29 19:48:29 [INFO]  * Restarting with stat
+2026-04-29 19:49:42 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:49:42 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-29 19:49:42 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-29 19:49:42 [INFO]  * Restarting with stat
+2026-04-29 19:49:42 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:49:42 [WARNING]  * Debugger is active!
+2026-04-29 19:49:42 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:49:46 [INFO] 📡 Calling TU API for user: 6709420019
+2026-04-29 19:49:46 [INFO] 📥 TU API Response: 200
+2026-04-29 19:49:52 [INFO] 127.0.0.1 - - [29/Apr/2026 19:49:52] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 19:49:57 [INFO] 📡 Calling TU API for user: 6709420019
+2026-04-29 19:49:57 [INFO] 📥 TU API Response: 200
+2026-04-29 19:50:03 [INFO] 127.0.0.1 - - [29/Apr/2026 19:50:03] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 19:50:35 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\model\\user_model.py', reloading
+2026-04-29 19:50:35 [INFO]  * Restarting with stat
+2026-04-29 19:50:35 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:50:35 [WARNING]  * Debugger is active!
+2026-04-29 19:50:35 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:50:38 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\model\\user_model.py', reloading
+2026-04-29 19:50:38 [INFO]  * Restarting with stat
+2026-04-29 19:50:39 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:50:39 [WARNING]  * Debugger is active!
+2026-04-29 19:50:39 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:50:54 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\services\\moodle_api_service.py', reloading
+2026-04-29 19:50:54 [INFO]  * Restarting with stat
+2026-04-29 19:50:54 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:50:54 [WARNING]  * Debugger is active!
+2026-04-29 19:50:54 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:50:57 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\services\\moodle_api_service.py', reloading
+2026-04-29 19:50:57 [INFO]  * Restarting with stat
+2026-04-29 19:50:57 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:50:58 [WARNING]  * Debugger is active!
+2026-04-29 19:50:58 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:50:59 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\services\\moodle_api_service.py', reloading
+2026-04-29 19:50:59 [INFO]  * Restarting with stat
+2026-04-29 19:50:59 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:50:59 [WARNING]  * Debugger is active!
+2026-04-29 19:50:59 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:51:01 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\services\\moodle_api_service.py', reloading
+2026-04-29 19:51:01 [INFO]  * Restarting with stat
+2026-04-29 19:51:01 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:51:01 [WARNING]  * Debugger is active!
+2026-04-29 19:51:01 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:51:03 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\services\\moodle_api_service.py', reloading
+2026-04-29 19:51:03 [INFO]  * Restarting with stat
+2026-04-29 19:51:03 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:51:03 [WARNING]  * Debugger is active!
+2026-04-29 19:51:03 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:51:10 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\services\\moodle_api_service.py', reloading
+2026-04-29 19:51:10 [INFO]  * Restarting with stat
+2026-04-29 19:51:11 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:51:11 [WARNING]  * Debugger is active!
+2026-04-29 19:51:11 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:51:15 [INFO] 📡 Calling TU API for user: 6709420019
+2026-04-29 19:51:16 [INFO] 📥 TU API Response: 200
+2026-04-29 19:51:22 [INFO] 127.0.0.1 - - [29/Apr/2026 19:51:22] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 19:51:47 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\model\\user_model.py', reloading
+2026-04-29 19:51:47 [INFO]  * Restarting with stat
+2026-04-29 19:51:48 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:51:48 [WARNING]  * Debugger is active!
+2026-04-29 19:51:48 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:51:49 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\model\\user_model.py', reloading
+2026-04-29 19:51:49 [INFO]  * Restarting with stat
+2026-04-29 19:51:49 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:51:49 [WARNING]  * Debugger is active!
+2026-04-29 19:51:49 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:52:04 [INFO] 📡 Calling TU API for user: 6709420019
+2026-04-29 19:52:05 [INFO] 📥 TU API Response: 200
+2026-04-29 19:52:10 [INFO] 127.0.0.1 - - [29/Apr/2026 19:52:10] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 19:52:44 [INFO] 📡 Calling TU API for user: 6709420019
+2026-04-29 19:52:45 [INFO] 📥 TU API Response: 200
+2026-04-29 19:52:51 [INFO] 127.0.0.1 - - [29/Apr/2026 19:52:51] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 19:56:56 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\model\\user_model.py', reloading
+2026-04-29 19:56:56 [INFO]  * Restarting with stat
+2026-04-29 19:56:56 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:56:56 [WARNING]  * Debugger is active!
+2026-04-29 19:56:56 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:57:00 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\model\\user_model.py', reloading
+2026-04-29 19:57:00 [INFO]  * Restarting with stat
+2026-04-29 19:57:00 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:57:01 [WARNING]  * Debugger is active!
+2026-04-29 19:57:01 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:57:04 [INFO] 📡 Calling TU API for user: 6709420019
+2026-04-29 19:57:05 [INFO] 📥 TU API Response: 200
+2026-04-29 19:57:06 [INFO] 127.0.0.1 - - [29/Apr/2026 19:57:06] "[35m[1mPOST /api/login HTTP/1.1[0m" 500 -
+2026-04-29 19:57:32 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\model\\user_model.py', reloading
+2026-04-29 19:57:32 [INFO]  * Restarting with stat
+2026-04-29 19:57:33 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:57:33 [WARNING]  * Debugger is active!
+2026-04-29 19:57:33 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:57:48 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\services\\moodle_api_service.py', reloading
+2026-04-29 19:57:48 [INFO]  * Restarting with stat
+2026-04-29 19:57:48 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:57:48 [WARNING]  * Debugger is active!
+2026-04-29 19:57:48 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:57:53 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\services\\moodle_api_service.py', reloading
+2026-04-29 19:57:53 [INFO]  * Restarting with stat
+2026-04-29 19:57:54 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:57:54 [WARNING]  * Debugger is active!
+2026-04-29 19:57:54 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:57:56 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\services\\moodle_api_service.py', reloading
+2026-04-29 19:57:56 [INFO]  * Restarting with stat
+2026-04-29 19:57:57 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 19:57:57 [WARNING]  * Debugger is active!
+2026-04-29 19:57:57 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 19:57:58 [INFO] 📡 Calling TU API for user: 6709420019
+2026-04-29 19:57:59 [INFO] 📥 TU API Response: 200
+2026-04-29 19:58:00 [INFO] 127.0.0.1 - - [29/Apr/2026 19:58:00] "[35m[1mPOST /api/login HTTP/1.1[0m" 500 -
+2026-04-29 20:00:00 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\model\\user_model.py', reloading
+2026-04-29 20:00:00 [INFO]  * Restarting with stat
+2026-04-29 20:00:01 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 20:00:01 [WARNING]  * Debugger is active!
+2026-04-29 20:00:01 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 20:00:02 [INFO]  * Detected change in 'c:\\Users\\Lenovo\\Desktop\\CS\\Year_2\\2\\CS242\\Slitherhub\\backend\\model\\user_model.py', reloading
+2026-04-29 20:00:02 [INFO]  * Restarting with stat
+2026-04-29 20:00:03 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 20:00:03 [WARNING]  * Debugger is active!
+2026-04-29 20:00:03 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 20:00:05 [INFO] 📡 Calling TU API for user: 6709420019
+2026-04-29 20:00:06 [INFO] 📥 TU API Response: 200
+2026-04-29 20:00:07 [INFO] 127.0.0.1 - - [29/Apr/2026 20:00:07] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 20:00:44 [INFO] 📡 Calling TU API for user: 6709420019
+2026-04-29 20:00:45 [INFO] 📥 TU API Response: 200
+2026-04-29 20:00:46 [INFO] 127.0.0.1 - - [29/Apr/2026 20:00:46] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 20:01:22 [INFO] 📡 Calling TU API for user: 6709420019
+2026-04-29 20:01:23 [INFO] 📥 TU API Response: 200
+2026-04-29 20:01:25 [INFO] 127.0.0.1 - - [29/Apr/2026 20:01:25] "[35m[1mPOST /api/login HTTP/1.1[0m" 500 -
+2026-04-29 20:01:42 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 20:01:42 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-29 20:01:42 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-29 20:01:42 [INFO]  * Restarting with stat
+2026-04-29 20:01:42 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 20:01:42 [WARNING]  * Debugger is active!
+2026-04-29 20:01:42 [INFO]  * Debugger PIN: 218-154-981
+2026-04-29 20:01:46 [INFO] 📡 Calling TU API for user: 6709420019
+2026-04-29 20:01:47 [INFO] 📥 TU API Response: 200
+2026-04-29 20:01:56 [INFO] 127.0.0.1 - - [29/Apr/2026 20:01:56] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 20:02:12 [INFO] 📡 Calling TU API for user: 6709420019
+2026-04-29 20:02:12 [INFO] 📥 TU API Response: 200
+2026-04-29 20:02:14 [INFO] 127.0.0.1 - - [29/Apr/2026 20:02:14] "POST /api/login HTTP/1.1" 200 -
