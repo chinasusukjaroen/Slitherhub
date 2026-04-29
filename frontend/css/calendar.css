@@ -1,0 +1,429 @@
+/* ______________________ calendar page ______________________ */
+/* ================= Reset & Base Styles ================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #f8f9fc;
+    color: #1f2937;
+    min-height: 100vh;
+    padding-bottom: 80px; 
+}
+
+/* ================= Top Navigation ================= */
+.top-nav {
+    width: 100%;
+    background-color: #ffffff;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo-text {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1d1b54;
+    letter-spacing: -0.5px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #6b7280;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: #1d1b54;
+}
+
+.nav-links a.active {
+    color: #1d1b54;
+    font-weight: 700;
+}
+
+.profile-icon {
+    width: 36px;
+    height: 36px;
+    background-color: #f3f4f6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4b5563;
+    cursor: pointer;
+}
+
+/* ================= Main Container & Header ================= */
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 32px;
+}
+
+.page-title {
+    font-size: 36px;
+    color: #111827;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.page-subtitle {
+    font-size: 16px;
+    color: #4b5563;
+}
+
+.header-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.btn {
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+    border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+    color: #374151;
+}
+
+.btn:hover {
+    background-color: #f9fafb;
+}
+
+.btn-primary {
+    background-color: #f8f9fc;
+    color: #ffffff;
+    border: 1px solid #f3f4f6;
+    background: #f1f3f8; 
+    color: #ffffff;
+    pointer-events: none; 
+}
+
+/* ================= Layout Grid (Calendar + Sidebar) ================= */
+.main-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+/* ================= Calendar Section ================= */
+.calendar-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+.calendar-days-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: #4b5563;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #f3f4f6;
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+}
+
+.calendar-grid {
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.calendar-row:last-child {
+    border-bottom: none;
+}
+
+.day-cell {
+    min-height: 100px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    color: #111827;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+}
+
+.day-cell.fade {
+    color: #cbd5e1;
+}
+
+.day-cell.active {
+    background-color: #eef4ff;
+    border: 2px solid #a5b4fc;
+    color: #1d1b54;
+}
+
+.day-number {
+    margin-bottom: 8px;
+}
+
+.event-dots {
+    display: flex;
+    gap: 4px;
+    position: absolute;
+    bottom: 20px;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+.dot.red { background-color: #dc2626; }
+.dot.green { background-color: #059669; }
+.dot.orange { background-color: #ea580c; }
+
+/* ================= Sidebar Section ================= */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.tasks-widget {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+.widget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.widget-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.badge-total {
+    background-color: #272c76;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 20px;
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.task-card {
+    background-color: #fbfbfc;
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.task-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+}
+
+.task-card.high::before { background-color: #dc2626; }
+.task-card.medium::before { background-color: #ea580c; }
+.task-card.low::before { background-color: #059669; }
+
+.task-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.task-badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.bg-high { background-color: #fee2e2; color: #b91c1c; }
+.bg-medium { background-color: #ffedd5; color: #c2410c; }
+.bg-low { background-color: #d1fae5; color: #047857; }
+
+.task-time {
+    font-size: 12px;
+    color: #4b5563;
+    font-weight: 500;
+}
+
+.task-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 6px;
+}
+
+.task-desc {
+    font-size: 13px;
+    color: #6b7280;
+    line-height: 1.5;
+}
+
+.milestone-widget {
+    background: linear-gradient(145deg, #f8faff 0%, #ffffff 100%);
+    border: 1px solid #eff6ff;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 4px 15px rgba(235, 240, 255, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.milestone-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    color: #c7d2fe;
+}
+
+.milestone-header span {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.milestone-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #e0e7ff;
+    margin-bottom: 12px;
+}
+
+.milestone-desc {
+    font-size: 13px;
+    color: #c7d2fe;
+    line-height: 1.6;
+}
+
+/* ================= Full-Width Bottom Navigation ================= */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 12px 20px;
+    border-top: 1px solid #e5e7eb;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+    z-index: 50;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: #9ca3af;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 8px 24px;
+    border-radius: 12px;
+    transition: all 0.2s;
+
+    text-decoration: none;
+}
+
+.nav-item.active {
+    background-color: #eef2ff;
+    color: #1d1b54;
+}
+
+.nav-item.active svg {
+    color: #1d1b54;
+}
+
+.nav-item:hover:not(.active) {
+    color: #4b5563;
+}
+
+@media (max-width: 1024px) {
+    .main-grid {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 768px) {
+    .top-nav {
+        padding: 0 20px;
+    }
+    .nav-links {
+        display: none; 
+    }
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    .bottom-nav {
+        padding: 12px 10px;
+    }
+    .nav-item {
+        padding: 8px 12px;
+    }
+}

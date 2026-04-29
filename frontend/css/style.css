@@ -227,8 +227,9 @@ svg {
             justify-content: space-between;
             padding: 0 40px;
             box-shadow: 0 1px 5px rgba(0,0,0,0.05);
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
             z-index: 10;
         }
 
