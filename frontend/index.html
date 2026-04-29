@@ -95,5 +95,16 @@
     </footer>
 
 <script type="module" src="login.js"></script>
+
+<script>
+    const isLoggedIn = sessionStorage.getItem("is_logged_in") === "true";
+
+    if (!isLoggedIn) {
+        console.log("user not logged in");
+    } else {
+        window.location.href = "dashboard.html";
+    }
+</script>
+
 </body>
 </html>

@@ -1,10 +1,13 @@
 // getElementById('assignment-list') ในพารามิเตอร์อย่าลืมเปลี่ยนชื่่อในhtmlที่ต้องใช้jsให้ตรงกับบรรทัดที่ 2 ด้วยนะ
+import { CONFIG } from '../config.js';
+
+
 const listContainer = document.getElementById('assignmentList');
 
 async function loadAssignments() {
     try {
         // เปลี่ยน api path ด้วยนะถ้าสร้าง api ชื่อไม่เหมือนกัน ตรงบรรทัด7 แล้วก็อันนี้js สำหรับดึงข้อมูล assignment นะ
-        const response = await fetch('/api/assignments'); 
+        const response = await fetch(`${CONFIG.BACKEND_API_URL}/tasks`); 
         const result = await response.json();
 
         if (result.success) {

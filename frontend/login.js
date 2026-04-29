@@ -73,6 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (contentType && contentType.includes("application/json")) {
                     data = await response.json();
+                    data = data.data
                 } else {
                     const text = await response.text();
                     throw new Error(`Server ตอบกลับไม่ใช่ JSON: ${text.substring(0, 100)}`);
@@ -89,9 +90,19 @@ document.addEventListener("DOMContentLoaded", () => {
                     display_name: data.display_name,
                     email: data.email
                 }));
+                
+                sessionStorage.setItem('is_logged_in', 'true');
+
+
+                if(data.is_new_user == false){
+                    sessionStorage.setItem("moodle_synced", "false");
+
+                }else{
+                    sessionStorage.setItem("moodle_synced", "true");
+                }
 
                 console.log("🔄 Redirecting to student.html...");
-                window.location.href = "student.html";
+                window.location.href = "dashboard.html";
 
             } catch (err) {
                 console.error("💥 Login error:", err);

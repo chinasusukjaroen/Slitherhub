@@ -37,23 +37,35 @@ def create_users_table():
 def update_moodle_user_id(student_id, moodle_user_id):
     conn = None
     try:
+        student_id = student_id.strip()
+        print("moodle_user_id:", moodle_user_id)
         conn = get_conn()
         cursor = conn.cursor()
         cursor.execute("UPDATE users SET moodle_user_id = ? WHERE student_id = ?",
                        (moodle_user_id, student_id))
         conn.commit()
 
-        if cursor.rowcount == 0:
-            return {"success": False, "message": "user not found", "data": None}
+        updated = cursor.rowcount > 0
 
         cursor.execute(
-            "SELECT user_id FROM users WHERE student_id = ?",
+            "SELECT moodle_user_id FROM users WHERE student_id = ?",
             (student_id,)
         )
         row = cursor.fetchone()
 
-        return {"success": True, "data": row[0] if row else None}
+        print("Update Moodle moodle_user_id:", row[0])
+        print("UPDATE student_id:", student_id.encode())
+
+
+        cursor.execute(
+            "SELECT * FROM users WHERE student_id = ?",
+            (student_id,)
+        )
+        row = cursor.fetchone()
+        print("Update Moodle user_id:", dict(row))
+        return {"success": True, "data": row[0] if row else None, "updated": updated}
     except Exception as e:
+        print("Error: "+str(e))
         return {"success": False, "data": None, "total": 0, "error": str(e)}
 
     finally:
@@ -62,6 +74,7 @@ def update_moodle_user_id(student_id, moodle_user_id):
 def update_moodle_api(student_id, moodle_api):
     conn = None
     try:
+        student_id = student_id.strip()
         conn = get_conn()
         cursor = conn.cursor()
     
@@ -69,8 +82,8 @@ def update_moodle_api(student_id, moodle_api):
                        (moodle_api, student_id))
         conn.commit()
 
-        if cursor.rowcount == 0:
-            return {"success": False, "message": "user not found", "data": None}
+        updated = cursor.rowcount > 0
+
 
         cursor.execute(
             "SELECT user_id FROM users WHERE student_id = ?",
@@ -79,7 +92,7 @@ def update_moodle_api(student_id, moodle_api):
 
         row = cursor.fetchone()
 
-        return {"success": True, "data": row[0] if row else None}
+        return {"success": True, "data": row[0] if row else None, "updated": updated}
     except Exception as e:
         return {"success": False, "data": None, "total": 0, "error": str(e)}
 
@@ -91,13 +104,30 @@ def get_moodle_user_id_by_student_id(student_id):
         conn = get_conn()
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
-        cursor.execute("SELECT moodle_user_id FROM users WHERE student_id = ?", (student_id,))
+
+        print("SELECT student_id:", student_id.encode())
+
+        cursor.execute(
+            "SELECT moodle_user_id FROM users WHERE student_id = ?",
+            (student_id,)
+        )
+
         row = cursor.fetchone()
-        conn.close()
+        print(dict(row))
+
+        cursor.execute(
+            "SELECT * FROM users "
+        )
+
+
+        rows = cursor.fetchall()
+        print([dict(row) for row in rows])
         return {"success": True, "data": row[0] if row else None}
     except Exception as e :
-        print("get_moodle_user_id_by_student_id Error!")
+        print("get_moodle_user_id_by_student_id Error!", str(e))
         return {"success": False, "data": None, "total": 0, "error": str(e)}
+    finally:
+        if conn: conn.close()
 
 #ดึงข้อมูลทุกคนออกมา
 def get_users():

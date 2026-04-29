@@ -1,3 +1,6 @@
+import { CONFIG } from '../config.js';
+
+
 const userListContainer = document.getElementById('userList');
 
 const params = new URLSearchParams(window.location.search);
@@ -5,24 +8,23 @@ const student_id = params.get('id');
 
 async function loadUsers() {
     try {
-        let url = '/api/users';
+        // let url = '/api/users';
 
-        if (student_id) {
-            url = `/api/users/${student_id}`;
-        }
 
-        const response = await fetch(url);
-        const result = await response.json();
+        // const response = await fetch(url);
+        // const result = await response.json();
 
-        if (!result.success) {
-            userListContainer.innerHTML = `<p>Error: ${result.error}</p>`;
-            return;
-        }
+        // if (!result.success) {
+        //     userListContainer.innerHTML = `<p>Error: ${result.error}</p>`;
+        //     return;
+        // }
 
-        if (student_id) {
-            renderSingleUser(result.data);
+        const user = JSON.parse(sessionStorage.getItem("user"));
+
+        if (user) {
+            renderSingleUser(user);
         } else {
-            renderUsers(result.data);
+            renderUsers(user);
         }
 
     } catch (err) {

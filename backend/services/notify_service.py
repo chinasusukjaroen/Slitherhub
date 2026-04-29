@@ -1,6 +1,7 @@
 # services/notify_service.py
 import sqlite3
-from database import get_conn  # ✅ ใช้จาก database.py ตรงตามมาตรฐานโปรเจกต์
+from database import get_conn
+from datetime import datetime
 
 
 def get_upcoming_deadlines(hours_ahead=72):
@@ -42,10 +43,7 @@ def get_upcoming_deadlines(hours_ahead=72):
 
 
 def mark_as_notified(user_task_id):
-    """
-    อัปเดตว่าแจ้งเตือนงานนี้ให้ผู้ใช้คนนี้แล้ว (รายบุคคล)
-    ถ้าต้องการมาร์คที่ตาราง assignments ให้เปลี่ยนเป็น assignment_id ได้ตามโครงสร้าง
-    """
+    """อัปเดตว่าแจ้งเตือนงานนี้ให้ผู้ใช้คนนี้แล้ว"""
     conn = get_conn()
     cursor = conn.cursor()
     cursor.execute("""
@@ -84,3 +82,95 @@ def get_notification_summary():
     row = cursor.fetchone()
     conn.close()
     return dict(row) if row else {}
+
+
+# ─── 🆕 ฟังก์ชันใหม่: รันพร้อมพิมพ์สถานะขึ้น Terminal ─────────────
+def run_notification_check(send_email_func, hours_ahead=72):
+    """
+    รันระบบแจ้งเตือนพร้อมแสดง Log บน Terminal
+    send_email_func: ฟังก์ชันที่รับ dict task และคืนค่า True/False
+                     เช่น: lambda t: send_email(t['email'], t)
+    """
+    print("\n" + "="*60)
+    print("🔔 เริ่มตรวจสอบงานใกล้ครบกำหนด")
+    print(f"📅 เวลาปัจจุบัน: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print(f"⏰ แจ้งเตือนล่วงหน้า: {hours_ahead} ชั่วโมง")
+    print("="*60)
+
+    # 1️⃣ ดึงงาน
+    tasks = get_upcoming_deadlines(hours_ahead)
+    
+    if not tasks:
+        print("✅ ไม่พบงานที่ต้องแจ้งเตือนในขณะนี้")
+        print("💡 ระบบจะตรวจสอบอีกครั้งในรอบถัดไป")
+        return {"found": 0, "sent": 0, "failed": 0}
+
+    print(f"📋 พบงานที่ต้องแจ้งเตือน {len(tasks)} รายการ\n")
+
+    sent = 0
+    failed = 0
+
+    # 2️⃣ วนลูปส่ง + อัปเดตสถานะ + พิมพ์ Log
+    for i, task in enumerate(tasks, 1):
+        print(f"[{i}/{len(tasks)}] 📤 กำลังแจ้งเตือน: {task['display_name']} ({task['student_id']})")
+        print(f"      📧 ถึง: {task['email']}")
+        print(f"      📝 งาน: {task['title']}")
+        print(f"      📚 วิชา: {task['course_name']}")
+        print(f"      ⏰ Deadline: {task['deadline']}")
+
+        try:
+            # เรียกฟังก์ชันส่งอีเมลที่ผู้ใช้ส่งเข้ามา
+            success = send_email_func(task)
+            
+            if success:
+                mark_as_notified(task['user_task_id'])
+                print(f"      ✅ ส่งสำเร็จ + อัปเดตสถานะ is_notified = 1")
+                sent += 1
+            else:
+                print(f"      ❌ ส่งอีเมลไม่สำเร็จ (จะลองใหม่ในรอบถัดไป)")
+                failed += 1
+        except Exception as e:
+            print(f"      ❌ เกิดข้อผิดพลาด: {e}")
+            failed += 1
+        
+        print()  # เว้นบรรทัดอ่านง่าย
+
+    # 3️⃣ สรุปผล
+    total = sent + failed
+    rate = (sent / total * 100) if total > 0 else 0
+    print("="*60)
+    print("📊 สรุปผลการแจ้งเตือน")
+    print("="*60)
+    print(f"✅ ส่งสำเร็จ: {sent} รายการ")
+    print(f"❌ ส่งล้มเหลว: {failed} รายการ")
+    print(f"📈 อัตราสำเร็จ: {rate:.1f}%")
+    print("="*60)
+    
+    return {"found": len(tasks), "sent": sent, "failed": failed}
+
+# ─── 🆕 ส่วนสั่งรันเมื่อเรียกไฟล์ตรงๆ ─────────────────────
+if __name__ == "__main__":
+    import os
+    from dotenv import load_dotenv
+    load_dotenv()
+    
+    print("🚀 กำลังเริ่มระบบแจ้งเตือน...")
+    
+    # พยายาม import ฟังก์ชันส่งอีเมล
+    try:
+        from services.email_service import send_email
+    except ImportError:
+        try:
+            from services.email_service import send_email
+        except ImportError:
+            # ถ้ายังไม่มีไฟล์อีเมล ให้ใช้โหมดจำลองก่อน (เพื่อเทสต์หน้าจอ)
+            print("⚠️ ไม่พบ email_service → ใช้โหมดจำลอง (ไม่ส่งจริง)")
+            def send_email(to_email, task):
+                print(f"📧 [MOCK] ส่งถึง: {to_email} | เรื่อง: {task['title']}")
+                return True
+    
+    # รันฟังก์ชันตรวจสอบ + พิมพ์สถานะขึ้น Terminal
+    run_notification_check(
+        send_email_func=lambda t: send_email(t['email'], t),
+        hours_ahead=24  # ดึงงานใน 24 ชม. ข้างหน้า (แก้ตัวเลขได้ตามต้องการ)
+    )

@@ -4,6 +4,8 @@ import sys
 from flask import Flask, jsonify
 from flask_cors import CORS
 from controllers.user_controller import auth_bp
+from controllers.user_task_controller import user_task_bp
+from controllers.assignment_controller import assignment_bp
 from database import init_db
 from config import ALLOWED_ORIGINS
 
@@ -26,6 +28,8 @@ CORS(app, supports_credentials=True, origins=ALLOWED_ORIGINS)
 
 
 app.register_blueprint(auth_bp, url_prefix="/api")
+app.register_blueprint(assignment_bp, url_prefix="/api")
+app.register_blueprint(user_task_bp, url_prefix="/api")
 
 
 @app.route("/health", methods=["GET"])

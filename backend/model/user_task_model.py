@@ -181,7 +181,71 @@ def get_user_task_by_user_id_and_assignment_id(user_id, assignment_id):
 
     
     except Exception as e:
+        print("Error " + str(e))
         return {"success": False, "data": None, "error": str(e)}
 
     finally:
         if conn: conn.close()
+
+
+def get_pending_notifications():
+    """ดึงงานที่ยังไม่แจ้งเตือน และใกล้ครบกำหนด <= 24 ชม."""
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute("""
+        SELECT
+            u.line_user_id,
+            u.student_id,
+            a.title,
+            a.course_name,
+            a.deadline,
+            a.source_url,
+            ut.user_task_id
+        FROM user_tasks ut
+        JOIN users u       ON ut.user_id      = u.user_id
+        JOIN assignments a ON ut.assignment_id = a.assignment_id
+        WHERE ut.status               = 'pending'
+        AND   ut.is_notified          = 0
+        AND   u.is_line_notify_active = 1
+        AND   u.line_user_id          IS NOT NULL
+        AND   a.deadline <= datetime('now', '+1 day', 'localtime')
+        AND   a.deadline >= datetime('now', 'localtime')
+        ORDER BY a.deadline ASC
+    """)
+    rows = cursor.fetchall()
+    conn.close()
+    return [dict(r) for r in rows]
+
+
+def mark_as_notified(user_task_id):
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute("UPDATE user_tasks SET is_notified = 1 WHERE user_task_id = ?",
+                   (user_task_id,))
+    conn.commit()
+    conn.close()
+
+def get_all_user_task_and_assignment_info_by_user_id(user_id):
+    conn = get_conn()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT 
+            ut.assignment_id,
+            ut.status,
+            a.course_name,
+            a.title,
+            a.description,
+            a.source_url,
+            a.deadline
+        FROM user_tasks ut
+        JOIN assignments a
+        ON ut.assignment_id = a.assignment_id
+        WHERE ut.user_id = ?
+        ORDER BY a.deadline ASC
+    """, (user_id,))
+
+    rows = cursor.fetchall()
+    conn.close()
+
+    return [dict(row) for row in rows]

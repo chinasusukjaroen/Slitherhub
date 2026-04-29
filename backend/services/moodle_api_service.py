@@ -1,8 +1,8 @@
 from datetime import datetime, timezone, timedelta
-from backend.model.user_model import update_moodle_user_id, get_moodle_user_id_by_student_id, update_moodle_api, get_user_by_student_id
-from backend.model.assignment_model import get_assignment_by_moodle_id, save_assignment, update_assignment_deadline_and_description, get_assignment_by_assignment_id
-from backend.model.user_task_model import get_user_task_by_user_id_and_assignment_id, save_user_task, update_task_status, get_user_tasks_by_user_id
-from backend.model.TaskStatus import TaskStatus
+from model.user_model import update_moodle_user_id, get_moodle_user_id_by_student_id, update_moodle_api, get_user_by_student_id
+from model.assignment_model import get_assignment_by_moodle_id, save_assignment, update_assignment_deadline_and_description, get_assignment_by_assignment_id
+from model.user_task_model import get_user_task_by_user_id_and_assignment_id, save_user_task, update_task_status, get_user_tasks_by_user_id
+from model.TaskStatus import TaskStatus
 import requests
 
 MOODLE_API_URL_LOGIN = "https://courses.cs.tu.ac.th/login/token.php"
@@ -17,7 +17,7 @@ def safe_call_database_func(func, *args, **kwargs):
 
         return None
     except Exception as e:
-        print(f"[safe_call_database] error: {e}")
+        print(f"[safe_call_database] [{func.__name__}] error: {e}")
         return None
 
 def convert_moodle_time_to_datetime(ts):
@@ -47,21 +47,27 @@ def login_moodle(username, password):
             token = data.get("token")
             update_moodle_api(username, token)
             
+
             moodle_user_id = safe_call_database_func(get_moodle_user_id_by_student_id, username)
+            print("Mood;e user_id return ",moodle_user_id)
+            first_login = False
 
-            if moodle_user_id == None:
+            if moodle_user_id is None:
+                first_login = True
                 fetch_user_info = fetch_user_info_and_save(token, username)
-                if fetch_user_info.get("success") == False:
-                    return fetch_user_info
-            
-            # fetch_assignments_info = fetch_assignments_and_save(token, username)
-            # if fetch_assignments_info.get("status") == False:
-            #         print(fetch_assignments_info)
-            #         return fetch_assignments_info
 
+                if fetch_user_info.get("success") == False: return fetch_user_info
+                    
+                
+                fetch_assignments_info = fetch_assignments_and_save(token, username)
+                if fetch_assignments_info.get("status") == False:
+                        print(fetch_assignments_info)
+                        return fetch_assignments_info
+            
             return {
                 "status": True,
                 "token": token,
+                "is_new_user": first_login
             }
         
         return {"success": False, "message": data.get("message", "Login ไม่สำเร็จ")}
@@ -168,7 +174,7 @@ def fetch_assignments_and_save(token, student_id):
                 else:
                     assignment_id = safe_call_database_func(update_assignment_deadline_and_description, moodle_assignment_uid, deadline, description)
                     # assignment_id = update_assignment_deadline_and_description(moodle_assignment_uid, deadline, description)
-
+                
                 assignments.append(dataReturn)
 
                 #Sync user task

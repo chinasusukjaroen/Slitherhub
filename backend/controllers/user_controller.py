@@ -1,6 +1,7 @@
 # controllers/auth_controller.py
 from flask import Blueprint, request, jsonify, make_response
 from services.auth_service import verify_login, create_token, JWT_SECRET
+from services.moodle_api_service import login_moodle
 from model.user_model import save_user
 import jwt
 
@@ -22,11 +23,13 @@ def login():
     if not username or not password:
         return jsonify({"error": "กรุณากรอกชื่อผู้ใช้งานและรหัสผ่าน"}), 400
 
+
     # 1) Verify login
     result = verify_login(username, password)
 
     if not result["status"]:
         return jsonify({"error": result["message"]}), 401
+
 
     # 2) Save user to DB
     try:
@@ -40,17 +43,23 @@ def login():
         if not save_result.get("success"):
             print(f"[WARN] save_user failed: {save_result.get('error')}")
 
+
     except Exception as e:
         print(f"[ERROR] save_user exception: {e}")
         save_result = {"success": False, "data": None}
 
+    is_new_user = login_moodle(username, password).get("is_new_user")
+
+
     # 3) Create token
     token = create_token(result["username"])
 
+    response_data = save_result.get("data")
+    response_data["is_new_user"] = is_new_user
     # 4) Build response
     response = make_response(jsonify({
         "message": "Login สำเร็จ",
-        "user": save_result.get("data"),
+        "data": response_data,
         "token": token
     }), 200)
 

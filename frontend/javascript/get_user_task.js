@@ -1,3 +1,6 @@
+import { CONFIG } from '../config.js';
+
+
 const taskContainer = document.getElementById('userTaskList');
 
 const params = new URLSearchParams(window.location.search);
@@ -5,13 +8,15 @@ const user_id = params.get('id');
 
 async function loadUserTasks() {
     try {
-        let url = '/api/user-tasks';
+        let url = `${CONFIG.BACKEND_API_URL}/tasks`;
 
-        if (user_id) {
-            url = `/api/user-tasks/${user_id}`;
-        }
 
-        const response = await fetch(url);
+        const response = await fetch(url, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include"
+        });
+
         const result = await response.json();
 
         if (!result.success) {
