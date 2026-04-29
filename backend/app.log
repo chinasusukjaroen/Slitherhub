@@ -315,3 +315,15 @@
 2026-04-29 14:21:54 [INFO] 🚀 Starting Flask server on port 5000...
 2026-04-29 14:21:54 [WARNING]  * Debugger is active!
 2026-04-29 14:21:54 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 22:24:25 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 22:24:25 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-29 22:24:25 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-29 22:24:25 [INFO]  * Restarting with stat
+2026-04-29 22:24:25 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 22:24:25 [WARNING]  * Debugger is active!
+2026-04-29 22:24:25 [INFO]  * Debugger PIN: 115-429-930
+2026-04-29 22:24:40 [INFO] 127.0.0.1 - - [29/Apr/2026 22:24:40] "OPTIONS /api/login HTTP/1.1" 200 -
+2026-04-29 22:24:40 [INFO] 📡 Calling TU API for user: 6709616582
+2026-04-29 22:24:41 [INFO] 📥 TU API Response: 200
+2026-04-29 22:24:41 [INFO] 127.0.0.1 - - [29/Apr/2026 22:24:41] "POST /api/login HTTP/1.1" 200 -
