@@ -1,213 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PriorityTask - Calendar</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/calendar.css">
+  <meta charset="UTF-8">
+  <title>Simple Calendar</title>
+  <link rel="stylesheet" href="css/calendar.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 </head>
+
 <body>
 
-    <nav class="top-nav">
-        <div class="logo-text">Slitherhub</div>
-        <div class="nav-links">
-            <a href="#">Dashboard</a>
-            <a href="#">Process</a>
-            <a href="#" class="active">Calendar</a>
-        </div>
-        <div class="profile-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-        </div>
-    </nav>
-
-    <main class="container">
-        
-        <header class="page-header">
-            <div>
-                <h1 class="page-title">October 2024</h1>
-                <p class="page-subtitle">Manage your deadlines and stay ahead of your schedule.</p>
-            </div>
-            <div class="header-actions">
-                <button class="btn">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-                    Previous
-                </button>
-                <button class="btn">
-                    Next
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-                </button>
-                <button class="btn btn-primary">Add Task</button>
-            </div>
-        </header>
-
-        <div class="main-grid">
-            
-            <section class="calendar-card">
-                <div class="calendar-days-header">
-                    <div>MON</div>
-                    <div>TUE</div>
-                    <div>WED</div>
-                    <div>THU</div>
-                    <div>FRI</div>
-                    <div>SAT</div>
-                    <div>SUN</div>
-                </div>
-
-                <div class="calendar-grid">
-                    <div class="calendar-row">
-                        <div class="day-cell fade">
-                            <span class="day-number">30</span>
-                        </div>
-                        <div class="day-cell">
-                            <span class="day-number">1</span>
-                        </div>
-                        <div class="day-cell">
-                            <span class="day-number">2</span>
-                            <div class="event-dots">
-                                <div class="dot red"></div>
-                                <div class="dot green"></div>
-                            </div>
-                        </div>
-                        <div class="day-cell">
-                            <span class="day-number">3</span>
-                        </div>
-                        <div class="day-cell">
-                            <span class="day-number">4</span>
-                            <div class="event-dots">
-                                <div class="dot green"></div>
-                            </div>
-                        </div>
-                        <div class="day-cell">
-                            <span class="day-number">5</span>
-                        </div>
-                        <div class="day-cell">
-                            <span class="day-number">6</span>
-                        </div>
-                    </div>
-
-                    <div class="calendar-row">
-                        <div class="day-cell">
-                            <span class="day-number">7</span>
-                            <div class="event-dots">
-                                <div class="dot red"></div>
-                                <div class="dot red"></div>
-                            </div>
-                        </div>
-                        <div class="day-cell">
-                            <span class="day-number">8</span>
-                        </div>
-                        <div class="day-cell">
-                            <span class="day-number">9</span>
-                            <div class="event-dots">
-                                <div class="dot orange"></div>
-                            </div>
-                        </div>
-                        <div class="day-cell active">
-                            <span class="day-number">10</span>
-                            <div class="event-dots">
-                                <div class="dot red"></div>
-                                <div class="dot orange"></div>
-                            </div>
-                        </div>
-                        <div class="day-cell">
-                            <span class="day-number">11</span>
-                        </div>
-                        <div class="day-cell">
-                            <span class="day-number">12</span>
-                        </div>
-                        <div class="day-cell">
-                            <span class="day-number">13</span>
-                        </div>
-                    </div>
-
-                    <div class="calendar-row">
-                        <div class="day-cell">
-                            <span class="day-number">14</span>
-                        </div>
-                        <div class="day-cell">
-                            <span class="day-number">15</span>
-                            <div class="event-dots">
-                                <div class="dot red"></div>
-                            </div>
-                        </div>
-                        <div class="day-cell">
-                            <span class="day-number">16</span>
-                        </div>
-                        <div class="day-cell">
-                            <span class="day-number">17</span>
-                        </div>
-                        <div class="day-cell">
-                            <span class="day-number">18</span>
-                            <div class="event-dots">
-                                <div class="dot green"></div>
-                            </div>
-                        </div>
-                        <div class="day-cell">
-                            <span class="day-number">19</span>
-                        </div>
-                        <div class="day-cell">
-                            <span class="day-number">20</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <aside class="sidebar">
-                
-                <div class="tasks-widget">
-                    <div class="widget-header">
-                        <h2 class="widget-title">Tasks for Today</h2>
-                        <div class="badge-total">3 Total</div>
-                    </div>
-
-                    <div class="task-list">
-                        <div class="task-card high">
-                            <div class="task-top-row">
-                                <span class="task-badge bg-high">HIGH PRIORITY</span>
-                                <span class="task-time">09:00 AM</span>
-                            </div>
-                            <h3 class="task-title">Quarterly Financial Review</h3>
-                            <p class="task-desc">Prepare balance sheet and Q3 projections for board meeting.</p>
-                        </div>
-
-                        <div class="task-card medium">
-                            <div class="task-top-row">
-                                <span class="task-badge bg-medium">MEDIUM</span>
-                                <span class="task-time">02:30 PM</span>
-                            </div>
-                            <h3 class="task-title">Internal Team Sync</h3>
-                            <p class="task-desc">Project roadmap discussion and sprint planning.</p>
-                        </div>
-
-                        <div class="task-card low">
-                            <div class="task-top-row">
-                                <span class="task-badge bg-low">LOW PRIORITY</span>
-                                <span class="task-time">04:00 PM</span>
-                            </div>
-                            <h3 class="task-title">Inventory Update</h3>
-                            <p class="task-desc">Update stock levels for office supplies.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="milestone-widget">
-                    <div class="milestone-header">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                        <span>UPCOMING MILESTONE</span>
-                    </div>
-                    <h3 class="milestone-title">Launch Day</h3>
-                    <p class="milestone-desc">Product version 2.0 release scheduled for next Friday.</p>
-                </div>
-
-            </aside>
-        </div>
-    </main>
+  <div id="calendar"></div>
+  <script src="javascript/calendar_javascript.js"></script>
 
     <nav class="bottom-nav">
         <a href="dashboard.html" class="nav-item">
@@ -225,16 +30,6 @@
             <span>Priority</span>
         </a>
     </nav>
-
-<script>
-    const isLoggedIn = sessionStorage.getItem("is_logged_in") === "true";
-
-    if (isLoggedIn) {
-        console.log("user logged in");
-    } else {
-        window.location.href = "index.html";
-    }
-</script>
 
 </body>
 </html>
