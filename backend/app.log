@@ -1,0 +1,96 @@
+2026-04-30 00:30:07 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-30 00:30:07 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-30 00:30:07 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-30 00:30:07 [INFO]  * Restarting with stat
+2026-04-30 00:30:08 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-30 00:30:08 [WARNING]  * Debugger is active!
+2026-04-30 00:30:08 [INFO]  * Debugger PIN: 115-429-930
+2026-04-30 00:30:15 [INFO] 127.0.0.1 - - [30/Apr/2026 00:30:15] "OPTIONS /api/login HTTP/1.1" 200 -
+2026-04-30 00:30:15 [INFO] 📡 Calling TU API for user: 6709616582
+2026-04-30 00:30:17 [INFO] 📥 TU API Response: 200
+2026-04-30 00:30:25 [INFO] 127.0.0.1 - - [30/Apr/2026 00:30:25] "POST /api/login HTTP/1.1" 200 -
+2026-04-30 00:31:01 [INFO] 127.0.0.1 - - [30/Apr/2026 00:31:01] "OPTIONS /api/login HTTP/1.1" 200 -
+2026-04-30 00:31:01 [INFO] 📡 Calling TU API for user: 6709616582
+2026-04-30 00:31:01 [INFO] 📥 TU API Response: 200
+2026-04-30 00:31:02 [INFO] 127.0.0.1 - - [30/Apr/2026 00:31:02] "POST /api/login HTTP/1.1" 200 -
+2026-04-30 00:31:42 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-30 00:31:42 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-30 00:31:42 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-30 00:31:42 [INFO]  * Restarting with stat
+2026-04-30 00:31:43 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-30 00:31:43 [WARNING]  * Debugger is active!
+2026-04-30 00:31:43 [INFO]  * Debugger PIN: 115-429-930
+2026-04-30 00:31:58 [INFO] 127.0.0.1 - - [30/Apr/2026 00:31:58] "OPTIONS /api/login HTTP/1.1" 200 -
+2026-04-30 00:31:58 [INFO] 📡 Calling TU API for user: 6709616582
+2026-04-30 00:31:58 [INFO] 📥 TU API Response: 200
+2026-04-30 00:31:59 [INFO] 127.0.0.1 - - [30/Apr/2026 00:31:59] "POST /api/login HTTP/1.1" 200 -
+2026-04-30 00:32:24 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-30 00:32:24 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-30 00:32:24 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-30 00:32:24 [INFO]  * Restarting with stat
+2026-04-30 00:32:24 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-30 00:32:24 [WARNING]  * Debugger is active!
+2026-04-30 00:32:24 [INFO]  * Debugger PIN: 115-429-930
+2026-04-30 00:32:36 [INFO] 127.0.0.1 - - [30/Apr/2026 00:32:36] "[33mGET / HTTP/1.1[0m" 404 -
+2026-04-30 00:32:36 [INFO] 127.0.0.1 - - [30/Apr/2026 00:32:36] "[33mGET / HTTP/1.1[0m" 404 -
+2026-04-30 00:32:41 [INFO] 127.0.0.1 - - [30/Apr/2026 00:32:41] "[33mGET /index.html HTTP/1.1[0m" 404 -
+2026-04-30 00:32:50 [INFO] 127.0.0.1 - - [30/Apr/2026 00:32:50] "OPTIONS /api/login HTTP/1.1" 200 -
+2026-04-30 00:32:50 [INFO] 📡 Calling TU API for user: 6709616582
+2026-04-30 00:32:51 [INFO] 📥 TU API Response: 200
+2026-04-30 00:32:52 [INFO] 127.0.0.1 - - [30/Apr/2026 00:32:52] "POST /api/login HTTP/1.1" 200 -
+2026-04-30 00:34:50 [INFO] 127.0.0.1 - - [30/Apr/2026 00:34:50] "OPTIONS /api/login HTTP/1.1" 200 -
+2026-04-30 00:34:50 [INFO] 📡 Calling TU API for user: 6709616582
+2026-04-30 00:34:51 [INFO] 📥 TU API Response: 200
+2026-04-30 00:34:52 [INFO] 127.0.0.1 - - [30/Apr/2026 00:34:52] "POST /api/login HTTP/1.1" 200 -
+2026-04-30 00:35:48 [INFO]  * Detected change in 'C:\\Users\\armer\\Slitherhub\\backend\\app.py', reloading
+2026-04-30 00:35:48 [INFO]  * Restarting with stat
+2026-04-30 00:35:48 [INFO]  * Detected change in 'C:\\Users\\armer\\Slitherhub\\backend\\app.py', reloading
+2026-04-30 00:35:48 [INFO]  * Restarting with stat
+2026-04-30 00:35:48 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-30 00:35:48 [WARNING]  * Debugger is active!
+2026-04-30 00:35:48 [INFO]  * Debugger PIN: 115-429-930
+2026-04-30 00:35:48 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-30 00:35:48 [WARNING]  * Debugger is active!
+2026-04-30 00:35:48 [INFO]  * Debugger PIN: 115-429-930
+2026-04-30 00:35:58 [INFO] 127.0.0.1 - - [30/Apr/2026 00:35:58] "OPTIONS /api/login HTTP/1.1" 200 -
+2026-04-30 00:35:58 [INFO] 📡 Calling TU API for user: 6709616582
+2026-04-30 00:35:58 [INFO] 📥 TU API Response: 200
+2026-04-30 00:35:59 [INFO] 127.0.0.1 - - [30/Apr/2026 00:35:59] "POST /api/login HTTP/1.1" 200 -
+2026-04-30 00:38:55 [INFO] 🚀 Starting Flask server on port 5500...
+2026-04-30 00:38:55 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5500
+2026-04-30 00:38:55 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-30 00:38:55 [INFO]  * Restarting with stat
+2026-04-30 00:38:55 [INFO] 🚀 Starting Flask server on port 5500...
+2026-04-30 00:38:55 [WARNING]  * Debugger is active!
+2026-04-30 00:38:55 [INFO]  * Debugger PIN: 115-429-930
+2026-04-30 00:38:58 [INFO] 127.0.0.1 - - [30/Apr/2026 00:38:58] "[33mGET /frontend/index.html HTTP/1.1[0m" 404 -
+2026-04-30 00:38:59 [INFO] 127.0.0.1 - - [30/Apr/2026 00:38:59] "[33mGET /frontend/index.html HTTP/1.1[0m" 404 -
+2026-04-30 00:39:00 [INFO] 127.0.0.1 - - [30/Apr/2026 00:39:00] "[33mGET /frontend/index.html HTTP/1.1[0m" 404 -
+2026-04-30 00:39:00 [INFO] 127.0.0.1 - - [30/Apr/2026 00:39:00] "[33mGET /frontend/index.html HTTP/1.1[0m" 404 -
+2026-04-30 00:39:00 [INFO] 127.0.0.1 - - [30/Apr/2026 00:39:00] "[33mGET /frontend/index.html HTTP/1.1[0m" 404 -
+2026-04-30 00:39:00 [INFO] 127.0.0.1 - - [30/Apr/2026 00:39:00] "[33mGET /frontend/index.html HTTP/1.1[0m" 404 -
+2026-04-30 00:39:00 [INFO] 127.0.0.1 - - [30/Apr/2026 00:39:00] "[33mGET /frontend/index.html HTTP/1.1[0m" 404 -
+2026-04-30 00:39:01 [INFO] 127.0.0.1 - - [30/Apr/2026 00:39:01] "[33mGET /frontend/index.html HTTP/1.1[0m" 404 -
+2026-04-30 00:39:17 [INFO]  * Detected change in 'C:\\Users\\armer\\Slitherhub\\backend\\app.py', reloading
+2026-04-30 00:39:17 [INFO]  * Restarting with stat
+2026-04-30 00:39:18 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-30 00:39:18 [WARNING]  * Debugger is active!
+2026-04-30 00:39:18 [INFO]  * Debugger PIN: 115-429-930
+2026-04-30 00:39:22 [INFO] 127.0.0.1 - - [30/Apr/2026 00:39:22] "[33mGET /frontend/index.html HTTP/1.1[0m" 404 -
+2026-04-30 00:39:27 [INFO] 127.0.0.1 - - [30/Apr/2026 00:39:27] "[33mGET /frontend/index.html HTTP/1.1[0m" 404 -
+2026-04-30 00:40:10 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-30 00:40:10 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-30 00:40:10 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-30 00:40:10 [INFO]  * Restarting with stat
+2026-04-30 00:40:10 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-30 00:40:10 [WARNING]  * Debugger is active!
+2026-04-30 00:40:10 [INFO]  * Debugger PIN: 115-429-930
+2026-04-30 00:40:28 [INFO] 127.0.0.1 - - [30/Apr/2026 00:40:28] "OPTIONS /api/login HTTP/1.1" 200 -
+2026-04-30 00:40:28 [INFO] 📡 Calling TU API for user: 6709616582
+2026-04-30 00:40:29 [INFO] 📥 TU API Response: 200
+2026-04-30 00:40:29 [INFO] 127.0.0.1 - - [30/Apr/2026 00:40:29] "POST /api/login HTTP/1.1" 200 -
