@@ -228,7 +228,6 @@ def mark_as_notified(user_task_id):
 def get_all_user_task_and_assignment_info_by_user_id(user_id):
     conn = get_conn()
     cursor = conn.cursor()
-
     cursor.execute("""
         SELECT 
             ut.assignment_id,
@@ -237,7 +236,8 @@ def get_all_user_task_and_assignment_info_by_user_id(user_id):
             a.title,
             a.description,
             a.source_url,
-            a.deadline
+            a.deadline,
+            a.created_at
         FROM user_tasks ut
         JOIN assignments a
         ON ut.assignment_id = a.assignment_id
