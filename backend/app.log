@@ -1,0 +1,307 @@
+2026-04-29 00:38:14 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 00:38:14 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-29 00:38:14 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-29 00:38:14 [INFO]  * Restarting with stat
+2026-04-29 00:38:14 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 00:38:14 [WARNING]  * Debugger is active!
+2026-04-29 00:38:14 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 00:42:42 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 00:42:42 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-29 00:42:42 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-29 00:42:42 [INFO]  * Restarting with stat
+2026-04-29 00:42:42 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 00:42:42 [WARNING]  * Debugger is active!
+2026-04-29 00:42:42 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 00:44:39 [INFO] 127.0.0.1 - - [29/Apr/2026 00:44:39] "GET /health HTTP/1.1" 200 -
+2026-04-29 00:44:39 [INFO] 127.0.0.1 - - [29/Apr/2026 00:44:39] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-29 00:49:27 [INFO] 127.0.0.1 - - [29/Apr/2026 00:49:27] "[33mOPTIONS /login HTTP/1.1[0m" 404 -
+2026-04-29 00:51:41 [INFO] 127.0.0.1 - - [29/Apr/2026 00:51:41] "OPTIONS /api/login HTTP/1.1" 200 -
+2026-04-29 00:51:41 [INFO] 📡 Calling TU API for user: chinasu.suk@dome.tu.ac.th
+2026-04-29 00:51:42 [INFO] 📥 TU API Response: 400
+2026-04-29 00:51:42 [INFO] 127.0.0.1 - - [29/Apr/2026 00:51:42] "[31m[1mPOST /api/login HTTP/1.1[0m" 401 -
+2026-04-29 00:54:44 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\model\\user_model.py', reloading
+2026-04-29 00:54:44 [INFO]  * Restarting with stat
+2026-04-29 00:56:04 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 00:56:04 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-29 00:56:04 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-29 00:56:04 [INFO]  * Restarting with stat
+2026-04-29 00:56:04 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 00:56:04 [WARNING]  * Debugger is active!
+2026-04-29 00:56:04 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 00:56:21 [INFO] 127.0.0.1 - - [29/Apr/2026 00:56:21] "OPTIONS /api/login HTTP/1.1" 200 -
+2026-04-29 00:56:21 [INFO] 📡 Calling TU API for user: chinasu.suk@dome.tu.ac.th
+2026-04-29 00:56:23 [INFO] 📥 TU API Response: 400
+2026-04-29 00:56:23 [INFO] 127.0.0.1 - - [29/Apr/2026 00:56:23] "[31m[1mPOST /api/login HTTP/1.1[0m" 401 -
+2026-04-29 00:59:31 [INFO] 127.0.0.1 - - [29/Apr/2026 00:59:31] "OPTIONS /api/login HTTP/1.1" 200 -
+2026-04-29 00:59:31 [INFO] 📡 Calling TU API for user: 6709616459
+2026-04-29 00:59:32 [INFO] 📥 TU API Response: 200
+2026-04-29 00:59:32 [INFO] 127.0.0.1 - - [29/Apr/2026 00:59:32] "[35m[1mPOST /api/login HTTP/1.1[0m" 500 -
+2026-04-29 00:59:42 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 00:59:42 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-29 00:59:42 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-29 00:59:42 [INFO]  * Restarting with stat
+2026-04-29 00:59:43 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 00:59:43 [WARNING]  * Debugger is active!
+2026-04-29 00:59:43 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 00:59:46 [INFO] 127.0.0.1 - - [29/Apr/2026 00:59:46] "OPTIONS /api/login HTTP/1.1" 200 -
+2026-04-29 00:59:46 [INFO] 📡 Calling TU API for user: 6709616459
+2026-04-29 00:59:47 [INFO] 📥 TU API Response: 200
+2026-04-29 00:59:47 [INFO] 127.0.0.1 - - [29/Apr/2026 00:59:47] "[35m[1mPOST /api/login HTTP/1.1[0m" 500 -
+2026-04-29 01:03:43 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\services\\auth_service.py', reloading
+2026-04-29 01:03:43 [INFO]  * Restarting with stat
+2026-04-29 01:06:09 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 01:06:09 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-29 01:06:09 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-29 01:06:09 [INFO]  * Restarting with stat
+2026-04-29 01:06:10 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 01:06:10 [WARNING]  * Debugger is active!
+2026-04-29 01:06:10 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 01:06:19 [INFO] 127.0.0.1 - - [29/Apr/2026 01:06:19] "OPTIONS /api/login HTTP/1.1" 200 -
+2026-04-29 01:06:19 [INFO] 📡 Calling TU API for user: 6709616459
+2026-04-29 01:06:20 [INFO] 📥 TU API Response: 200
+2026-04-29 01:06:20 [INFO] 127.0.0.1 - - [29/Apr/2026 01:06:20] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 01:09:35 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\controllers\\user_controller.py', reloading
+2026-04-29 01:09:35 [INFO]  * Restarting with stat
+2026-04-29 01:09:36 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 01:09:36 [WARNING]  * Debugger is active!
+2026-04-29 01:09:36 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 01:09:42 [INFO] 127.0.0.1 - - [29/Apr/2026 01:09:42] "OPTIONS /api/login HTTP/1.1" 200 -
+2026-04-29 01:09:42 [INFO] 📡 Calling TU API for user: 6709616459
+2026-04-29 01:09:43 [INFO] 📥 TU API Response: 200
+2026-04-29 01:09:43 [INFO] 127.0.0.1 - - [29/Apr/2026 01:09:43] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 01:11:25 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\services\\notify_service.py', reloading
+2026-04-29 01:11:25 [INFO]  * Restarting with stat
+2026-04-29 01:11:26 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 01:11:26 [WARNING]  * Debugger is active!
+2026-04-29 01:11:26 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 01:13:12 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\services\\notify_service.py', reloading
+2026-04-29 01:13:12 [INFO]  * Restarting with stat
+2026-04-29 01:13:13 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 01:13:13 [WARNING]  * Debugger is active!
+2026-04-29 01:13:13 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 01:18:16 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\test.py', reloading
+2026-04-29 01:18:16 [INFO]  * Restarting with stat
+2026-04-29 01:18:16 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 01:18:16 [WARNING]  * Debugger is active!
+2026-04-29 01:18:16 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 01:18:30 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\test.py', reloading
+2026-04-29 01:18:30 [INFO]  * Restarting with stat
+2026-04-29 01:18:30 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 01:18:30 [WARNING]  * Debugger is active!
+2026-04-29 01:18:30 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 01:20:35 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\model\\assignment_model.py', reloading
+2026-04-29 01:20:35 [INFO]  * Restarting with stat
+2026-04-29 01:20:35 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 01:20:35 [WARNING]  * Debugger is active!
+2026-04-29 01:20:35 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 01:21:04 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\model\\assignment_model.py', reloading
+2026-04-29 01:21:04 [INFO]  * Restarting with stat
+2026-04-29 01:21:05 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 01:21:05 [WARNING]  * Debugger is active!
+2026-04-29 01:21:05 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 01:23:09 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\model\\assignment_model.py', reloading
+2026-04-29 01:23:09 [INFO]  * Restarting with stat
+2026-04-29 01:23:10 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 01:23:10 [WARNING]  * Debugger is active!
+2026-04-29 01:23:10 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 12:55:20 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 12:55:20 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-29 12:55:20 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-29 12:55:20 [INFO]  * Restarting with stat
+2026-04-29 12:55:21 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 12:55:21 [WARNING]  * Debugger is active!
+2026-04-29 12:55:21 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 12:58:04 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\model\\assignment_model.py', reloading
+2026-04-29 12:58:04 [INFO]  * Restarting with stat
+2026-04-29 12:58:04 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 12:58:04 [WARNING]  * Debugger is active!
+2026-04-29 12:58:04 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 12:58:35 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\model\\assignment_model.py', reloading
+2026-04-29 12:58:35 [INFO]  * Restarting with stat
+2026-04-29 12:58:36 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 12:58:36 [WARNING]  * Debugger is active!
+2026-04-29 12:58:36 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 13:00:51 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\model\\assignment_model.py', reloading
+2026-04-29 13:00:51 [INFO]  * Restarting with stat
+2026-04-29 13:00:52 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 13:00:52 [WARNING]  * Debugger is active!
+2026-04-29 13:00:52 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 13:02:32 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 13:02:32 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-29 13:02:32 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-29 13:02:32 [INFO]  * Restarting with stat
+2026-04-29 13:02:32 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 13:02:32 [WARNING]  * Debugger is active!
+2026-04-29 13:02:32 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 13:04:12 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\app.py', reloading
+2026-04-29 13:04:12 [INFO]  * Restarting with stat
+2026-04-29 13:04:13 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 13:04:13 [WARNING]  * Debugger is active!
+2026-04-29 13:04:13 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 13:04:20 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\app.py', reloading
+2026-04-29 13:04:20 [INFO]  * Restarting with stat
+2026-04-29 13:04:20 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 13:04:20 [WARNING]  * Debugger is active!
+2026-04-29 13:04:20 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 13:04:33 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 13:04:33 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-29 13:04:33 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-29 13:04:33 [INFO]  * Restarting with stat
+2026-04-29 13:04:34 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 13:04:34 [WARNING]  * Debugger is active!
+2026-04-29 13:04:34 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 13:10:27 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\app.py', reloading
+2026-04-29 13:10:27 [INFO]  * Restarting with stat
+2026-04-29 13:10:28 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 13:10:28 [WARNING]  * Debugger is active!
+2026-04-29 13:10:28 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 13:10:41 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\app.py', reloading
+2026-04-29 13:10:41 [INFO]  * Restarting with stat
+2026-04-29 13:10:41 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 13:10:41 [WARNING]  * Debugger is active!
+2026-04-29 13:10:41 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 13:11:02 [INFO] 127.0.0.1 - - [29/Apr/2026 13:11:02] "OPTIONS /api/login HTTP/1.1" 200 -
+2026-04-29 13:11:02 [INFO] 📡 Calling TU API for user: 6709616459
+2026-04-29 13:11:03 [INFO] 📥 TU API Response: 200
+2026-04-29 13:11:03 [INFO] 127.0.0.1 - - [29/Apr/2026 13:11:03] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 13:14:40 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\model\\assignment_model.py', reloading
+2026-04-29 13:14:40 [INFO]  * Restarting with stat
+2026-04-29 13:14:41 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 13:14:41 [WARNING]  * Debugger is active!
+2026-04-29 13:14:41 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 13:25:48 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\config.py', reloading
+2026-04-29 13:25:48 [INFO]  * Restarting with stat
+2026-04-29 13:25:49 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 13:25:49 [WARNING]  * Debugger is active!
+2026-04-29 13:25:49 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 13:26:37 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\database.py', reloading
+2026-04-29 13:26:37 [INFO]  * Restarting with stat
+2026-04-29 13:26:37 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 13:26:37 [WARNING]  * Debugger is active!
+2026-04-29 13:26:37 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 13:26:50 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\database.py', reloading
+2026-04-29 13:26:51 [INFO]  * Restarting with stat
+2026-04-29 13:26:51 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 13:26:51 [WARNING]  * Debugger is active!
+2026-04-29 13:26:51 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 13:27:15 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\model\\user_model.py', reloading
+2026-04-29 13:27:15 [INFO]  * Restarting with stat
+2026-04-29 13:27:16 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 13:27:16 [WARNING]  * Debugger is active!
+2026-04-29 13:27:16 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 13:27:59 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\model\\user_model.py', reloading
+2026-04-29 13:27:59 [INFO]  * Restarting with stat
+2026-04-29 13:27:59 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 13:27:59 [WARNING]  * Debugger is active!
+2026-04-29 13:27:59 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 13:28:36 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\model\\user_model.py', reloading
+2026-04-29 13:28:36 [INFO]  * Restarting with stat
+2026-04-29 13:28:37 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 13:28:37 [WARNING]  * Debugger is active!
+2026-04-29 13:28:37 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 13:28:46 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\model\\user_task_model.py', reloading
+2026-04-29 13:28:46 [INFO]  * Restarting with stat
+2026-04-29 13:28:47 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 13:31:26 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 13:31:26 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-29 13:31:26 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-29 13:31:26 [INFO]  * Restarting with stat
+2026-04-29 13:31:27 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 13:31:27 [WARNING]  * Debugger is active!
+2026-04-29 13:31:27 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 13:36:35 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\model\\assignment_model.py', reloading
+2026-04-29 13:36:35 [INFO]  * Restarting with stat
+2026-04-29 13:36:35 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 13:36:35 [WARNING]  * Debugger is active!
+2026-04-29 13:36:35 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 13:38:57 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\mocktest.py', reloading
+2026-04-29 13:38:57 [INFO]  * Restarting with stat
+2026-04-29 13:38:57 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 13:38:57 [WARNING]  * Debugger is active!
+2026-04-29 13:38:57 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 13:39:18 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\mocktest.py', reloading
+2026-04-29 13:39:18 [INFO]  * Restarting with stat
+2026-04-29 13:39:19 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 13:39:19 [WARNING]  * Debugger is active!
+2026-04-29 13:39:19 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 13:49:40 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\mocktest.py', reloading
+2026-04-29 13:49:40 [INFO]  * Restarting with stat
+2026-04-29 13:49:40 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 13:49:40 [WARNING]  * Debugger is active!
+2026-04-29 13:49:40 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 13:51:45 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\mocktest.py', reloading
+2026-04-29 13:51:45 [INFO]  * Restarting with stat
+2026-04-29 13:51:45 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 13:51:45 [WARNING]  * Debugger is active!
+2026-04-29 13:51:45 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 13:52:10 [INFO] 127.0.0.1 - - [29/Apr/2026 13:52:10] "OPTIONS /api/login HTTP/1.1" 200 -
+2026-04-29 13:52:10 [INFO] 📡 Calling TU API for user: 6709616459
+2026-04-29 13:52:11 [INFO] 📥 TU API Response: 200
+2026-04-29 13:52:11 [INFO] 127.0.0.1 - - [29/Apr/2026 13:52:11] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 13:53:31 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 13:53:31 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-29 13:53:31 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-29 13:53:31 [INFO]  * Restarting with stat
+2026-04-29 13:53:32 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 13:53:32 [WARNING]  * Debugger is active!
+2026-04-29 13:53:32 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 13:55:07 [INFO] 127.0.0.1 - - [29/Apr/2026 13:55:07] "OPTIONS /api/login HTTP/1.1" 200 -
+2026-04-29 13:55:07 [INFO] 📡 Calling TU API for user: 6709616459
+2026-04-29 13:55:07 [INFO] 📥 TU API Response: 200
+2026-04-29 13:55:07 [INFO] 127.0.0.1 - - [29/Apr/2026 13:55:07] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 13:56:25 [INFO] 127.0.0.1 - - [29/Apr/2026 13:56:25] "OPTIONS /api/login HTTP/1.1" 200 -
+2026-04-29 13:56:25 [INFO] 📡 Calling TU API for user: 6709616459
+2026-04-29 13:56:25 [INFO] 📥 TU API Response: 200
+2026-04-29 13:56:25 [INFO] 127.0.0.1 - - [29/Apr/2026 13:56:25] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 13:57:59 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\services\\notify_service.py', reloading
+2026-04-29 13:57:59 [INFO]  * Restarting with stat
+2026-04-29 13:57:59 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 13:57:59 [WARNING]  * Debugger is active!
+2026-04-29 13:57:59 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 13:59:59 [INFO] 127.0.0.1 - - [29/Apr/2026 13:59:59] "OPTIONS /api/login HTTP/1.1" 200 -
+2026-04-29 13:59:59 [INFO] 📡 Calling TU API for user: 6709616459
+2026-04-29 13:59:59 [INFO] 📥 TU API Response: 200
+2026-04-29 13:59:59 [INFO] 127.0.0.1 - - [29/Apr/2026 13:59:59] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 14:01:37 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\config.py', reloading
+2026-04-29 14:01:37 [INFO]  * Restarting with stat
+2026-04-29 14:01:38 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 14:01:38 [WARNING]  * Debugger is active!
+2026-04-29 14:01:38 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 14:02:15 [INFO] 127.0.0.1 - - [29/Apr/2026 14:02:15] "OPTIONS /api/login HTTP/1.1" 200 -
+2026-04-29 14:02:15 [INFO] 📡 Calling TU API for user: 6709616459
+2026-04-29 14:02:15 [INFO] 📥 TU API Response: 200
+2026-04-29 14:02:15 [INFO] 127.0.0.1 - - [29/Apr/2026 14:02:15] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 14:03:07 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\model\\user_model.py', reloading
+2026-04-29 14:03:07 [INFO]  * Restarting with stat
+2026-04-29 14:03:07 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 14:03:07 [WARNING]  * Debugger is active!
+2026-04-29 14:03:07 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 14:03:16 [INFO] 127.0.0.1 - - [29/Apr/2026 14:03:16] "OPTIONS /api/login HTTP/1.1" 200 -
+2026-04-29 14:03:16 [INFO] 📡 Calling TU API for user: 6709616459
+2026-04-29 14:03:17 [INFO] 📥 TU API Response: 200
+2026-04-29 14:03:17 [INFO] 127.0.0.1 - - [29/Apr/2026 14:03:17] "POST /api/login HTTP/1.1" 200 -
+2026-04-29 14:05:02 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\test.py', reloading
+2026-04-29 14:05:02 [INFO]  * Restarting with stat
+2026-04-29 14:05:02 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 14:05:02 [WARNING]  * Debugger is active!
+2026-04-29 14:05:02 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 14:12:49 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\test.py', reloading
+2026-04-29 14:12:49 [INFO]  * Restarting with stat
+2026-04-29 14:12:49 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 14:12:50 [WARNING]  * Debugger is active!
+2026-04-29 14:12:50 [INFO]  * Debugger PIN: 159-428-403
+2026-04-29 14:13:13 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\test6\\backend\\test.py', reloading
+2026-04-29 14:13:13 [INFO]  * Restarting with stat
+2026-04-29 14:13:13 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-29 14:13:13 [WARNING]  * Debugger is active!
+2026-04-29 14:13:13 [INFO]  * Debugger PIN: 159-428-403

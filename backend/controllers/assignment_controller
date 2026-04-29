@@ -1,0 +1,78 @@
+# assignment_controller.py
+
+from flask import Blueprint, request, jsonify
+from model.assignment_model import get_assignments, save_assignment, create_assignments_table
+
+assignment_bp = Blueprint("assignment", __name__)
+
+
+@assignment_bp.route("/api/assignments", methods=["GET"])
+def get_all_assignments():
+    """ดึงงานทั้งหมด"""
+    result = get_assignments()
+    if not result["success"]:
+        return jsonify({"error": result["error"]}), 500
+    return jsonify(result), 200
+
+
+@assignment_bp.route("/api/assignments", methods=["POST"])
+def create_assignment():
+    """เพิ่มงานใหม่"""
+    data = request.get_json()
+
+    # validate field ที่จำเป็น
+    required = ["moodle_assignment_uid", "title", "deadline"]
+    for field in required:
+        if not data.get(field):
+            return jsonify({"error": f"กรุณากรอก {field}"}), 400
+
+    result = save_assignment(
+        moodle_assignment_uid = data["moodle_assignment_uid"],
+        title                 = data["title"],
+        deadline              = data["deadline"],
+        course_id             = data.get("course_id"),
+        course_name           = data.get("course_name"),
+        description           = data.get("description"),
+        source_url            = data.get("source_url"),
+    )
+
+    if not result["success"]:
+        return jsonify({"error": result["error"]}), 500
+
+    return jsonify({
+        "message":       "บันทึกงานสำเร็จ",
+        "assignment_id": result["assignment_id"]
+    }), 201
+
+
+@assignment_bp.route("/api/assignments/bulk", methods=["POST"])
+def create_bulk_assignments():
+    """เพิ่มงานหลายชิ้นพร้อมกัน (ใช้ตอนดึงจาก Moodle)"""
+    data = request.get_json()
+    assignments = data.get("assignments", [])
+
+    if not assignments:
+        return jsonify({"error": "ไม่มีข้อมูลงาน"}), 400
+
+    results = {"success": 0, "failed": 0, "errors": []}
+
+    for a in assignments:
+        result = save_assignment(
+            moodle_assignment_uid = a.get("moodle_assignment_uid"),
+            title                 = a.get("title"),
+            deadline              = a.get("deadline"),
+            course_id             = a.get("course_id"),
+            course_name           = a.get("course_name"),
+            description           = a.get("description"),
+            source_url            = a.get("source_url"),
+        )
+        if result["success"]:
+            results["success"] += 1
+        else:
+            results["failed"] += 1
+            results["errors"].append(result["error"])
+
+    return jsonify({
+        "message": f"บันทึกสำเร็จ {results['success']} รายการ ล้มเหลว {results['failed']} รายการ",
+        "details": results
+    }), 200
