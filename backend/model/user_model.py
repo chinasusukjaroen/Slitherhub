@@ -1,9 +1,10 @@
 import sqlite3
+from database import get_conn 
 #สร้างDB
 def create_users_table():
     conn = None
     try:
-        conn = sqlite3.connect("users.db")
+        conn = get_conn()
         cursor = conn.cursor()
 
         cursor.execute("""
@@ -36,7 +37,7 @@ def create_users_table():
 def update_moodle_user_id(student_id, moodle_user_id):
     conn = None
     try:
-        conn = sqlite3.connect("users.db")
+        conn = get_conn()
         cursor = conn.cursor()
         cursor.execute("UPDATE users SET moodle_user_id = ? WHERE student_id = ?",
                        (moodle_user_id, student_id))
@@ -61,7 +62,7 @@ def update_moodle_user_id(student_id, moodle_user_id):
 def update_moodle_api(student_id, moodle_api):
     conn = None
     try:
-        conn = sqlite3.connect("users.db")
+        conn = get_conn()
         cursor = conn.cursor()
     
         cursor.execute("UPDATE users SET moodle_API = ? WHERE student_id = ?",
@@ -87,7 +88,7 @@ def update_moodle_api(student_id, moodle_api):
 
 def get_moodle_user_id_by_student_id(student_id):
     try:
-        conn = sqlite3.connect("users.db")
+        conn = get_conn()
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
         cursor.execute("SELECT moodle_user_id FROM users WHERE student_id = ?", (student_id,))
@@ -102,7 +103,7 @@ def get_moodle_user_id_by_student_id(student_id):
 def get_users():
     conn = None
     try:
-        conn = sqlite3.connect("users.db")
+        conn = get_conn()
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
 
@@ -136,7 +137,7 @@ def get_users():
 def get_user_by_student_id(student_id: str):
     conn = None
     try:
-        conn = sqlite3.connect("users.db")
+        conn = get_conn()
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
 
@@ -156,6 +157,38 @@ def get_user_by_student_id(student_id: str):
     except Exception as e:
         return {"success": False, "data": None, "error": str(e)}
 
+    finally:
+        if conn: conn.close()
+
+
+def save_user(student_id, username=None, display_name=None, email=None,
+              moodle_API=None, moodle_user_id=None):
+    conn = None
+    try:
+        conn = get_conn()  # ✅ แก้ตรงนี้
+        cursor = conn.cursor()
+
+        cursor.execute("""
+            INSERT INTO users 
+            (student_id, username, display_name, email, moodle_API, moodle_user_id, last_login)
+            VALUES (?, ?, ?, ?, ?, ?, datetime('now', 'localtime'))
+            ON CONFLICT(student_id) DO UPDATE SET
+                username = excluded.username,
+                display_name = excluded.display_name,
+                email = excluded.email,
+                moodle_API = excluded.moodle_API,
+                moodle_user_id = excluded.moodle_user_id,
+                last_login = datetime('now', 'localtime')
+        """, (student_id, username, display_name, email, moodle_API, moodle_user_id))
+        conn.commit()
+
+        conn.row_factory = sqlite3.Row
+        cursor.execute("SELECT * FROM users WHERE student_id = ?", (student_id,))
+        row = cursor.fetchone()
+        return {"success": True, "data": dict(row) if row else None}
+    except Exception as e:
+        if conn: conn.rollback()
+        return {"success": False, "data": None, "error": str(e)}
     finally:
         if conn: conn.close()
 

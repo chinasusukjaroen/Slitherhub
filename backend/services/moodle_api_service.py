@@ -1,7 +1,7 @@
 from datetime import datetime, timezone, timedelta
-from backend.model.dbsql.user_model import update_moodle_user_id, get_moodle_user_id_by_student_id, update_moodle_api, get_user_by_student_id
-from backend.model.dbsql.assignment_model import get_assignment_by_moodle_id, save_assignment, update_assignment_deadline_and_description, get_assignment_by_assignment_id
-from backend.model.dbsql.user_task_model import get_user_task_by_user_id_and_assignment_id, save_user_task, update_task_status, get_user_tasks_by_user_id
+from backend.model.user_model import update_moodle_user_id, get_moodle_user_id_by_student_id, update_moodle_api, get_user_by_student_id
+from backend.model.assignment_model import get_assignment_by_moodle_id, save_assignment, update_assignment_deadline_and_description, get_assignment_by_assignment_id
+from backend.model.user_task_model import get_user_task_by_user_id_and_assignment_id, save_user_task, update_task_status, get_user_tasks_by_user_id
 from backend.model.TaskStatus import TaskStatus
 import requests
 

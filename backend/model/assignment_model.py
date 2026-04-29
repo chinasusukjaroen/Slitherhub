@@ -1,9 +1,10 @@
 import sqlite3
+from database import get_conn 
 #สร้าง DB 
 def create_assignments_table():
     conn = None
     try:
-        conn = sqlite3.connect("assignments.db")
+        conn = conn = get_conn()
         cursor = conn.cursor()
 
         cursor.execute("""

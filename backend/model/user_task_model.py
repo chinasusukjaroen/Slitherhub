@@ -1,9 +1,10 @@
 import sqlite3
+from database import get_conn 
 #สร้างDB
 def create_user_tasks_table():
     conn = None
     try:
-        conn = sqlite3.connect("user_tasks.db")
+        conn = get_conn()
         cursor = conn.cursor()
 
         cursor.execute("""
@@ -33,7 +34,7 @@ def create_user_tasks_table():
 def save_user_task(user_id, assignment_id, status="pending"):
     conn = None
     try:
-        conn = sqlite3.connect("user_tasks.db")
+        conn = get_conn()
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
 
@@ -54,7 +55,7 @@ def save_user_task(user_id, assignment_id, status="pending"):
 def update_task_status(user_id, assignment_id, status):
     conn = None
     try:
-        conn = sqlite3.connect("user_tasks.db")
+        conn = get_conn()
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
 
@@ -100,7 +101,7 @@ def update_task_status(user_id, assignment_id, status):
 def get_user_tasks():
     conn = None
     try:
-        conn = sqlite3.connect("user_tasks.db")
+        conn = get_conn()
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
 
@@ -132,7 +133,7 @@ def get_user_tasks():
 def get_user_tasks_by_user_id(user_id: int):
     conn = None
     try:
-        conn = sqlite3.connect("user_tasks.db")
+        conn = get_conn()
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
 
@@ -164,6 +165,8 @@ def get_user_tasks_by_user_id(user_id: int):
 def get_user_task_by_user_id_and_assignment_id(user_id, assignment_id):
     conn = None
     try:
+        conn = get_conn()
+        conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
 
         cursor.execute("""
