@@ -23,48 +23,48 @@ document.addEventListener('DOMContentLoaded', async function () {
     });
     // ====== END MOCK DATA ======
 
-    // ====== เปิดใช้ตอนเชื่อม DB จริง ======
-    // const url = student_id
-    //   ? `/api/user_task?student_id=${student_id}`
-    //   : '/api/user_task';
-    // const response = await fetch(url);
-    // const result = await response.json();
-    // if (result.success) {
-    //   result.data.forEach(task => {
-    //     const date = task.deadline.split('T')[0];
-    //     if (!deadlines[date]) deadlines[date] = [];
-    //     deadlines[date].push(`[${task.course_name}] ${task.title}`);
-    //   });
-    // }
-
   } catch (err) {
     console.error('โหลด deadline ไม่สำเร็จ:', err);
   }
 
   const calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: 'dayGridMonth',
-
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
       right: ''
     },
-
-
     datesSet: function() {
       Object.keys(deadlines).forEach(date => {
         const cell = document.querySelector(`[data-date="${date}"]`);
         if (cell) cell.classList.add('fc-day-has-deadline');
       });
     },
-
     dateClick: function(info) {
       showPopup(info.dateStr, info.jsEvent, deadlines);
     }
-
   });
 
   calendar.render();
+
+  // ====== เพิ่มเฉพาะส่วนการเลื่อนเมาส์ (Scroll Wheel) ตรงนี้ ======
+  let isScrolling = false;
+  calendarEl.addEventListener('wheel', function (e) {
+    e.preventDefault();
+    if (isScrolling) return;
+
+    isScrolling = true;
+    if (e.deltaY > 0) {
+      calendar.next(); // เลื่อนลงไปเดือนหน้า
+    } else {
+      calendar.prev(); // เลื่อนขึ้นย้อนไปเดือนก่อน
+    }
+
+    setTimeout(() => {
+      isScrolling = false;
+    }, 500); // หน่วงเวลา 0.5 วินาทีเพื่อให้เปลี่ยนเดือนไม่ไวเกินไป
+  }, { passive: false });
+  // ========================================================
 
 });
 

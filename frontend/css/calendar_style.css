@@ -1,4 +1,3 @@
-/* ===== Base ===== */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -7,29 +6,32 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background: #ffffff;
+  background: #F1F3F4;
   padding: 0;
   margin: 0;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* ===== Calendar Container ===== */
 #calendar {
-  width: 100%;
-  max-width: 100%;
+  width: 95%;
+  max-width: 1400px;
   background: #ffffff;
   padding: 16px 24px;
-  border-radius: 0;
-  box-shadow: none;
+  border-radius: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   border: none;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 100px);
+  margin-top: 20px;
+  overflow: hidden;
 }
 
 .fc {
   height: 100%;
 }
 
-/* ===== Toolbar ===== */
 .fc .fc-toolbar {
   background: transparent;
   padding: 0 0 16px 0;
@@ -69,7 +71,6 @@ body {
   box-shadow: none !important;
 }
 
-/* ===== Day Header ===== */
 .fc .fc-col-header-cell {
   background: transparent;
   border-color: #f3f4f6 !important;
@@ -85,7 +86,6 @@ body {
   text-decoration: none;
 }
 
-/* ===== Day Cells ===== */
 .fc .fc-daygrid-day {
   border-color: #f3f4f6 !important;
   transition: background 0.15s;
@@ -108,7 +108,6 @@ body {
   color: #d1d5db;
 }
 
-/* ===== Today ===== */
 .fc .fc-day-today {
   background: #eef2ff !important;
 }
@@ -126,7 +125,6 @@ body {
   margin: 6px;
 }
 
-/* ===== Deadline days ===== */
 .fc .fc-day-has-deadline {
   background: rgba(220, 38, 38, 0.08) !important;
 }
@@ -136,12 +134,10 @@ body {
   font-weight: 700 !important;
 }
 
-/* ซ่อน dot เดิม */
 .fc-day-has-deadline .fc-daygrid-day-number::after {
   display: none;
 }
 
-/* ===== Events ===== */
 .fc .fc-event {
   background-color: #272c76;
   border: none;
@@ -166,12 +162,10 @@ body {
   display: none;
 }
 
-/* ===== Scrollbar ===== */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: #f8f9fc; }
 ::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 10px; }
 
-/* ===== Bottom Navigation ===== */
 .bottom-nav {
   position: fixed;
   bottom: 0;
@@ -221,7 +215,6 @@ body {
   height: 20px;
 }
 
-/* ===== Popup ===== */
 #date-popup {
   position: absolute;
   background: #ffffff;

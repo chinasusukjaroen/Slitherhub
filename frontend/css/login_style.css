@@ -1,0 +1,265 @@
+/* 1. Base Setup & Background */
+:root {
+    --primary-blue: #2563eb;
+    --text-main: #1e293b;
+    /* ปรับให้ขาวขึ้นและทึบขึ้นเล็กน้อยเพื่อให้สู้กับพื้นหลังรูปภาพได้ */
+    --glass-bg: rgba(255, 255, 255, 0.65); 
+    --glass-border: rgba(255, 255, 255, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    color: var(--text-main);
+    overflow: hidden;
+    
+    /* ปรับ Overlay ให้มืดลงเป็น 0.4 เพื่อให้กล่อง Login ดู Pop Up ออกมา */
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                url('../image/wall.jpeg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* 2. Header & Logo */
+.header {
+    position: absolute;
+    top: 45px;
+    left: 50px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    width: 28px;
+    height: 28px;
+    stroke: #2563eb; /* เปลี่ยนเป็นสีน้ำเงินให้เด่นขึ้นบนพื้นหลังมืด */
+    stroke-width: 2.5;
+}
+
+.logo-text {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #ffffff; /* เปลี่ยนเป็นสีขาวเพื่อให้อ่านง่ายบนรูปภาพ */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.subtitle {
+    display: none;
+}
+
+/* 3. Login Card (ปรับให้ละมุนและอ่านง่ายขึ้นมาก) */
+.login-card {
+    background: var(--glass-bg);
+    /* เพิ่มความเบลอเป็น 40px เพื่อละลายลายสันหนังสือข้างหลัง */
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border: 1px solid var(--glass-border);
+    padding: 55px 60px;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 520px;
+    /* ปรับเงาให้ฟุ้งและกว้างขึ้นเพื่อให้ดูมีมิติ (Depth) */
+    box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.35);
+    margin-left: -45%; 
+    z-index: 10;
+}
+
+/* 4. Form Styling */
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+    color: rgba(0, 0, 0, 0.55); /* สีเข้มขึ้นนิดนึงให้อ่านง่าย */
+    font-weight: 700;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.form-control {
+    width: 100%;
+    padding: 16px 20px 16px 55px;
+    /* เพิ่มความขาวใสในช่องกรอก */
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 14px;
+    color: #1e293b;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.9);
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.1);
+}
+
+.input-icon-left, .input-icon-right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.input-icon-left { left: 18px; }
+.input-icon-right { right: 18px; }
+
+/* 5. Button Styling */
+.btn-submit {
+    width: 100%;
+    padding: 18px; /* เพิ่มความสูงปุ่มอีกนิดให้ดูพรีเมียม */
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s ease;
+    margin-top: 15px;
+}
+
+.btn-submit:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.4);
+}
+
+.btn-submit svg {
+    width: 20px;
+}
+
+/* 6. Footer */
+.footer {
+    position: absolute;
+    bottom: 40px;
+    left: 50px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+.footer-links {
+    display: none;
+}
+
+/* --- Responsive Design --- */
+
+/* สำหรับ Tablet (หน้าจอเล็กกว่า 1024px) */
+@media (max-width: 1024px) {
+    .login-card {
+        margin-left: 0; /* ยกเลิกการเลื่อนซ้าย ให้กลับมาอยู่กึ่งกลาง */
+        max-width: 600px;
+        padding: 50px;
+    }
+
+    .header, .footer {
+        left: 40px; /* ขยับระยะขอบเล็กน้อย */
+    }
+}
+
+/* สำหรับมือถือหน้าจอใหญ่ & แท็บเล็ตแนวตั้ง (หน้าจอเล็กกว่า 768px) */
+@media (max-width: 768px) {
+    body {
+        overflow-y: auto; /* อนุญาตให้ไถหน้าจอขึ้นลงได้ถ้าเนื้อหายาวเกิน */
+        padding: 80px 20px; /* เพิ่มพื้นที่บน-ล่าง */
+        justify-content: flex-start; /* จัดวางจากด้านบนลงมา */
+    }
+
+    .login-card {
+        margin-left: 0;
+        padding: 40px 30px;
+        border-radius: 20px;
+        max-width: 100%;
+    }
+
+    /* ปรับขนาดตัวอักษรให้เล็กลงเล็กน้อยเพื่อความพอดี */
+    .logo-text { font-size: 1.2rem; }
+    .btn-submit { padding: 16px; font-size: 1rem; }
+    
+    /* ขยับ Header และ Footer ให้ดูเป็นส่วนหนึ่งของหน้าจอ */
+    .header {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin-bottom: 40px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .logo-container { justify-content: center; }
+
+    .footer {
+        position: relative;
+        bottom: 0;
+        left: 0;
+        margin-top: 40px;
+        width: 100%;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.6);
+    }
+}
+
+/* สำหรับมือถือหน้าจอเล็กมาก (หน้าจอเล็กกว่า 480px) */
+@media (max-width: 480px) {
+    .login-card {
+        padding: 30px 20px;
+    }
+
+    .form-control {
+        padding: 14px 15px 14px 45px; /* ลดความพองของช่องกรอก */
+        font-size: 1rem;
+    }
+
+    .input-icon-left { left: 15px; }
+
+    .btn-submit {
+        font-size: 0.95rem;
+    }
+}
+
+/* สำหรับหน้าจอมือถือแนวนอน (Landscape) - ป้องกันปุ่มหาย */
+@media (max-height: 600px) {
+    body {
+        justify-content: flex-start;
+        padding: 40px 20px;
+        overflow-y: auto;
+    }
+    .header, .footer {
+        position: relative;
+        top: 0;
+        bottom: 0;
+        margin: 20px 0;
+    }
+}
