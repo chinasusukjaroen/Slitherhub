@@ -67,16 +67,18 @@ document.addEventListener("DOMContentLoaded", () => {
                     }),
                     credentials: "include"
                 });
-
+                console.log("0")
                 let data;
                 const contentType = response.headers.get("content-type");
-
+                console.log("1")
                 if (contentType && contentType.includes("application/json")) {
                     data = await response.json();
                     data = data.data
+                    console.log("2")
                 } else {
                     const text = await response.text();
                     throw new Error(`Server ตอบกลับไม่ใช่ JSON: ${text.substring(0, 100)}`);
+                    console.log("2.1")
                 }
 
                 console.log("📥 Response:", response.status, data);
