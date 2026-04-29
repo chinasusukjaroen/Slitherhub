@@ -31,7 +31,7 @@ def build_email(task):
             <h2 style="margin:0; font-size:16px;">🐍 Slither hub Hub</h2>
         </div>
         <div style="padding:24px;">
-            <p style="color:#b0b0b0; margin:0 0 16px;">Hi <strong>{task['name']}</strong></p>
+            <p style="color:#b0b0b0; margin:0 0 16px;">Hi <strong>{task['display_name']}</strong></p>
             <div style="background:#363636; border-radius:10px; padding:16px; margin-bottom:16px;">
                 <div style="font-size:12px; color:#787878; margin-bottom:4px;">{task['course_name']}</div>
                 <div style="font-size:16px; font-weight:600; margin-bottom:12px;">{task['title']}</div>

@@ -1,13 +1,16 @@
 # services/notify_service.py
 import sqlite3
+import logging
 from database import get_conn  # ✅ ใช้จาก database.py ตรงตามมาตรฐานโปรเจกต์
 
+# ตั้งค่า Logging สำหรับดูสถานะการทำงาน
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S"
+)
 
 def get_upcoming_deadlines(hours_ahead=72):
-    """
-    ดึงงานที่ใกล้ deadline (ค่าเริ่มต้น 3 วัน = 72 ชม.)
-    + ยังไม่แจ้งเตือน + ผู้ใช้มีอีเมล + สถานะไม่ใช่ done
-    """
     conn = get_conn()
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
@@ -42,15 +45,11 @@ def get_upcoming_deadlines(hours_ahead=72):
 
 
 def mark_as_notified(user_task_id):
-    """
-    อัปเดตว่าแจ้งเตือนงานนี้ให้ผู้ใช้คนนี้แล้ว (รายบุคคล)
-    ถ้าต้องการมาร์คที่ตาราง assignments ให้เปลี่ยนเป็น assignment_id ได้ตามโครงสร้าง
-    """
     conn = get_conn()
     cursor = conn.cursor()
     cursor.execute("""
         UPDATE user_tasks
-        SET is_notified = 1, notified_at = datetime('now', 'localtime')
+        SET is_notified = 1
         WHERE user_task_id = ?
     """, (user_task_id,))
     conn.commit()
@@ -58,7 +57,6 @@ def mark_as_notified(user_task_id):
 
 
 def reset_notifications():
-    """รีเซ็ตสถานะการแจ้งเตือนทั้งหมด (ใช้ตอน test/debug)"""
     conn = get_conn()
     cursor = conn.cursor()
     cursor.execute("""
@@ -70,7 +68,6 @@ def reset_notifications():
 
 
 def get_notification_summary():
-    """ดูสรุปงานที่แจ้งเตือนแล้ว / ยังไม่แจ้ง"""
     conn = get_conn()
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
@@ -84,3 +81,39 @@ def get_notification_summary():
     row = cursor.fetchone()
     conn.close()
     return dict(row) if row else {}
+
+
+# ==========================================
+# ✅ MAIN BLOCK: รันทดสอบ / ใช้กับ Scheduler
+# ==========================================
+if __name__ == "__main__":
+    try:
+        logging.info("🚀 เริ่มต้นระบบตรวจสอบ Deadline...")
+
+        # 1. ดึงงานที่ใกล้ครบกำหนด (ค่าเริ่มต้น 72 ชม. = 3 วัน)
+        deadlines = get_upcoming_deadlines(hours_ahead=24)
+
+        if not deadlines:
+            logging.info("✅ ไม่พบงานที่ต้องแจ้งเตือนในรอบนี้")
+        else:
+            logging.info(f"📦 พบงานที่ต้องแจ้งเตือน: {len(deadlines)} รายการ")
+
+            # 2. วนลูปแจ้งเตือน
+            for task in deadlines:
+                logging.info(f"🔔 แจ้งเตือน -> {task['display_name']} ({task['email']}) | งาน: {task['title']} | Deadline: {task['deadline']}")
+                
+                # 📧 TODO: ใส่โค้ดส่งอีเมลจริงตรงนี้ เช่น:
+                # send_email_notification(task['email'], task['title'], task['deadline'])
+                
+                # 3. มาร์คว่าแจ้งเตือนแล้ว (ป้องกันการส่งซ้ำ)
+                mark_as_notified(task['user_task_id'])
+                logging.info(f"✅ อัปเดตสถานะแจ้งเตือนเรียบร้อย (user_task_id: {task['user_task_id']})")
+
+        # 4. แสดงสรุปสถานะหลังรัน
+        summary = get_notification_summary()
+        logging.info(f"📊 สรุปสถานะ DB: รวม {summary['total_assignments']} | แจ้งแล้ว {summary['notified_count']} | รอแจ้ง {summary['pending_count']}")
+
+    except Exception as e:
+        logging.error(f"❌ เกิดข้อผิดพลาดในการรัน notify_service: {e}")
+    finally:
+        logging.info("🏁 จบการทำงาน notify_service")

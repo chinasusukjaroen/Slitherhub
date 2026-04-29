@@ -327,3 +327,31 @@
 2026-04-29 22:24:40 [INFO] 📡 Calling TU API for user: 6709616582
 2026-04-29 22:24:41 [INFO] 📥 TU API Response: 200
 2026-04-29 22:24:41 [INFO] 127.0.0.1 - - [29/Apr/2026 22:24:41] "POST /api/login HTTP/1.1" 200 -
+2026-04-30 00:51:49 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-30 00:51:49 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-30 00:51:49 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-30 00:51:49 [INFO]  * Restarting with stat
+2026-04-30 00:51:49 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-30 00:51:49 [WARNING]  * Debugger is active!
+2026-04-30 00:51:49 [INFO]  * Debugger PIN: 159-428-403
+2026-04-30 00:55:45 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\slit07\\Slitherhub\\backend\\notify_service.py', reloading
+2026-04-30 00:55:45 [INFO]  * Restarting with stat
+2026-04-30 00:55:46 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-30 00:55:46 [WARNING]  * Debugger is active!
+2026-04-30 00:55:46 [INFO]  * Debugger PIN: 159-428-403
+2026-04-30 00:55:59 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\slit07\\Slitherhub\\backend\\services\\email_service.py', reloading
+2026-04-30 00:55:59 [INFO]  * Restarting with stat
+2026-04-30 00:55:59 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-30 00:55:59 [WARNING]  * Debugger is active!
+2026-04-30 00:55:59 [INFO]  * Debugger PIN: 159-428-403
+2026-04-30 00:56:21 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\slit07\\Slitherhub\\backend\\notify_service.py', reloading
+2026-04-30 00:56:21 [INFO]  * Restarting with stat
+2026-04-30 00:56:22 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-30 00:56:22 [WARNING]  * Debugger is active!
+2026-04-30 00:56:22 [INFO]  * Debugger PIN: 159-428-403
+2026-04-30 00:57:53 [INFO]  * Detected change in 'C:\\Users\\admin\\OneDrive\\Desktop\\slit07\\Slitherhub\\backend\\notify_service.py', reloading
+2026-04-30 00:57:53 [INFO]  * Restarting with stat
+2026-04-30 00:57:54 [INFO] 🚀 Starting Flask server on port 5000...
+2026-04-30 00:57:54 [WARNING]  * Debugger is active!
+2026-04-30 00:57:54 [INFO]  * Debugger PIN: 159-428-403
