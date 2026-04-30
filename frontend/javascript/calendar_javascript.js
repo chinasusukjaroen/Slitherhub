@@ -24,13 +24,8 @@ document.addEventListener('DOMContentLoaded', async function () {
     if (data) {
       data.forEach(task => {
         // ข้ามงานที่ไม่มี deadline จริง
-        if (!task.deadline || task.deadline.startsWith('1970')) {
-    if (task.status !== 'overdue') return;
-    const today = new Date();
-    today.setHours(today.getHours() + 7); // แปลงเป็น UTC+7
-    task.deadline = today.toISOString().split('T')[0] + ' 23:59:00';
-}
-
+        if (!task.deadline || task.deadline.startsWith('1970')) return;
+        
         // รองรับทั้ง "2026-02-10 23:59:00" และ "2026-02-10T23:59:00"
         const date = task.deadline.split(/T| /)[0];
         const link = task.source_url || null;
