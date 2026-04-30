@@ -268,6 +268,7 @@ function assignmentCard(a) {
   const now = Date.now() / 1000;
   const due = a.duedate > 0 ? new Date(a.duedate * 1000) : null;
   const daysLeft = due ? Math.ceil((a.duedate - now) / 86400) : null;
+  const introText = stripHtml(a.intro || '');
 
   const statusBadge = {
     submitted: `<span class="badge badge-submitted"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> ส่งแล้ว</span>`,
@@ -309,7 +310,7 @@ function assignmentCard(a) {
               <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
               <span class="badge-subject">${escHtml(a.subject)}</span>
             </span>
-            ${a.intro ? `<span style="color:#9ca3af;font-size:12px">${escHtml(a.intro.substring(0, 60))}${a.intro.length > 60 ? '…' : ''}</span>` : ''}
+            ${introText ? `<span style="color:#9ca3af;font-size:12px">${escHtml(introText.substring(0, 60))}${introText.length > 60 ? '…' : ''}</span>` : ''}
           </div>
           <div class="card-status-row">${statusBadge}</div>
         </div>
@@ -341,6 +342,12 @@ function escHtml(str) {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
+}
+
+function stripHtml(html) {
+  const div = document.createElement('div');
+  div.innerHTML = html;
+  return div.innerText || div.textContent || '';
 }
 
 function showToast(msg) {
