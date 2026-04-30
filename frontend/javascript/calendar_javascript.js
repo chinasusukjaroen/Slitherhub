@@ -1,4 +1,4 @@
-import { CONFIG } from '../config.js';
+import { CONFIG } from './config.js';
 
 document.addEventListener('DOMContentLoaded', async function () {
 
@@ -40,17 +40,14 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
 
         // เพิ่ม event สำหรับ FullCalendar
-        const urgency = getUrgencyClass(task.deadline);
-        const color = '#7c3aed';
-
-calendarEvents.push({
-  title: task.course_name,
-  date:  date,
-  color: task.status === 'submitted' ? '#16a34a'
-       : task.status === 'pending'   ? '#ab0000'
-       : '#7c3aed',
-  url:   link || undefined,
-});
+        calendarEvents.push({
+          title: task.course_name,
+          date:  date,
+          color: task.status === 'submitted' ? '#16a34a'
+               : task.status === 'pending'   ? '#ab0000'
+               : '#7c3aed',
+          url:   link || undefined,
+        });
       });
     }
 
@@ -79,28 +76,28 @@ calendarEvents.push({
       }
     },
 
-datesSet: function () {
-  Object.keys(deadlines).forEach(date => {
-    const cell = document.querySelector(`[data-date="${date}"]`);
-    if (!cell) return;
+    datesSet: function () {
+      Object.keys(deadlines).forEach(date => {
+        const cell = document.querySelector(`[data-date="${date}"]`);
+        if (!cell) return;
 
-    cell.classList.add('fc-day-has-deadline');
+        cell.classList.add('fc-day-has-deadline');
 
-    // ถ้าทุกงานในวันนั้น submitted → ใช้ class พิเศษ
-    const allSubmitted = deadlines[date].every(t => t.status === 'submitted');
-    if (allSubmitted) {
-      cell.classList.add('urgency-submitted');
-      return;
-    }
+        // ถ้าทุกงานในวันนั้น submitted → ใช้ class พิเศษ
+        const allSubmitted = deadlines[date].every(t => t.status === 'submitted');
+        if (allSubmitted) {
+          cell.classList.add('urgency-submitted');
+          return;
+        }
 
-    const order = ['urgency-late', 'urgency-critical', 'urgency-warning', 'urgency-safe'];
-    const topClass = deadlines[date]
-      .map(t => getUrgencyClass(t.deadline))
-      .sort((a, b) => order.indexOf(a) - order.indexOf(b))[0];
+        const order = ['urgency-late', 'urgency-critical', 'urgency-warning', 'urgency-safe'];
+        const topClass = deadlines[date]
+          .map(t => getUrgencyClass(t.deadline))
+          .sort((a, b) => order.indexOf(a) - order.indexOf(b))[0];
 
-    cell.classList.add(topClass);
-  });
-},
+        cell.classList.add(topClass);
+      });
+    },
 
     dateClick: function (info) {
       showPopup(info.dateStr, info.jsEvent, deadlines);
@@ -140,10 +137,9 @@ function showPopup(dateStr, mouseEvent, deadlines) {
   if (old) old.remove();
 
   const tasks = deadlines[dateStr] || [];
-
   const taskHTML = tasks.length > 0
     ? tasks.map(t => {
-        const cls = getUrgencyClass(t.deadline);
+        const cls = t.status === 'submitted' ? 'urgency-safe' : getUrgencyClass(t.deadline);
         return `
           <div class="popup-task-item ${cls}">
             <span class="popup-dot"></span>

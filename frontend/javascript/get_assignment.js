@@ -1,5 +1,5 @@
 // getElementById('assignment-list') ในพารามิเตอร์อย่าลืมเปลี่ยนชื่่อในhtmlที่ต้องใช้jsให้ตรงกับบรรทัดที่ 2 ด้วยนะ
-import { CONFIG } from '../config.js';
+import { CONFIG } from './config.js';
 
 
 const listContainer = document.getElementById('assignmentList');

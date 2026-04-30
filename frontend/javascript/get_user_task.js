@@ -1,4 +1,4 @@
-import { CONFIG } from '../config.js';
+import { CONFIG } from './config.js';
 
 // แก้: ชี้ไป contentArea ให้ตรงกับ HTML
 const taskContainer = document.getElementById('contentArea');

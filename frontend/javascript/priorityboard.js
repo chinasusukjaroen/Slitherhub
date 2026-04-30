@@ -1,48 +1,5 @@
-import { CONFIG } from '../config.js';
+import { CONFIG } from './config.js';
 
-// ── Data ──────────────────────────────────────────────────────────────────────
-// var tasks = [
-//   {
-//     task_id: 1,
-//     title: "Final Exam — Computer Networks",
-//     course_name: "CN401 Computer Networks",
-//     hours_left: 10,
-//     urgency_score: 60, keyword_score: 30, duration_score: 7,
-//     priority_score: 97, priority_level: "URGENT",
-//   },
-//   {
-//     task_id: 5,
-//     title: "Quiz 3 — Data Structures",
-//     course_name: "CS201 Data Structures",
-//     hours_left: 20,
-//     urgency_score: 60, keyword_score: 20, duration_score: 7,
-//     priority_score: 87, priority_level: "URGENT",
-//   },
-//   {
-//     task_id: 4,
-//     title: "โปรเจกต์กลุ่ม — ระบบ E-Commerce",
-//     course_name: "SE302 Software Engineering",
-//     hours_left: 72,
-//     urgency_score: 45, keyword_score: 30, duration_score: 2,
-//     priority_score: 77, priority_level: "HIGH",
-//   },
-//   {
-//     task_id: 2,
-//     title: "Lab 5 — TCP/IP",
-//     course_name: "CN401 Computer Networks",
-//     hours_left: 50,
-//     urgency_score: 45, keyword_score: 20, duration_score: 2,
-//     priority_score: 67, priority_level: "HIGH",
-//   },
-//   {
-//     task_id: 3,
-//     title: "ประกาศแจ้งข่าว — ปิดระบบชั่วคราว",
-//     course_name: "ฝ่ายวิชาการ",
-//     hours_left: 200,
-//     urgency_score: 15, keyword_score: 10, duration_score: 2,
-//     priority_score: 27, priority_level: "LOW",
-//   },
-// ];
 
 var tasks = [];
 

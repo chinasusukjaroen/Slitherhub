@@ -2,14 +2,14 @@
 import { CONFIG } from './config.js';
 
 document.addEventListener("DOMContentLoaded", () => {
-    // ─── 1. เลือกองค์ประกอบจาก DOM ─────────────────────────────
+    // เลือกองค์ประกอบจาก DOM
     const form = document.getElementById("login-form");
     const studentIdInput = document.getElementById("student-id");
     const passwordInput = document.getElementById("password-input");
     const togglePasswordBtn = document.getElementById("toggle-password");
     const submitBtn = form?.querySelector('button[type="submit"]');
 
-    // ─── 2. ฟังก์ชันแสดง/ซ่อนรหัสผ่าน ──────────────────────────
+    // ฟังก์ชันแสดง/ซ่อนรหัสผ่าน
     if (togglePasswordBtn) {
         togglePasswordBtn.addEventListener("click", () => {
             const isPassword = passwordInput.type === "password";
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // ─── 3. จัดการฟอร์ม ────────────────────────────────────────
+    // จัดการฟอร์ม 
     if (form) {
         form.addEventListener("submit", async (e) => {
             e.preventDefault();
