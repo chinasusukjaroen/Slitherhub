@@ -60,7 +60,31 @@ let activeFilter = "ALL";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 function formatHours(h) {
-  if (h <= 0) return "Overdue";
+  if (h <= 0) {
+    const overdue = Math.abs(h);
+
+    const years = Math.floor(overdue / (24 * 365));
+
+    
+    if (years > 50) return "Overdue";
+
+    const daysLeft = overdue % (24 * 365);
+    const days = Math.floor(daysLeft / 24);
+    const hrs  = Math.round(daysLeft % 24);
+
+    if (years > 0) {
+      if (days && hrs) return `Overdue (${years}y ${days}d ${hrs}h)`;
+      if (days) return `Overdue (${years}y ${days}d)`;
+      return `Overdue (${years}y)`;
+    }
+
+    if (days > 0) {
+      return hrs ? `Overdue (${days}d ${hrs}h)` : `Overdue (${days}d)`;
+    }
+
+    return `Overdue (${Math.round(overdue)}h)`;
+  }
+
   if (h < 24) return `${Math.round(h)}h left`;
   const days = Math.floor(h / 24);
   const hrs  = Math.round(h % 24);
@@ -126,7 +150,9 @@ try {
         duration_score: item.duration_score,
         priority_score: item.priority_score,
         priority_level: item.priority_level,
-        deadline: formatDate(item.deadline)
+        deadline: formatDate(item.deadline),
+        source_url: item.source_url
+
       };
     });
     } else {
@@ -248,8 +274,25 @@ function makeCard(task, index) {
   breakdown.appendChild(makeScoreBar("⏱ Time Urgency",    task.urgency_score,  60, "#b91c1c"));
   breakdown.appendChild(makeScoreBar("🔍 Keyword Weight",  task.keyword_score,  30, "#c2410c"));
   breakdown.appendChild(makeScoreBar("⏳ Task Duration",   task.duration_score, 10, "#0f766e"));
+  
+  console.log(task)
+  const link = el("a", {
+    class: "breakdown-link",
+    href: task.source_url || null,
+    target: "_blank",
+    style: { textDecoration: "underline", cursor: "pointer" }
+  });
+
+  link.textContent = "ลิงก์ส่งงาน";
+
+  const p_score = el("span", {
+  })
+
+  p_score.append("Total: ", el("span", { style: { color: m.color } }, String(task.priority_score)))
+
   const total = el("div", { class: "breakdown-total" });
-  total.append("Total: ", el("span", { style: { color: m.color } }, String(task.priority_score)));
+  total.append(link, p_score);
+  
   breakdown.appendChild(total);
 
   card.append(top, timeRow, breakdown);
