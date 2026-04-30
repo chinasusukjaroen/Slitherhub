@@ -43,12 +43,14 @@ document.addEventListener('DOMContentLoaded', async function () {
         const urgency = getUrgencyClass(task.deadline);
         const color = '#7c3aed';
 
-        calendarEvents.push({
-          title: task.course_name,
-          date:  date,
-          color: color,
-          url:   link || undefined,
-        });
+calendarEvents.push({
+  title: task.course_name,
+  date:  date,
+  color: task.status === 'submitted' ? '#16a34a'
+       : task.status === 'pending'   ? '#ab0000'
+       : '#7c3aed',
+  url:   link || undefined,
+});
       });
     }
 
@@ -77,22 +79,28 @@ document.addEventListener('DOMContentLoaded', async function () {
       }
     },
 
-    datesSet: function () {
-      Object.keys(deadlines).forEach(date => {
-        const cell = document.querySelector(`[data-date="${date}"]`);
-        if (!cell) return;
+datesSet: function () {
+  Object.keys(deadlines).forEach(date => {
+    const cell = document.querySelector(`[data-date="${date}"]`);
+    if (!cell) return;
 
-        cell.classList.add('fc-day-has-deadline');
+    cell.classList.add('fc-day-has-deadline');
 
-        // หา urgency สูงสุดของวันนั้น (ถ้ามีหลายงาน)
-        const order = ['urgency-late', 'urgency-critical', 'urgency-warning', 'urgency-safe'];
-        const topClass = deadlines[date]
-          .map(t => getUrgencyClass(t.deadline))
-          .sort((a, b) => order.indexOf(a) - order.indexOf(b))[0];
+    // ถ้าทุกงานในวันนั้น submitted → ใช้ class พิเศษ
+    const allSubmitted = deadlines[date].every(t => t.status === 'submitted');
+    if (allSubmitted) {
+      cell.classList.add('urgency-submitted');
+      return;
+    }
 
-        cell.classList.add(topClass);
-      });
-    },
+    const order = ['urgency-late', 'urgency-critical', 'urgency-warning', 'urgency-safe'];
+    const topClass = deadlines[date]
+      .map(t => getUrgencyClass(t.deadline))
+      .sort((a, b) => order.indexOf(a) - order.indexOf(b))[0];
+
+    cell.classList.add(topClass);
+  });
+},
 
     dateClick: function (info) {
       showPopup(info.dateStr, info.jsEvent, deadlines);

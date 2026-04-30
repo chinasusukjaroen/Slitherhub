@@ -308,21 +308,9 @@ body {
   border-left-color: #ef4444;
   color: #991b1b;
 }
-
-/* 🟡 Warning — ≤ 30 วัน */
-.popup-task-item.urgency-warning {
-  background: #fefce8;
-  border-left-color: #eab308;
-  color: #854d0e;
+.urgency-submitted {
+  background-color: #dcfce7 !important; /* เขียวอ่อน */
 }
-
-/* 🟢 Safe — นอกจากนั้น */
-.popup-task-item.urgency-safe {
-  background: #f0fdf4;
-  border-left-color: #22c55e;
-  color: #166534;
-}
-
 /* ===== Popup Dot ===== */
 .popup-dot {
   width: 8px;
