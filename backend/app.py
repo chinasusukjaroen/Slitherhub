@@ -51,4 +51,4 @@ if __name__ == "__main__":
     logging.info(" Scheduler เริ่มทำงานแล้ว (ทุกวันเที่ยงคืน)")
     run_notify()  
  
-    app.run(debug=True, port=5000, host="127.0.0.1", use_reloader=False)
+    app.run(debug=True, port=5000, host="0.0.0.0", use_reloader=False)
