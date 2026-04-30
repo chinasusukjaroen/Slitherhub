@@ -85,7 +85,7 @@ def update_assignment_deadline_and_description(moodle_assignemnt_uid, deadline, 
         """, (deadline, description, moodle_assignemnt_uid, deadline, description))
 
         updated = cursor.rowcount > 0
-
+        conn.commit()
         cursor.execute("""
             SELECT assignment_id
             FROM assignments
