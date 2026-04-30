@@ -339,3 +339,7 @@ body {
   .nav-item { padding: 8px 12px; }
 }
 @keyframes spin { to { transform: rotate(360deg); } }
+.detail-intro {
+  word-break: break-all;   /* ตัดคำยาวๆ/ลิงก์ */
+  overflow-wrap: break-word;
+}

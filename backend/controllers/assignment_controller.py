@@ -16,10 +16,10 @@ assignment_bp = Blueprint("assignment", __name__)
 
 @assignment_bp.route("/sync_assignments", methods=["POST"])
 @token_required
-def sync_assignments():
+def controller_sync_assignments():
     student_id = request.current_user
-    status = sync_assignments(student_id)
-    return jsonify({"status": status}), 200
+    info = sync_assignments(student_id)
+    return jsonify(info), 200
 
 @assignment_bp.route("/notifications/pending", methods=["GET"])
 @token_required

@@ -13,16 +13,41 @@ if (!task) {
   renderDetail(task);
 }
 
+// Parse deadline from title string e.g. "... (Due: วันอังคารที่ 28 เม.ย. 2569 เวลา 23.59 น.)"
+function parseDueDateFromTitle(title) {
+  const match = title.match(/Due:\s*\S+\s+(\d+)\s+(\S+)\s+(\d+)\s+เวลา\s+(\d+)\.(\d+)/);
+  if (!match) return null;
+
+  const [, day, monthStr, yearBE, hour, minute] = match;
+
+  const monthMap = {
+    'ม.ค.': 0, 'ก.พ.': 1, 'มี.ค.': 2, 'เม.ย.': 3,
+    'พ.ค.': 4, 'มิ.ย.': 5, 'ก.ค.': 6, 'ส.ค.': 7,
+    'ก.ย.': 8, 'ต.ค.': 9, 'พ.ย.': 10, 'ธ.ค.': 11
+  };
+
+  const month = monthMap[monthStr];
+  if (month === undefined) return null;
+
+  const yearCE = parseInt(yearBE) - 543; // แปลง พ.ศ. → ค.ศ.
+  const date = new Date(yearCE, month, parseInt(day), parseInt(hour), parseInt(minute));
+  return isNaN(date.getTime()) ? null : date;
+}
+
 function renderDetail(a) {
   const stripeColor = { submitted: '#0f766e', pending: '#d97706', late: '#dc2626' }[a.status] || '#9ca3af';
 
-  const due = a.duedate > 0 ? new Date(a.duedate * 1000) : null;
+  // ใช้ duedate ถ้ามี ถ้าไม่มีให้ parse จาก title
+  let due = a.duedate > 0 ? new Date(a.duedate * 1000) : parseDueDateFromTitle(a.title || '');
+
   const dateStr = due
     ? due.toLocaleDateString('th-TH', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })
     : '-';
 
   const now = Date.now() / 1000;
-  const daysLeft = due ? Math.ceil((a.duedate - now) / 86400) : null;
+  const dueTimestamp = due ? due.getTime() / 1000 : null;
+  const daysLeft = dueTimestamp ? Math.ceil((dueTimestamp - now) / 86400) : null;
+
   let daysLabel = '-';
   if (daysLeft !== null) {
     if (daysLeft <= 0)       daysLabel = '<span style="color:#dc2626;font-weight:700">วันนี้!</span>';
@@ -63,7 +88,7 @@ function renderDetail(a) {
           </div>` : ''}
         </div>
 
-        ${a.intro ? `<div class="detail-intro">${escHtml(a.intro)}</div>` : ''}
+        ${a.intro ? `<div class="detail-intro">${a.intro}</div>` : ''}
 
         <div class="detail-actions">
           ${a.source_url ? `

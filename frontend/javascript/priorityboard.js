@@ -60,7 +60,31 @@ let activeFilter = "ALL";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 function formatHours(h) {
-  if (h <= 0) return "Overdue";
+  if (h <= 0) {
+    const overdue = Math.abs(h);
+
+    const years = Math.floor(overdue / (24 * 365));
+
+    
+    if (years > 50) return "Overdue";
+
+    const daysLeft = overdue % (24 * 365);
+    const days = Math.floor(daysLeft / 24);
+    const hrs  = Math.round(daysLeft % 24);
+
+    if (years > 0) {
+      if (days && hrs) return `Overdue (${years}y ${days}d ${hrs}h)`;
+      if (days) return `Overdue (${years}y ${days}d)`;
+      return `Overdue (${years}y)`;
+    }
+
+    if (days > 0) {
+      return hrs ? `Overdue (${days}d ${hrs}h)` : `Overdue (${days}d)`;
+    }
+
+    return `Overdue (${Math.round(overdue)}h)`;
+  }
+
   if (h < 24) return `${Math.round(h)}h left`;
   const days = Math.floor(h / 24);
   const hrs  = Math.round(h % 24);

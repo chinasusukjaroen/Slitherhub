@@ -1,12 +1,5 @@
 import { CONFIG } from './config.js';
 
-// ══════════════════════════════════════════════════════
-//  🔧 MODE SWITCH
-//  true  = ใช้ข้อมูล Mock (ปิด Moodle ไว้ก่อน)
-//  false = ดึงข้อมูลจาก Backend จริง
-const USE_MOCK = true;
-// ══════════════════════════════════════════════════════
-
 let assignments = [];
 let currentTab = 'all';
 let quickFilterStatus = null;
@@ -113,7 +106,6 @@ function quickFilter(status, el) {
   document.querySelectorAll('.stat-card').forEach(c => c.classList.remove('active-filter'));
   if (quickFilterStatus) el.classList.add('active-filter');
 
-  // tab index: all=0, pending=1, submitted=2, late=3
   const tabMap = { all: 0, pending: 1, submitted: 2, late: 3 };
   const tabBtns = document.querySelectorAll('.tab-btn');
   tabBtns.forEach(b => b.classList.remove('active'));
@@ -130,27 +122,17 @@ function quickFilter(status, el) {
 
 /* ============================================================
    BACKEND API FETCH
-   - isFetching guard ป้องกัน fetch ซ้อน
-   - hasFetched ป้องกัน fetch ซ้ำถ้าโหลดสำเร็จแล้ว
 ============================================================ */
 async function fetchMoodleData() {
-  if (isFetching) {
-    console.warn('⏳ Fetch already in progress, skipping.');
-    return;
-  }
-  if (hasFetched) {
-    console.log('✅ Already fetched, skipping.');
-    return;
-  }
+  if (isFetching) return;
+  if (hasFetched) return;
   if (!CONFIG?.BACKEND_API_URL || CONFIG.BACKEND_API_URL.includes('yourdomain')) {
     showToast('⚠️ กรุณาตั้งค่า BACKEND_API_URL ใน config.js');
-    console.warn('CONFIG:', CONFIG);
     return;
   }
 
   isFetching = true;
   showSkeleton();
-  console.log('🚀 Fetching tasks...');
 
   try {
     const response = await fetch(`${CONFIG.BACKEND_API_URL}/tasks`, {
@@ -163,90 +145,43 @@ async function fetchMoodleData() {
 
     const jsonData = await response.json();
     const data = jsonData.data;
-    console.log('📦 Data received:', data?.length, 'items');
+    console.log('📋 data field:', data);
 
     assignments = (Array.isArray(data) ? data : []).map(task => {
       let dueTs = 0;
-      if (task.duedate) {
-        const d = new Date(task.duedate);
+
+      const rawDue = task.deadline || task.duedate;
+      if (rawDue) {
+        const d = new Date(rawDue);
         dueTs = isNaN(d.getTime()) ? 0 : Math.floor(d.getTime() / 1000);
       }
+
       let status = (task.status || 'pending').toLowerCase();
+      if (status === 'overdue') status = 'late';
       if (!['pending', 'submitted', 'late'].includes(status)) status = 'pending';
 
       return {
-        id:       task.id,
-        title:    task.title || 'ไม่มีชื่อ',
-        subject:  task.subject || task.course || 'วิชาไม่ระบุ',
-        courseId: task.courseId || task.course_id || 0,
-        duedate:  dueTs,
+        id:         task.assignment_id || task.id,
+        title:      task.title || 'ไม่มีชื่อ',
+        subject:    task.course_name || task.subject || task.course || 'วิชาไม่ระบุ',
+        courseId:   task.courseId || task.course_id || 0,
+        duedate:    dueTs,
         status,
-        intro:    task.description || task.intro || '',
+        intro:      task.description || task.intro || '',
+        source_url: task.source_url || '',
       };
     });
 
     hasFetched = true;
     processAndRender();
-    showToast(`✅ โหลดสำเร็จ ${assignments.length} งาน`);
 
   } catch (err) {
-    console.error('❌ Fetch error:', err);
+    console.error('❌ Fetch error:', err.message);
     showToast('❌ ' + (err.message || 'ดึงข้อมูลไม่สำเร็จ'));
     renderEmpty(`เชื่อมต่อเซิร์ฟเวอร์ไม่สำเร็จ<br><small style="color:#9ca3af">${err.message || ''}</small>`);
   } finally {
     isFetching = false;
   }
-}
-
-/* ============================================================
-   MOCK DATA — ใช้ตอน USE_MOCK = true
-   เปลี่ยน USE_MOCK เป็น false เพื่อเชื่อม Moodle จริง
-============================================================ */
-function loadDemoData() {
-  const now = Date.now() / 1000;
-  const D = (d) => now + 86400 * d; // helper: D(2) = อีก 2 วัน, D(-1) = เมื่อวาน
-
-  assignments = [
-    // ── CS211 โครงสร้างข้อมูล ──────────────────────────────
-    { id:1,  title:'Lab Report: Linked List & Stack',         subject:'CS211 โครงสร้างข้อมูล',        courseId:1, duedate:D(1),   status:'pending',   intro:'เขียนรายงานการทดลอง พร้อมวิเคราะห์ time complexity' },
-    { id:2,  title:'โจทย์ Programming ชุดที่ 3 — Queue',      subject:'CS211 โครงสร้างข้อมูล',        courseId:1, duedate:D(5),   status:'submitted', intro:'ข้อ 1–15 ส่งผ่าน Moodle' },
-    { id:3,  title:'Midterm Project: Binary Search Tree',     subject:'CS211 โครงสร้างข้อมูล',        courseId:1, duedate:D(-4),  status:'late',      intro:'ต้อง implement insert / delete / search ครบ' },
-    { id:4,  title:'Quiz ท้ายบท: Hash Table & Collision',     subject:'CS211 โครงสร้างข้อมูล',        courseId:1, duedate:D(12),  status:'pending',   intro:'ออนไลน์ 30 นาที ไม่เปิดหนังสือ' },
-
-    // ── CS231 ฐานข้อมูล ─────────────────────────────────────
-    { id:5,  title:'สรุปบทที่ 4: Database Normalization',     subject:'CS231 ฐานข้อมูล',              courseId:2, duedate:D(-1),  status:'late',      intro:'สรุปเนื้อหา 1NF 2NF 3NF พร้อมตัวอย่าง' },
-    { id:6,  title:'ER Diagram — ระบบจองห้องพัก',             subject:'CS231 ฐานข้อมูล',              courseId:2, duedate:D(10),  status:'pending',   intro:'วาด ER Diagram + แปลงเป็น Relational Schema' },
-    { id:7,  title:'Lab SQL: Subquery & Join',                subject:'CS231 ฐานข้อมูล',              courseId:2, duedate:D(3),   status:'submitted', intro:'10 ข้อ ส่ง .sql file' },
-    { id:8,  title:'Final Project: ออกแบบฐานข้อมูลห้องสมุด',  subject:'CS231 ฐานข้อมูล',              courseId:2, duedate:D(21),  status:'pending',   intro:'งานกลุ่ม 3 คน ส่ง ER + Schema + Query' },
-
-    // ── MATH201 คณิตศาสตร์วิศวกรรม ──────────────────────────
-    { id:9,  title:'Homework Set 5: Laplace Transform',       subject:'MATH201 คณิตศาสตร์วิศวกรรม',  courseId:3, duedate:D(-2),  status:'late',      intro:'โจทย์ 1–20 จากหนังสือหน้า 145' },
-    { id:10, title:'Quiz บทที่ 2: Fourier Series',            subject:'MATH201 คณิตศาสตร์วิศวกรรม',  courseId:3, duedate:D(-6),  status:'submitted', intro:'' },
-    { id:11, title:'Homework Set 6: Differential Equations',  subject:'MATH201 คณิตศาสตร์วิศวกรรม',  courseId:3, duedate:D(6),   status:'pending',   intro:'โจทย์ 1–15 แสดงวิธีทำทุกข้อ' },
-    { id:12, title:'Midterm Exam Review Sheet',               subject:'MATH201 คณิตศาสตร์วิศวกรรม',  courseId:3, duedate:D(2),   status:'pending',   intro:'สรุปสูตรทั้งหมดที่ออกสอบ บท 1–4' },
-
-    // ── CS301 Algorithm Design ───────────────────────────────
-    { id:13, title:'รายงานวิเคราะห์ Sorting Algorithms',      subject:'CS301 Algorithm Design',       courseId:4, duedate:D(7),   status:'pending',   intro:'เปรียบเทียบ Time & Space complexity ของ 5 algorithm' },
-    { id:14, title:'Presentation: Greedy vs Dynamic Prog.',   subject:'CS301 Algorithm Design',       courseId:4, duedate:D(14),  status:'submitted', intro:'นำเสนอ 15 นาที พร้อม slide' },
-    { id:15, title:'Lab: Graph Traversal (BFS & DFS)',        subject:'CS301 Algorithm Design',       courseId:4, duedate:D(0),   status:'pending',   intro:'ส่งโค้ด Python + รายงาน 1 หน้า' },
-    { id:16, title:'Assignment: Divide & Conquer',            subject:'CS301 Algorithm Design',       courseId:4, duedate:D(-3),  status:'submitted', intro:'' },
-
-    // ── NET401 เครือข่ายคอมพิวเตอร์ ─────────────────────────
-    { id:17, title:'Lab: Network Topology Simulation',        subject:'NET401 เครือข่ายคอมพิวเตอร์', courseId:5, duedate:D(3),   status:'pending',   intro:'ใช้ Cisco Packet Tracer ตาม scenario ที่กำหนด' },
-    { id:18, title:'Final Project Proposal',                  subject:'NET401 เครือข่ายคอมพิวเตอร์', courseId:5, duedate:D(20),  status:'pending',   intro:'ส่ง proposal 1 หน้า A4 ระบุ scope + timeline' },
-    { id:19, title:'รายงาน: TCP/IP Protocol Stack',           subject:'NET401 เครือข่ายคอมพิวเตอร์', courseId:5, duedate:D(-5),  status:'late',      intro:'อธิบายแต่ละ layer พร้อม diagram' },
-    { id:20, title:'Quiz: Subnetting & CIDR',                 subject:'NET401 เครือข่ายคอมพิวเตอร์', courseId:5, duedate:D(-8),  status:'submitted', intro:'' },
-
-    // ── SE401 Software Engineering ───────────────────────────
-    { id:21, title:'Use Case Diagram — ระบบร้านอาหาร',        subject:'SE401 Software Engineering',   courseId:6, duedate:D(4),   status:'pending',   intro:'วาดด้วย draw.io ส่งเป็น PDF' },
-    { id:22, title:'Sprint 1 Review Report',                  subject:'SE401 Software Engineering',   courseId:6, duedate:D(-2),  status:'submitted', intro:'สรุป backlog + demo video 5 นาที' },
-    { id:23, title:'Unit Testing: Jest Framework',            subject:'SE401 Software Engineering',   courseId:6, duedate:D(9),   status:'pending',   intro:'test coverage ไม่ต่ำกว่า 80%' },
-    { id:24, title:'Final Presentation: Senior Project',      subject:'SE401 Software Engineering',   courseId:6, duedate:D(30),  status:'pending',   intro:'นำเสนอต่อกรรมการ 30 นาที พร้อม demo' },
-  ];
-
-  hasFetched = true;
-  processAndRender();
-  console.log('🧪 Mock mode: loaded', assignments.length, 'assignments across', new Set(assignments.map(a => a.subject)).size, 'subjects');
 }
 
 /* ============================================================
@@ -278,7 +213,6 @@ function updateStats() {
   drawDonut(submitted, pending, late);
 }
 
-// อัปเดต subject dropdown จากข้อมูลที่โหลดมา (Mock หรือ Moodle จริง)
 function updateSubjectFilter() {
   const sel = document.getElementById('subjectFilter');
   const subjects = [...new Set(assignments.map(a => a.subject))].sort();
@@ -417,19 +351,10 @@ function showToast(msg) {
 }
 
 /* ============================================================
-   INIT — ทำงานครั้งเดียวตอนโหลดหน้า
-   สลับ USE_MOCK บนสุดไฟล์เพื่อเปิด/ปิด Moodle
+   INIT
 ============================================================ */
-if (USE_MOCK) {
-  loadDemoData();
-} else if (CONFIG?.BACKEND_API_URL && !CONFIG.BACKEND_API_URL.includes('yourdomain')) {
-  fetchMoodleData();
-} else {
-  showToast('⚠️ ตั้งค่า BACKEND_API_URL ใน config.js หรือเปิด USE_MOCK');
-  renderEmpty('ยังไม่ได้ตั้งค่า Backend — เปิด USE_MOCK หรือตั้งค่า config.js');
-}
+fetchMoodleData();
 
-// Expose ฟังก์ชันที่ HTML เรียกใช้ผ่าน onclick (จำเป็นสำหรับ ES module)
 window.quickFilter      = quickFilter;
 window.switchTab        = switchTab;
 window.renderCurrentTab = renderCurrentTab;
