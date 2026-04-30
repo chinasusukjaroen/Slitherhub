@@ -17,7 +17,8 @@ def create_assignments_table():
                 description      TEXT,
                 source_url       TEXT,
                 deadline         DATETIME NOT NULL,
-                created_at       TIMESTAMP DEFAULT (datetime('now', 'localtime'))
+                created_at       TIMESTAMP DEFAULT (datetime('now', 'localtime')),
+                is_notified      BOOLEAN DEFAULT 0
             )
         """)
 

@@ -19,6 +19,7 @@ def create_user_tasks_table():
                 FOREIGN KEY (user_id)       REFERENCES users(user_id),
                 FOREIGN KEY (assignment_id) REFERENCES assignments(assignment_id),
                 UNIQUE(user_id, assignment_id)
+          
             )
         """)
 
