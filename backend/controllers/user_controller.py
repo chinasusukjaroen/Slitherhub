@@ -74,7 +74,7 @@ def login():
         path="/"
     )
 
-    print(f"✅ Login success: {result['username']}")
+    print(f" Login success: {result['username']}")
     return response
 
 

@@ -52,11 +52,6 @@ def login_moodle(username, password):
             update_moodle_api(username, token)
 
             moodle_user_id = safe_call_database_func(get_moodle_user_id_by_student_id, username)
-            # user = safe_call_database_func(get_user_by_student_id, username)
-            # print("Moodle user return:", user)
-
-            # moodle_user_id = user.get("moodle_user_id")
-            # print("Moodle user_id return:", moodle_user_id)
 
             print("Moodle_user_id:", moodle_user_id)
 

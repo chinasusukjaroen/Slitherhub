@@ -7,13 +7,6 @@ from middlewares.user_middleware import token_required
 assignment_bp = Blueprint("assignment", __name__)
 
 
-# @assignment_bp.route("/assignments", methods=["GET"])
-# @token_required
-# def get_assignments():
-#     assignments = get_all_assignments()
-#     return jsonify({"assignments": assignments}), 200
-
-
 @assignment_bp.route("/sync_assignments", methods=["POST"])
 @token_required
 def controller_sync_assignments():

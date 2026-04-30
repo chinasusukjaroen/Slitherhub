@@ -34,6 +34,6 @@ def health():
     return jsonify({"status": "ok", "service": "web"}), 200
 
 if __name__ == "__main__":
-    logging.info("🚀 Starting Flask server on port 5000...")
+    logging.info(" Starting Flask server on port 5000...")
     init_db()   
     app.run(debug=True, port=5000, host="127.0.0.1", use_reloader=False)

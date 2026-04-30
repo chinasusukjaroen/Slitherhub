@@ -13,17 +13,17 @@ load_dotenv(dotenv_path=BASE_DIR / ".env")
 
 logger = logging.getLogger(__name__)
 
-# ─── Config ─────────────────────────────────────────────
+#  Config 
 JWT_SECRET = os.getenv("JWT_SECRET")
 
 if not JWT_SECRET:
-    raise RuntimeError("❌ JWT_SECRET is missing in .env")
+    raise RuntimeError(" JWT_SECRET is missing in .env")
 
 if not isinstance(JWT_SECRET, str):
-    raise TypeError("❌ JWT_SECRET must be a string")
+    raise TypeError(" JWT_SECRET must be a string")
 
 if len(JWT_SECRET) < 32:
-    logger.warning("⚠️ JWT_SECRET ไม่ปลอดภัย! ควรยาว ≥ 32 ตัวอักษร")
+    logger.warning("JWT_SECRET ไม่ปลอดภัย! ควรยาว ≥ 32 ตัวอักษร")
 
 TU_API_URL = os.getenv(
     "TU_API_URL",
@@ -75,7 +75,7 @@ def create_token(username, extra_claims=None):
     return token
 
 
-# ─── 2. ตรวจสอบการล็อกอิน ───────────────────────────────
+# ตรวจสอบการล็อกอิน 
 def verify_login(username, password):
     if not username or not password:
         return {"status": False, "message": "กรุณากรอกข้อมูลให้ครบ"}
@@ -143,21 +143,21 @@ def _verify_tu_api(username, password):
         }
 
     except requests.Timeout:
-        logger.error("❌ TU API timeout")
+        logger.error(" TU API timeout")
         return {
             "status": False,
             "message": "ระบบยืนยันตัวตนไม่ตอบสนอง (หมดเวลา)"
         }
 
     except requests.ConnectionError:
-        logger.error("❌ Cannot connect to TU API")
+        logger.error(" Cannot connect to TU API")
         return {
             "status": False,
             "message": "ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ยืนยันตัวตน"
         }
 
     except Exception as e:
-        logger.error(f"❌ TU API error: {type(e).__name__}: {e}")
+        logger.error(f"TU API error: {type(e).__name__}: {e}")
         return {
             "status": False,
             "message": f"เกิดข้อผิดพลาด: {str(e)}"
