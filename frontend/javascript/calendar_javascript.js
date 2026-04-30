@@ -24,7 +24,10 @@ document.addEventListener('DOMContentLoaded', async function () {
     if (data) {
       data.forEach(task => {
         // ข้ามงานที่ไม่มี deadline จริง
-        if (!task.deadline || task.deadline.startsWith('1970')) return;
+        if (!task.deadline || task.deadline.startsWith('1970')) {
+    if (task.status !== 'overdue') return; // ถ้าไม่ใช่ overdue ก็ข้ามไป
+    task.deadline = new Date().toISOString().split('T')[0] + ' 23:59:00'; // ใช้วันนี้แทน
+}
 
         // รองรับทั้ง "2026-02-10 23:59:00" และ "2026-02-10T23:59:00"
         const date = task.deadline.split(/T| /)[0];
@@ -44,8 +47,9 @@ document.addEventListener('DOMContentLoaded', async function () {
           title: task.course_name,
           date:  date,
           color: task.status === 'submitted' ? '#16a34a'
-               : task.status === 'pending'   ? '#ab0000'
-               : '#7c3aed',
+     : task.status === 'pending'   ? '#ab0000'
+     : task.status === 'overdue'   ? '#7c3aed'  // ม่วง
+     : '#7c3aed',
           url:   link || undefined,
         });
       });
