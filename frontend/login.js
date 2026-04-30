@@ -67,8 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     }),
                     credentials: "include"
                 });
-                console.log("0")
-                let data;
+
+                let data; 
+                
                 const contentType = response.headers.get("content-type");
                 console.log("1")
                 if (contentType && contentType.includes("application/json")) {

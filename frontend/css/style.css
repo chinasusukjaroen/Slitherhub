@@ -17,6 +17,17 @@ body {
     position: relative;
 }
 
+
+
+.fc .fc-button:hover {
+  background-color: #1d1b54 !important;
+  color: #ffffff !important;
+}
+
+.fc .fc-button:focus {
+  box-shadow: none !important;
+}
+
 .header {
     text-align: center;
     margin-bottom: 32px;
@@ -1585,3 +1596,6 @@ body {
         padding: 8px 10px;
     }
 }
+
+
+

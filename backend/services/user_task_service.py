@@ -9,9 +9,14 @@ from datetime import datetime
 
 def get_all_user_tasks_info_by_student_id(student_id):
     user = get_user_by_student_id(student_id)
-    if user is None: return []
-    user_id = user.get("data").get("user_id")
+    if user is None:
+        return []
 
-    tasks_data =  get_all_user_task_and_assignment_info_by_user_id(user_id)
-    
+    user_data = user.get("data") or user
+    user_id = user_data.get("user_id")
+
+    if user_id is None:
+        return []
+
+    tasks_data = get_all_user_task_and_assignment_info_by_user_id(user_id)
     return tasks_data

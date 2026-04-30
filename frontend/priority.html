@@ -6,26 +6,47 @@
     <title>PriorityTask - Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/priority.css">
+    <link rel="stylesheet" href="css/logout.css">
+    
 </head>
 <body>
 
     <!-- Top Navigation -->
     <nav class="top-nav">
         <div class="logo-text">Slitherhub</div>
-        <div class="search-bar">
+        <!-- <div class="search-bar">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="11" cy="11" r="8"></circle>
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
             <input type="text" placeholder="Search subjects...">
+        </div> -->
+        <div class="right-top-nav">
+            <!-- <div class="profile-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                
+            </div> -->
+
+            <button id="logout-btn">Logout</button>
         </div>
-        <div class="profile-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-        </div>
+
+        
     </nav>
+
+            <div id="logout-modal" class="modal hidden">
+            <div class="modal-box">
+                <h3>Logout</h3>
+                <p>คุณต้องการออกจากระบบหรือไม่?</p>
+
+                <div class="modal-actions">
+                <button id="cancel-logout" class="btn cancel">Cancel</button>
+                <button id="confirm-logout" class="btn danger">Logout</button>
+                </div>
+            </div>
+            </div>
 
     <!-- Main Content -->
     <main class="container">
@@ -88,7 +109,7 @@
     </nav>
 
     <script type="module" src="javascript/priorityboard.js"></script>
-
+    <script type="module" src="javascript/main.js"></script>
     <script>
         const isLoggedIn = sessionStorage.getItem("is_logged_in") === "true";
         if (isLoggedIn) {
@@ -96,6 +117,33 @@
         } else {
             window.location.href = "index.html";
         }
+
+        const modal = document.getElementById("logout-modal");
+        const logoutBtn = document.getElementById("logout-btn");
+        const cancelBtn = document.getElementById("cancel-logout");
+        const confirmBtn = document.getElementById("confirm-logout");
+
+
+        logoutBtn.onclick = () => {
+        modal.classList.remove("hidden");
+        };
+
+
+        cancelBtn.onclick = () => {
+        modal.classList.add("hidden");
+        };
+
+
+        confirmBtn.onclick = () => {
+            logout()
+        };
+
+        // คลิกพื้นหลังเพื่อปิด
+        modal.onclick = (e) => {
+        if (e.target === modal) {
+            modal.classList.add("hidden");
+        }
+        };
     </script>
 
 </body>
