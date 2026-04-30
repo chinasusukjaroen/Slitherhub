@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   const calendarEl = document.getElementById('calendar');
 
   let deadlines = {};
+  let calendarEvents = [];
   let calendar;
 
   try {
@@ -27,14 +28,26 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         // รองรับทั้ง "2026-02-10 23:59:00" และ "2026-02-10T23:59:00"
         const date = task.deadline.split(/T| /)[0];
-
         const link = task.source_url || null;
 
         if (!deadlines[date]) deadlines[date] = [];
         deadlines[date].push({
-          text: `[${task.course_name}] ${task.title}`,
-          link: link,
-          deadline: task.deadline
+          text:        `[${task.course_name}] ${task.title}`,
+          link:        link,
+          deadline:    task.deadline,
+          course_name: task.course_name,
+          status:      task.status,
+        });
+
+        // เพิ่ม event สำหรับ FullCalendar
+        const urgency = getUrgencyClass(task.deadline);
+        const color = '#7c3aed';
+
+        calendarEvents.push({
+          title: task.course_name,
+          date:  date,
+          color: color,
+          url:   link || undefined,
         });
       });
     }
@@ -54,6 +67,16 @@ document.addEventListener('DOMContentLoaded', async function () {
       right: ''
     },
 
+    events: calendarEvents,
+
+    // ป้องกัน FullCalendar navigate ออกเมื่อ url มีค่า
+    eventClick: function (info) {
+      if (info.event.url) {
+        info.jsEvent.preventDefault();
+        window.open(info.event.url, '_blank');
+      }
+    },
+
     datesSet: function () {
       Object.keys(deadlines).forEach(date => {
         const cell = document.querySelector(`[data-date="${date}"]`);
@@ -68,7 +91,6 @@ document.addEventListener('DOMContentLoaded', async function () {
           .sort((a, b) => order.indexOf(a) - order.indexOf(b))[0];
 
         cell.classList.add(topClass);
-
       });
     },
 
@@ -83,13 +105,8 @@ document.addEventListener('DOMContentLoaded', async function () {
   // ================= WHEEL SCROLL =================
   calendarEl.addEventListener('wheel', function (e) {
     e.preventDefault();
-
-    if (e.deltaY > 0) {
-      calendar.next();
-    } else {
-      calendar.prev();
-    }
-
+    if (e.deltaY > 0) calendar.next();
+    else              calendar.prev();
   }, { passive: false });
 
 });
@@ -144,14 +161,12 @@ function showPopup(dateStr, mouseEvent, deadlines) {
     </div>
   `;
 
-  let top = mouseEvent.clientY + window.scrollY - 20;
+  let top  = mouseEvent.clientY + window.scrollY - 20;
   let left = mouseEvent.clientX + window.scrollX - 20;
 
-  if (left + 280 > window.innerWidth) {
-    left = window.innerWidth - 300;
-  }
+  if (left + 280 > window.innerWidth) left = window.innerWidth - 300;
 
-  popup.style.top = top + 'px';
+  popup.style.top  = top  + 'px';
   popup.style.left = left + 'px';
 
   document.body.appendChild(popup);
@@ -172,8 +187,8 @@ function formatDate(dateStr) {
   const date = new Date(dateStr);
   return date.toLocaleDateString('th-TH', {
     weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
+    year:    'numeric',
+    month:   'long',
+    day:     'numeric'
   });
 }
