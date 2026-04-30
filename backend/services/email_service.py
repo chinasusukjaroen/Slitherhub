@@ -69,3 +69,5 @@ def send_email(to_email, task):
     except Exception as e:
         print(f"[EMAIL] ❌ ส่งไม่ได้: {e}")
         return False
+    
+    
