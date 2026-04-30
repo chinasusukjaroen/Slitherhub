@@ -12,7 +12,7 @@ env_path = base_dir / '.env'
 load_dotenv(dotenv_path=env_path)
 
 EMAIL_SENDER   = os.getenv("EMAIL_SENDER")
-EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")  # Gmail App Password
+EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD") 
  
  
 def build_email(task):
@@ -48,7 +48,7 @@ def build_email(task):
  
  
 def send_email(to_email, task):
-    """ส่ง Email แจ้งเตือน"""
+  
     if not EMAIL_SENDER or not EMAIL_PASSWORD:
         print(f"[EMAIL] ❌ ยังไม่ได้ตั้งค่า .env")
         return False

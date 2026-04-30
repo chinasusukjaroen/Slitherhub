@@ -3,7 +3,7 @@ import logging
 from database import get_conn 
 
 
-# ตั้งค่า Logging สำหรับดูสถานะการทำงาน
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
@@ -91,20 +91,19 @@ if __name__ == "__main__":
     from services.email_service import send_email  # ← เพิ่ม import
 
     try:
-        logging.info("🚀 เริ่มต้นระบบตรวจสอบ Deadline...")
 
         deadlines = get_upcoming_deadlines(hours_ahead=24)
 
         if not deadlines:
-            logging.info("✅ ไม่พบงานที่ต้องแจ้งเตือนในรอบนี้")
+            logging.info("ไม่พบงานที่ต้องแจ้งเตือนในรอบนี้")
         else:
-            logging.info(f"📦 พบงานที่ต้องแจ้งเตือน: {len(deadlines)} รายการ")
+            logging.info(f"พบงานที่ต้องแจ้งเตือน: {len(deadlines)} รายการ")
 
             for task in deadlines:
                 logging.info(f"🔔 แจ้งเตือน -> {task['display_name']} ({task['email']}) | งาน: {task['title']} | Deadline: {task['deadline']}")
                 
-                # ✅ เรียก send_email จริงๆ
-                task['name'] = task['display_name']  # map key ให้ตรงกับ email_service
+                
+                task['name'] = task['display_name']  
                 success = send_email(task['email'], task)
                 
                 if success:
@@ -114,9 +113,9 @@ if __name__ == "__main__":
                     logging.warning(f"❌ ส่งอีเมลไม่สำเร็จ (user_task_id: {task['user_task_id']})")
 
         summary = get_notification_summary()
-        logging.info(f"📊 สรุปสถานะ DB: รวม {summary['total_assignments']} | แจ้งแล้ว {summary['notified_count']} | รอแจ้ง {summary['pending_count']}")
+        logging.info(f" สรุปสถานะ DB: รวม {summary['total_assignments']} | แจ้งแล้ว {summary['notified_count']} | รอแจ้ง {summary['pending_count']}")
 
     except Exception as e:
         logging.error(f"❌ เกิดข้อผิดพลาด: {e}")
     finally:
-        logging.info("🏁 จบการทำงาน notify_service")
+        logging.info("จบการทำงาน notify_service")
