@@ -2,11 +2,13 @@
 from flask import Blueprint, request, jsonify, make_response
 from services.auth_service import verify_login, create_token, JWT_SECRET
 from services.moodle_api_service import login_moodle
-from model.user_model import save_user
+from model.user_model import UserModel
 import jwt
 
 auth_bp = Blueprint("auth", __name__)
 
+
+userModel = UserModel.get_instance()
 
 @auth_bp.route("/login", methods=["POST"])
 def login():
@@ -33,7 +35,7 @@ def login():
 
     # 2) Save user to DB
     try:
-        save_result = save_user(
+        save_result = userModel.save_user(
             student_id=result["username"],
             username=result["username"],
             display_name=result.get("DisplayName"),

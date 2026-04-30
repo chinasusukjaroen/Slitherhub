@@ -7,7 +7,7 @@ import re
 
 
 
-# Keyword Patterns  (Thai + English, case-insensitive)
+# Keyword Patterns 
 
 _HIGH_KEYWORDS = re.compile(
     r"final|exam|สอบ|โปรเจกต์|โปรเจค|project|thesis|วิทยานิพนธ์|"
@@ -30,7 +30,6 @@ _LOW_KEYWORDS = re.compile(
 
 
 
-# Scoring Helpers
 def _urgency_score(hours_left):
     """Component 1 — time urgency (max 60 pts)."""
     if hours_left <= 24:
@@ -53,7 +52,7 @@ def _keyword_score(title, description, course_name):
         return 20
     if _LOW_KEYWORDS.search(text):
         return 10
-    return 15   # default when no keyword matched
+    return 15   
 
 
 def _duration_score(deadline, created_at):
@@ -76,8 +75,6 @@ def _priority_level(score):
     return "LOW"
 
 
-
-# Main Public Function
 
 def calculate_priorities(tasks, now=None):
 
@@ -120,13 +117,13 @@ def calculate_priorities(tasks, now=None):
             "source_url": source_url
         })
 
-    # Sort: priority_score DESC → hours_left ASC (tiebreaker)
+
     result.sort(key=lambda t: (-t["priority_score"], t["hours_left"]))
 
     return result
 
 
-# Integration Layer
+
 def get_prioritized_tasks_by_student_id(student_id, now=None):
 
     tasks = get_all_user_tasks_info_by_student_id(student_id)

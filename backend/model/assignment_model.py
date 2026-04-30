@@ -34,171 +34,185 @@ def create_assignments_table():
         if conn:
             conn.close()
 
-def save_assignment(moodle_assignment_uid, title, deadline,
-                    course_id=None, course_name=None,
-                    description=None, source_url=None):
-    try:
-        conn = get_conn()
-        conn.row_factory = sqlite3.Row
-        cursor = conn.cursor()
 
-        print(f"[DEBUG] กำลังบันทึก: {moodle_assignment_uid}")
+class AssignmentModel:
+    _instance = None
 
-        cursor.execute("""
-            INSERT OR IGNORE INTO assignments
-            (moodle_assignment_uid, course_id, course_name, title, description, source_url, deadline)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
-        """, (moodle_assignment_uid, course_id, course_name, title, description, source_url, deadline))
-        
-        conn.commit()
-        print("[DEBUG] Commit สำเร็จ!")
-        
-        cursor.execute("SELECT assignment_id FROM assignments WHERE moodle_assignment_uid = ?", (moodle_assignment_uid,))
-        row = cursor.fetchone()
+    def __init__(self):
+        pass
 
-        print("Assignment:", row[0])
+    @classmethod
+    def get_instance(cls):
+        if cls._instance is None:
+            cls._instance = AssignmentModel()
+        return cls._instance
 
-        return {"success": True, "data": row[0] if row else None}
+    def save_assignment(self, moodle_assignment_uid, title, deadline,
+                        course_id=None, course_name=None,
+                        description=None, source_url=None):
+        try:
+            conn = get_conn()
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
 
-    except Exception as e:
-        print(f"[DEBUG] ERROR: {type(e).__name__}: {e}")
-        return {"success": False, "data": None, "error": str(e)}
-    finally:
-        conn.close()
+            print(f"[DEBUG] กำลังบันทึก: {moodle_assignment_uid}")
 
-def update_assignment_deadline_and_description(moodle_assignemnt_uid, deadline, description):
-    if deadline is None or description is None: return
-    conn = None
-    try:
-        conn = get_conn()
-        conn.row_factory = sqlite3.Row
-        cursor = conn.cursor()
+            cursor.execute("""
+                INSERT OR IGNORE INTO assignments
+                (moodle_assignment_uid, course_id, course_name, title, description, source_url, deadline)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+            """, (moodle_assignment_uid, course_id, course_name, title, description, source_url, deadline))
+            
+            conn.commit()
+            print("[DEBUG] Commit สำเร็จ!")
+            
+            cursor.execute("SELECT assignment_id FROM assignments WHERE moodle_assignment_uid = ?", (moodle_assignment_uid,))
+            row = cursor.fetchone()
 
-        cursor.execute("""
-            UPDATE assignments
-            SET deadline = ?, description = ?
-            WHERE moodle_assignment_uid = ?
-            AND (
-                    deadline IS NULL OR deadline != ?
-                OR description IS NULL OR description != ?
-            )
-        """, (deadline, description, moodle_assignemnt_uid, deadline, description))
+            print("Assignment:", row[0])
 
-        updated = cursor.rowcount > 0
+            return {"success": True, "data": row[0] if row else None}
 
-        cursor.execute("""
-            SELECT assignment_id
-            FROM assignments
-            WHERE moodle_assignment_uid = ?
-        """, (moodle_assignemnt_uid,))
-
-        row = cursor.fetchone()
-
-        return {"success": True, "updated": updated, "data": row[0] if row else None}
-
-    finally:
-        if conn: conn.close()
-
-#ดึงงานทุกงานออกมา
-def get_assignments():
-    conn = None
-    try:
-        conn = get_conn()
-        conn.row_factory = sqlite3.Row
-        cursor = conn.cursor()
-
-        cursor.execute("""
-            SELECT 
-                assignment_id,
-                moodle_assignment_uid,
-                course_id,
-                course_name,
-                title,
-                description,
-                source_url,
-                deadline,
-                created_at
-            FROM assignments
-            ORDER BY deadline ASC
-        """)
-
-        rows = cursor.fetchall()
-        assignments = [dict(row) for row in rows]
-
-        return {"success": True, "data": assignments, "total": len(assignments)}
-
-    except Exception as e:
-        return {"success": False, "data": [], "total": 0, "error": str(e)}
-
-    finally:
-        if conn:
+        except Exception as e:
+            print(f"[DEBUG] ERROR: {type(e).__name__}: {e}")
+            return {"success": False, "data": None, "error": str(e)}
+        finally:
             conn.close()
 
-def get_assignment_by_assignment_id(assignment_id):
-    conn = None
-    try:
-        conn = get_conn()
-        conn.row_factory = sqlite3.Row
-        cursor = conn.cursor()
+    def update_assignment_deadline_and_description(self,moodle_assignemnt_uid, deadline, description):
+        if deadline is None or description is None: return
+        conn = None
+        try:
+            conn = get_conn()
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
 
-        cursor.execute("""
-            SELECT 
-                assignment_id,
-                moodle_assignment_uid,
-                course_id,
-                course_name,
-                title,
-                description,
-                source_url,
-                deadline,
-                created_at
-            FROM assignments
-            WHERE assignment_id = ?
-        """, (assignment_id,))
+            cursor.execute("""
+                UPDATE assignments
+                SET deadline = ?, description = ?
+                WHERE moodle_assignment_uid = ?
+                AND (
+                        deadline IS NULL OR deadline != ?
+                    OR description IS NULL OR description != ?
+                )
+            """, (deadline, description, moodle_assignemnt_uid, deadline, description))
 
-        row = cursor.fetchone()
+            updated = cursor.rowcount > 0
+
+            cursor.execute("""
+                SELECT assignment_id
+                FROM assignments
+                WHERE moodle_assignment_uid = ?
+            """, (moodle_assignemnt_uid,))
+
+            conn.commit()
+            row = cursor.fetchone()
+
+            return {"success": True, "updated": updated, "data": row[0] if row else None}
+
+        finally:
+            if conn: conn.close()
+
+    #ดึงงานทุกงานออกมา
+    def get_assignments(self):
+        conn = None
+        try:
+            conn = get_conn()
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
+
+            cursor.execute("""
+                SELECT 
+                    assignment_id,
+                    moodle_assignment_uid,
+                    course_id,
+                    course_name,
+                    title,
+                    description,
+                    source_url,
+                    deadline,
+                    created_at
+                FROM assignments
+                ORDER BY deadline ASC
+            """)
+
+            rows = cursor.fetchall()
+            assignments = [dict(row) for row in rows]
+
+            return {"success": True, "data": assignments, "total": len(assignments)}
+
+        except Exception as e:
+            return {"success": False, "data": [], "total": 0, "error": str(e)}
+
+        finally:
+            if conn:
+                conn.close()
+
+    def get_assignment_by_assignment_id(self, assignment_id):
+        conn = None
+        try:
+            conn = get_conn()
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
+
+            cursor.execute("""
+                SELECT 
+                    assignment_id,
+                    moodle_assignment_uid,
+                    course_id,
+                    course_name,
+                    title,
+                    description,
+                    source_url,
+                    deadline,
+                    created_at
+                FROM assignments
+                WHERE assignment_id = ?
+            """, (assignment_id,))
+
+            row = cursor.fetchone()
 
 
-        return {"success": True, "data": dict(row) if row else None}
+            return {"success": True, "data": dict(row) if row else None}
 
-    except Exception as e:
-        return {"success": False, "data": None, "error": str(e)}
+        except Exception as e:
+            return {"success": False, "data": None, "error": str(e)}
 
-    finally:
-        if conn:
-            conn.close()
-
-
-def get_assignment_by_moodle_id(moodle_id):
-    conn = None
-    try:
-        conn = get_conn()
-        conn.row_factory = sqlite3.Row
-        cursor = conn.cursor()
-
-        cursor.execute("""
-            SELECT 
-                assignment_id,
-                moodle_assignment_uid,
-                course_id,
-                course_name,
-                title,
-                description,
-                source_url,
-                deadline,
-                created_at
-            FROM assignments
-            WHERE moodle_assignment_uid = ?
-        """, (moodle_id,))
-
-        row = cursor.fetchone()
+        finally:
+            if conn:
+                conn.close()
 
 
-        return {"success": True, "data": dict(row) if row else None}
+    def get_assignment_by_moodle_id(self, moodle_id):
+        conn = None
+        try:
+            conn = get_conn()
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
 
-    except Exception as e:
-        return {"success": False, "data": None, "error": str(e)}
+            cursor.execute("""
+                SELECT 
+                    assignment_id,
+                    moodle_assignment_uid,
+                    course_id,
+                    course_name,
+                    title,
+                    description,
+                    source_url,
+                    deadline,
+                    created_at
+                FROM assignments
+                WHERE moodle_assignment_uid = ?
+            """, (moodle_id,))
 
-    finally:
-        if conn:
-            conn.close()
+            row = cursor.fetchone()
+
+
+            return {"success": True, "data": dict(row) if row else None}
+
+        except Exception as e:
+            return {"success": False, "data": None, "error": str(e)}
+
+        finally:
+            if conn:
+                conn.close()

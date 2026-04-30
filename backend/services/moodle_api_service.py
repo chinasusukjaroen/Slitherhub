@@ -1,7 +1,7 @@
 from datetime import datetime, timezone, timedelta
-from model.user_model import update_moodle_user_id, get_moodle_user_id_by_student_id, update_moodle_api, get_user_by_student_id
-from model.assignment_model import get_assignment_by_moodle_id, save_assignment, update_assignment_deadline_and_description, get_assignment_by_assignment_id
-from model.user_task_model import get_user_task_by_user_id_and_assignment_id, save_user_task, update_task_status, get_user_tasks_by_user_id
+from model.user_model import UserModel
+from model.assignment_model import AssignmentModel
+from model.user_task_model import UserTaskModel
 from model.TaskStatus import TaskStatus
 from database import get_conn 
 import sqlite3
@@ -13,7 +13,11 @@ MOODLE_API_URL_LOGIN = "https://courses.cs.tu.ac.th/login/token.php"
 MOODLE_API_URL_GET = "https://courses.cs.tu.ac.th/webservice/rest/server.php"
 MOODLE_VIEW_URL = "https://courses.cs.tu.ac.th/mod/assign/view.php?id="
 
-def safe_call_database_func(func, *args, **kwargs):
+assignmentModel = AssignmentModel.get_instance()
+userTaskModel = UserTaskModel.get_instance()
+userModel = UserModel.get_instance()
+
+def _safe_call_database_func(func, *args, **kwargs):
     try:
         result = func(*args, **kwargs)
         if result.get("success") is True:
@@ -49,9 +53,9 @@ def login_moodle(username, password):
 
         if data.get("token"):
             token = data.get("token")
-            update_moodle_api(username, token)
+            userModel.update_moodle_api(username, token)
 
-            moodle_user_id = safe_call_database_func(get_moodle_user_id_by_student_id, username)
+            moodle_user_id = _safe_call_database_func(userModel.get_moodle_user_id_by_student_id, username)
 
             print("Moodle_user_id:", moodle_user_id)
 
@@ -94,7 +98,7 @@ def fetch_user_info_and_save(token, username):
         res = requests.post(MOODLE_API_URL_GET, data=payload, headers=headers, timeout=10)
         data = res.json()
         if data.get("userid"):
-            update_val = update_moodle_user_id(username, data.get("userid"))
+            update_val = userModel.update_moodle_user_id(username, data.get("userid"))
             status = update_val.get("status")
             updated = update_val.get("updated")
             print("Updated moodle_user_id:", updated, " | data:", update_val.get("data"))
@@ -113,7 +117,7 @@ def fetch_user_info_and_save(token, username):
 
 
 def sync_assignments(student_id):
-    user = safe_call_database_func(get_user_by_student_id, student_id)
+    user = _safe_call_database_func(userModel.get_user_by_student_id, student_id)
 
     if not user: return {"success": False, "message" : "ไม่พบ user"}
 
@@ -151,7 +155,7 @@ def fetch_assignments_and_save(token, student_id):
 
         if not data.get("courses"): return {"success": False, "message": data.get("message", "ใช้งาน Token ไม่สำเร็จ")}
 
-        user = safe_call_database_func(get_user_by_student_id, student_id)
+        user = _safe_call_database_func(userModel.get_user_by_student_id, student_id)
         if not user: return {"success": False, "message": "ไม่พบ user "}
         
         user_id = user.get("user_id")
@@ -174,31 +178,31 @@ def fetch_assignments_and_save(token, student_id):
 
 
                 assignment_id = None
-                if not safe_call_database_func(get_assignment_by_moodle_id, moodle_assignment_uid):
+                if not _safe_call_database_func(assignmentModel.get_assignment_by_moodle_id, moodle_assignment_uid):
                     source_url = MOODLE_VIEW_URL + str(assignment.get("cmid"))
-                    assignment_id = safe_call_database_func(save_assignment, moodle_assignment_uid, title, deadline, course_id, course_name, description, source_url)
+                    assignment_id = _safe_call_database_func(assignmentModel.save_assignment, moodle_assignment_uid, title, deadline, course_id, course_name, description, source_url)
                     # assignment_id = save_assignment(moodle_assignment_uid, title, deadline, course_id, course_name, description, source_url)
                     
                 else:
-                    assignment_id = safe_call_database_func(update_assignment_deadline_and_description, moodle_assignment_uid, deadline, description)
+                    assignment_id = _safe_call_database_func(assignmentModel.update_assignment_deadline_and_description, moodle_assignment_uid, deadline, description)
                     # assignment_id = update_assignment_deadline_and_description(moodle_assignment_uid, deadline, description)
                 
                 assignments.append(dataReturn)
 
                 #Sync user task
-                user_task = safe_call_database_func(get_user_task_by_user_id_and_assignment_id, user_id, assignment_id)
+                user_task = _safe_call_database_func(userTaskModel.get_user_task_by_user_id_and_assignment_id, user_id, assignment_id)
                 if user_task is None:
                     print("[DEBUG] กำลัง fetch:", moodle_assignment_uid)
                     status = fetch_get_assignment_status(token, moodle_assignment_uid)
 
-                    save_user_task(user_id, assignment_id, status.value)
+                    userTaskModel.save_user_task(user_id, assignment_id, status.value)
                     
                 else:
                     if user_task.get("status") == TaskStatus.SUBMITTED.value: continue
                     print("[DEBUG] กำลัง fetch:", moodle_assignment_uid)
 
                     status = fetch_get_assignment_status(token, moodle_assignment_uid)
-                    update_task_status(user_id, assignment_id, status.value)
+                    userTaskModel.update_task_status(user_id, assignment_id, status.value)
 
         return {"success": True, "data": assignments}
         
@@ -208,19 +212,19 @@ def fetch_assignments_and_save(token, student_id):
         return {"success": False, "message": f"เกิดข้อผิดพลาด: {str(e)}"}
 
 def sync_all_user_tasks(student_id):
-    user = safe_call_database_func(get_user_by_student_id, student_id)
+    user = _safe_call_database_func(userModel.get_user_by_student_id, student_id)
     if not user: return False
         
 
     user_id = user["user_id"]
     token = user["moodle_API"]
 
-    tasks = safe_call_database_func(get_user_tasks_by_user_id, user_id)
+    tasks = _safe_call_database_func(userTaskModel.get_user_tasks_by_user_id, user_id)
 
     for t in tasks:
         if t["status"] == TaskStatus.SUBMITTED.value:
             continue
-        assignment = safe_call_database_func(get_assignment_by_assignment_id, t["assignment_id"])
+        assignment = _safe_call_database_func(assignmentModel.get_assignment_by_assignment_id, t["assignment_id"])
         if not assignment:
             print("MISSING assignment:", t["assignment_id"])
 
@@ -231,7 +235,7 @@ def sync_all_user_tasks(student_id):
             assignment["moodle_event_uid"]
         )
 
-        update_task_status(user_id, t["assignment_id"], status.value)
+        userTaskModel.update_task_status(user_id, t["assignment_id"], status.value)
 
     return True
 
@@ -266,7 +270,7 @@ def fetch_get_assignment_status(token, moodle_assignment_id):
         if status == "submitted": return TaskStatus.SUBMITTED
             
 
-        assignment = safe_call_database_func(get_assignment_by_moodle_id, moodle_assignment_id)
+        assignment = _safe_call_database_func(assignmentModel.get_assignment_by_moodle_id, moodle_assignment_id)
 
         if assignment is None:
             raise ValueError("Assignment not found")
@@ -283,22 +287,22 @@ def fetch_get_assignment_status(token, moodle_assignment_id):
 
 
 def sync_user_task(token, user_id, assignment_id, moodle_assignment_id):
-    user_task = safe_call_database_func(get_user_task_by_user_id_and_assignment_id, user_id, assignment_id)
+    user_task = _safe_call_database_func(userTaskModel.get_user_task_by_user_id_and_assignment_id, user_id, assignment_id)
 
     if user_task is None:
-        save_user_task(user_id, assignment_id)
+        userTaskModel.save_user_task(user_id, assignment_id)
         
     else:
         if user_task.get("status") == TaskStatus.SUBMITTED.value: return True
 
         status = fetch_get_assignment_status(token, moodle_assignment_id)
-        update_task_status(user_id, assignment_id, status.value)
+        userTaskModel.update_task_status(user_id, assignment_id, status.value)
     
     return True
 
 def fetch_courses(token, username):
     try:
-        moodle_user_id = safe_call_database_func(get_moodle_user_id_by_student_id, username)
+        moodle_user_id = _safe_call_database_func(userModel.get_moodle_user_id_by_student_id, username)
         if moodle_user_id == None: return {"success": False, "message": "ดึง user_id ไม่สำเร็จ"}
 
         payload = {

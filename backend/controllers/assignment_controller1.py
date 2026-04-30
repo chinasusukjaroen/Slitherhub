@@ -1,15 +1,17 @@
 # assignment_controller.py
 
 from flask import Blueprint, request, jsonify
-from model.assignment_model import get_assignments, save_assignment, create_assignments_table
+from model.assignment_model import AssignmentModel
 
 assignment_bp = Blueprint("assignment", __name__)
+
+assignmentModel = AssignmentModel.get_instance()
 
 
 @assignment_bp.route("/api/assignments", methods=["GET"])
 def get_all_assignments():
     """ดึงงานทั้งหมด"""
-    result = get_assignments()
+    result = assignmentModel.get_assignments()
     if not result["success"]:
         return jsonify({"error": result["error"]}), 500
     return jsonify(result), 200
@@ -26,7 +28,7 @@ def create_assignment():
         if not data.get(field):
             return jsonify({"error": f"กรุณากรอก {field}"}), 400
 
-    result = save_assignment(
+    result = assignmentModel.save_assignment(
         moodle_assignment_uid = data["moodle_assignment_uid"],
         title                 = data["title"],
         deadline              = data["deadline"],
@@ -57,7 +59,7 @@ def create_bulk_assignments():
     results = {"success": 0, "failed": 0, "errors": []}
 
     for a in assignments:
-        result = save_assignment(
+        result = assignmentModel.save_assignment(
             moodle_assignment_uid = a.get("moodle_assignment_uid"),
             title                 = a.get("title"),
             deadline              = a.get("deadline"),

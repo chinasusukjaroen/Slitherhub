@@ -1,5 +1,4 @@
 from flask import Blueprint, jsonify, request
-# from model.assignment_model import get_all_assignments
 from services.user_task_service import get_all_user_tasks_info_by_student_id
 from services.priority_task_service import get_prioritized_tasks_by_student_id
 from middlewares.user_middleware import token_required

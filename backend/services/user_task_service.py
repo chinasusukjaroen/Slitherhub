@@ -1,14 +1,15 @@
-from model.user_task_model import save_user_task, update_task_status, get_all_user_task_and_assignment_info_by_user_id
-from model.user_model import get_user_by_student_id
-from model.assignment_model import get_assignment_by_assignment_id
+from model.user_task_model import UserTaskModel
+from model.user_model import UserModel
 from services.moodle_api_service import fetch_courses
 from config import MOODLE_VIEW_URL
 
 from datetime import datetime
 
+userTaskModel = UserTaskModel.get_instance()
+userModel = UserModel.get_instance()
 
 def get_all_user_tasks_info_by_student_id(student_id):
-    user = get_user_by_student_id(student_id)
+    user = userModel.get_user_by_student_id(student_id)
     if user is None:
         return []
 
@@ -18,5 +19,5 @@ def get_all_user_tasks_info_by_student_id(student_id):
     if user_id is None:
         return []
 
-    tasks_data = get_all_user_task_and_assignment_info_by_user_id(user_id)
+    tasks_data = userTaskModel.get_all_user_task_and_assignment_info_by_user_id(user_id)
     return tasks_data
