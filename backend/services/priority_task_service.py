@@ -92,6 +92,8 @@ def calculate_priorities(tasks, now=None):
         title = task.get("title", "")
         description = task.get("description", "")
         course_name = task.get("course_name", "")
+        source_url = task.get("source_url", "")
+
 
         created_at = datetime.strptime(task["created_at"], "%Y-%m-%d %H:%M:%S")
         deadline = datetime.strptime(task["deadline"], "%Y-%m-%d %H:%M:%S")
@@ -116,7 +118,8 @@ def calculate_priorities(tasks, now=None):
             "keyword_score": k_score,
             "duration_score": d_score,
             "priority_score": total,
-            "priority_level": priority_level ,
+            "priority_level": priority_level,
+            "source_url": source_url
         })
 
     # Sort: priority_score DESC → hours_left ASC (tiebreaker)
@@ -131,7 +134,7 @@ def calculate_priorities(tasks, now=None):
 def get_prioritized_tasks_by_student_id(student_id, now=None):
 
     tasks = get_all_user_tasks_info_by_student_id(student_id)
-
+    tasks = [t for t in tasks if t["status"] != "submitted"]    
     if not tasks: return []
 
     return calculate_priorities(tasks, now)
@@ -140,53 +143,53 @@ def get_prioritized_tasks_by_student_id(student_id, now=None):
 # ---------------------------------------------------------------------------
 # Demo / Quick Test
 # ---------------------------------------------------------------------------
-if __name__ == "__main__":
-    import json
+# if __name__ == "__main__":
+#     import json
 
-    FAKE_NOW = datetime.now()
+#     FAKE_NOW = datetime.now()
 
-    sample_tasks = [
-        {
-            "task_id": 1,
-            "title": "Final Exam — Computer Networks",
-            "description": "Closed-book สอบปลายภาค ห้าม open internet",
-            "course_name": "CN401 Computer Networks",
-            "deadline": FAKE_NOW + timedelta(hours=30),
-            "created_at": FAKE_NOW + timedelta(hours=10),
-        },
-        {
-            "task_id": 2,
-            "title": "Lab 5 — TCP/IP",
-            "description": "แบบฝึกหัด wireshark packet capture",
-            "course_name": "CN401 Computer Networks",
-            "deadline": FAKE_NOW + timedelta(hours=300),
-            "created_at": FAKE_NOW + timedelta(hours=30),
-        },
-        {
-            "task_id": 3,
-            "title": "ประกาศแจ้งข่าว — ปิดระบบชั่วคราว",
-            "description": "ระบบ Moodle จะปิดให้บริการ 00:00-02:00 วันพฤหัส",
-            "course_name": "ฝ่ายวิชาการ",
-            "deadline": FAKE_NOW + timedelta(hours=5),
-            "created_at": FAKE_NOW + timedelta(hours=30),
-        },
-        {
-            "task_id": 4,
-            "title": "โปรเจกต์กลุ่ม — ระบบ E-Commerce",
-            "description": "นำเสนอ demo และส่ง report พร้อม source code",
-            "course_name": "SE302 Software Engineering",
-            "deadline": FAKE_NOW + timedelta(hours=111),
-            "created_at": FAKE_NOW + timedelta(hours=30),
-        },
-        {
-            "task_id": 5,
-            "title": "Quiz 3 — Data Structures",
-            "description": "MCQ 20 ข้อ ใช้เวลา 30 นาที",
-            "course_name": "CS201 Data Structures",
-            "deadline": FAKE_NOW + timedelta(hours=10),
-            "created_at": FAKE_NOW + timedelta(hours=30),
-        },
-    ]
+#     sample_tasks = [
+#         {
+#             "task_id": 1,
+#             "title": "Final Exam — Computer Networks",
+#             "description": "Closed-book สอบปลายภาค ห้าม open internet",
+#             "course_name": "CN401 Computer Networks",
+#             "deadline": FAKE_NOW + timedelta(hours=30),
+#             "created_at": FAKE_NOW + timedelta(hours=10),
+#         },
+#         {
+#             "task_id": 2,
+#             "title": "Lab 5 — TCP/IP",
+#             "description": "แบบฝึกหัด wireshark packet capture",
+#             "course_name": "CN401 Computer Networks",
+#             "deadline": FAKE_NOW + timedelta(hours=300),
+#             "created_at": FAKE_NOW + timedelta(hours=30),
+#         },
+#         {
+#             "task_id": 3,
+#             "title": "ประกาศแจ้งข่าว — ปิดระบบชั่วคราว",
+#             "description": "ระบบ Moodle จะปิดให้บริการ 00:00-02:00 วันพฤหัส",
+#             "course_name": "ฝ่ายวิชาการ",
+#             "deadline": FAKE_NOW + timedelta(hours=5),
+#             "created_at": FAKE_NOW + timedelta(hours=30),
+#         },
+#         {
+#             "task_id": 4,
+#             "title": "โปรเจกต์กลุ่ม — ระบบ E-Commerce",
+#             "description": "นำเสนอ demo และส่ง report พร้อม source code",
+#             "course_name": "SE302 Software Engineering",
+#             "deadline": FAKE_NOW + timedelta(hours=111),
+#             "created_at": FAKE_NOW + timedelta(hours=30),
+#         },
+#         {
+#             "task_id": 5,
+#             "title": "Quiz 3 — Data Structures",
+#             "description": "MCQ 20 ข้อ ใช้เวลา 30 นาที",
+#             "course_name": "CS201 Data Structures",
+#             "deadline": FAKE_NOW + timedelta(hours=10),
+#             "created_at": FAKE_NOW + timedelta(hours=30),
+#         },
+#     ]
 
-    output = calculate_priorities(sample_tasks, now_unix=FAKE_NOW)
-    print(json.dumps(output, ensure_ascii=False, indent=2))
+#     output = calculate_priorities(sample_tasks, now_unix=FAKE_NOW)
+#     print(json.dumps(output, ensure_ascii=False, indent=2))

@@ -361,7 +361,7 @@ h1 {
 .breakdown-total {
     margin-top: 14px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     font-size: 13px;
     color: var(--muted);
     font-weight: 500;
@@ -375,6 +375,21 @@ h1 {
     color: var(--primary);
 }
 
+.breakdown-link{
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none !important; 
+}
+
+.breakdown-link:hover {
+    text-decoration: underline !important;
+}
+
+
+.breakdown-link:active {
+    transform: scale(0.96);
+    opacity: 0.8;
+}
 
 /* ============================================================
    BOTTOM NAVIGATION
