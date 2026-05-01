@@ -29,3 +29,5 @@ ALLOWED_ORIGINS = [
     "http://50.19.10.242:5500",
     "https://slitherhub-1.onrender.com"
 ]
+SESSION_COOKIE_SAMESITE = "None"
+SESSION_COOKIE_SECURE = True

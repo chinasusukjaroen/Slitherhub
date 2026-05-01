@@ -19,6 +19,8 @@ logging.basicConfig(
 )
  
 app = Flask(__name__)
+app.config['SESSION_COOKIE_SAMESITE'] = 'None'
+app.config['SESSION_COOKIE_SECURE'] = True
 CORS(app, supports_credentials=True, origins=ALLOWED_ORIGINS)
  
 app.register_blueprint(auth_bp, url_prefix="/api")
