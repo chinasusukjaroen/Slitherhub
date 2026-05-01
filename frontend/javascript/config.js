@@ -1,4 +1,4 @@
 export const CONFIG = {
-BACKEND_API_URL: "http://50.19.10.242:5000/api",
-ALLOWED_ORIGINS: ["http://50.19.10.242:5500"]
+BACKEND_API_URL: "https://slitherhub.onrender.com/api",
+ALLOWED_ORIGINS: ["http://127.0.0.1:5500"]
 };
