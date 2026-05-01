@@ -70,11 +70,11 @@ def login():
         "token",
         token,
         httponly=True,
-        secure=False,   # เปลี่ยนเป็น True ตอน deploy HTTPS
-        samesite="Lax",
+        secure=True,
+        samesite="None",
         max_age=60 * 60 * 24 * 7,
         path="/"
-    )
+)
 
     print(f" Login success: {result['username']}")
     return response
